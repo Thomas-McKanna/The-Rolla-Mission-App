@@ -1,4 +1,4 @@
-package com.mckanna.therollamissionapp
+package com.project.therollamissionapp
 
 import org.junit.Test
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mckanna.therollamissionapp">
+    package="com.project.therollamissionapp">
 
     <application
         android:allowBackup="true"
@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.registration.RegistationActivity"></activity>
-        <activity android:name=".ui.checkin.CheckInActivity" />
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name="com.project.therollamissionapp.ui.registration.RegistationActivity"></activity>
+        <activity android:name="com.project.therollamissionapp.ui.checkin.CheckInActivity" />
+        <activity android:name="com.project.therollamissionapp.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

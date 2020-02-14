@@ -1,8 +1,8 @@
-package com.mckanna.therollamissionapp.ui.checkin
+package com.project.therollamissionapp.ui.checkin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mckanna.therollamissionapp.R
+import com.project.therollamissionapp.R
 
 class CheckInActivity : AppCompatActivity() {
 

@@ -1,8 +1,8 @@
-package com.mckanna.therollamissionapp.ui.registration
+package com.project.therollamissionapp.ui.registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mckanna.therollamissionapp.R
+import com.project.therollamissionapp.R
 
 class RegistationActivity : AppCompatActivity() {
 

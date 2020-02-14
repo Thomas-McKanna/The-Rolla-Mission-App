@@ -1,4 +1,4 @@
-package com.mckanna.therollamissionapp
+package com.project.therollamissionapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
