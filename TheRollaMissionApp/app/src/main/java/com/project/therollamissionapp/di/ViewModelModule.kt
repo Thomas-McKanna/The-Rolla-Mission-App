@@ -13,28 +13,8 @@ import dagger.multibindings.IntoMap
 abstract class ViewModelModule {
     @Binds
     @IntoMap
-    @ViewModelKey(IdentificationViewModel::class)
-    abstract fun bindIdentificationViewModel(viewModel: IdentificationViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(HomelessViewModel::class)
-    abstract fun bindHomelessViewModel(viewModel: HomelessViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(SpecialCaseViewModel::class)
-    abstract fun bindSpecialCaseViewModel(viewModel: SpecialCaseViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(PictureViewModel::class)
-    abstract fun bindPictureViewModel(viewModel: PictureViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(ConsentViewModel::class)
-    abstract fun bindConsentViewModel(viewModel: ConsentViewModel): ViewModel
+    @ViewModelKey(RegistrationViewModel::class)
+    abstract fun bindRegistrationViewModel(viewModel: RegistrationViewModel): ViewModel
 
     @Binds
     @IntoMap

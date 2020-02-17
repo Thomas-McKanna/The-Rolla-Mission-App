@@ -3,19 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="com.project.therollamissionapp.ui.registration.RegistrationViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.project.therollamissionapp.ui.main.WelcomeFragment">
+        tools:context="com.project.therollamissionapp.ui.registration.IdentificationFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:text="consent" />
 
     </FrameLayout>
 </layout>
