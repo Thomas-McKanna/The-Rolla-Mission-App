@@ -4,8 +4,8 @@ import android.net.Uri
 import androidx.lifecycle.*
 import com.project.therollamissionapp.Event
 import com.project.therollamissionapp.R
-import com.project.therollamissionapp.repository.patronRepository
-import com.project.therollamissionapp.vo.Patron
+import com.project.therollamissionapp.data.source.patronRepository
+import com.project.therollamissionapp.data.Patron
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.project.therollamissionapp.repository
+package com.project.therollamissionapp.data
 
 /**
  * A generic class that holds a value with its loading status.
