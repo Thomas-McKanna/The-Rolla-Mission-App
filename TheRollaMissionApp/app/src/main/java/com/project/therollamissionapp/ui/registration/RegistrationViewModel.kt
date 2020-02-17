@@ -71,10 +71,14 @@ class RegistrationViewModel @Inject constructor(
 
     fun nextPressed() {
         if (fieldsFilledForIndex(index)) {
-            if (index < sections.size - 1) {
-                index += 1
+            index += 1
+            if (index >= sections.size) {
+                index = sections.size - 1 // prevent array out of bounds exceptions
+                savePatron()
+                _patronCreatedEvent.value = Event(Unit)
+            } else {
+                _contentChangedEvent.value = Event(sections.get(index))
             }
-            _contentChangedEvent.value = Event(sections.get(index))
         } else {
             // set _snackbarText indicating what is missing
         }
