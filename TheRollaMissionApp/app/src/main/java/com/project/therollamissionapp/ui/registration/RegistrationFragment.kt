@@ -51,6 +51,15 @@ class RegistrationFragment : Fragment() {
         viewModel.contentChangedEvent.observe(viewLifecycleOwner, EventObserver {
             setContent(it)
         })
+        viewModel.patronCreatedEvent.observe(viewLifecycleOwner, EventObserver {
+            val fragment = CompleteFragment()
+            val fragmentManager = activity?.supportFragmentManager
+            fragmentManager?.apply {
+                val transaction = beginTransaction()
+                transaction.replace(R.id.content_frame, fragment)
+                transaction.commit()
+            }
+        })
     }
 
     private fun setContent(layoutId: Int) {

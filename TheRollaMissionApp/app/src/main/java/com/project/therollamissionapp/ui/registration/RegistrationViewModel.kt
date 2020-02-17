@@ -111,6 +111,7 @@ class RegistrationViewModel @Inject constructor(
     }
 
     private fun fieldsFilledForIndex(index: Int): Boolean {
+        return true
         return when (index) {
             0 -> firstName.value != null && lastName.value != null && contactNumber.value != null && birthDate.value != null && gender.value != null
             1 -> city.value != null && reason.value != null

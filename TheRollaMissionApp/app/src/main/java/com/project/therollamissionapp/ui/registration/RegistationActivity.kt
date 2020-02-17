@@ -17,6 +17,10 @@ class RegistationActivity : AppCompatActivity(), HasAndroidInjector {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject((this))
         super.onCreate(savedInstanceState)
+        val fragment = RegistrationFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.content_frame, fragment)
+        transaction.commit()
         setContentView(R.layout.activity_registration)
     }
 

@@ -12,9 +12,8 @@
         android:layout_height="match_parent"
         tools:context=".ui.registration.RegistationActivity">
 
-        <fragment
-            android:id="@+id/fragment"
-            android:name="com.project.therollamissionapp.ui.registration.RegistrationFragment"
+        <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
