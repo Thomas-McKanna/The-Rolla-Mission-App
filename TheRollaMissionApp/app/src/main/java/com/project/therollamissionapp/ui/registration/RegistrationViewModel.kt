@@ -22,44 +22,32 @@ class RegistrationViewModel @Inject constructor(
     )
 
     val firstName = MutableLiveData<String>()
-
     val lastName = MutableLiveData<String>()
-
+    val contactNumber = MutableLiveData<String>()
+    val gender = MutableLiveData<Int>()
     private val _birthDate = MutableLiveData<String>()
     val birthDate: LiveData<String> = _birthDate
 
-    val contactNumber = MutableLiveData<String>()
-
-    private val _gender = MutableLiveData<Int>()
-    val gender: LiveData<Int> = _gender
-
     val city = MutableLiveData<String>()
-
-    private val _reason = MutableLiveData<Int>()
-    val reason: LiveData<Int> = _reason
-
+    val reason = MutableLiveData<Int>()
     val otherReason = MutableLiveData<String>()
 
-    private val _violence = MutableLiveData<Int>()
-    val violence: LiveData<Int> = _violence
-
-    private val _veteran = MutableLiveData<Int>()
-    val veteran: LiveData<Int> = _veteran
-
-    private val _sex_offender = MutableLiveData<Int>()
-    val sex_offender = _sex_offender
+    val violence = MutableLiveData<Int>()
+    val veteran = MutableLiveData<Int>()
+    val sex_offender = MutableLiveData<Int>()
 
     private val _image_uri = MutableLiveData<Uri>()
     val image_uri: LiveData<Uri> = _image_uri
 
-    private val _consent1 = MutableLiveData<Boolean>()
-    val consent1: LiveData<Boolean> = _consent1
+    val consent1 = MutableLiveData<Boolean>()
+    val consent2 = MutableLiveData<Boolean>()
+    val consent3 = MutableLiveData<Boolean>()
 
-    private val _consent2 = MutableLiveData<Boolean>()
-    val consent2: LiveData<Boolean> = _consent2
+    private val _showDatePickerEvent = MutableLiveData<Event<Unit>>()
+    val showDatePickerEvent: LiveData<Event<Unit>> = _showDatePickerEvent
 
-    private val _consent3 = MutableLiveData<Boolean>()
-    val consent3: LiveData<Boolean> = _consent3
+    private val _takeImageEvent = MutableLiveData<Event<Unit>>()
+    val takeImageEvent: LiveData<Event<Unit>> = _takeImageEvent
 
     private val _snackbarText = MutableLiveData<Event<Int>>()
     val snackbarText: LiveData<Event<Int>> = _snackbarText
@@ -69,6 +57,10 @@ class RegistrationViewModel @Inject constructor(
 
     private val _contentChangedEvent = MutableLiveData<Event<Int>>()
     val contentChangedEvent: LiveData<Event<Int>> = _contentChangedEvent
+
+    init {
+        _contentChangedEvent.value = Event(sections.get(index))
+    }
 
     fun backPressed() {
         if (index > 0) {
@@ -88,8 +80,26 @@ class RegistrationViewModel @Inject constructor(
         }
     }
 
-    private fun savePatron(patron: Patron) {
+    fun showDatePicker() {
+        _showDatePickerEvent.value = Event(Unit)
+    }
+
+    fun setBirthDate(year: Int, month: Int, day: Int) {
+        val birthDate = String.format("%d/%d/%d", month, day, year)
+        setValueIfDifferent(_birthDate, birthDate)
+    }
+
+    fun takeImage() {
+        _takeImageEvent.value = Event(Unit)
+    }
+
+    fun setImageUri(imageUri: Uri) {
+        setValueIfDifferent(_image_uri, imageUri)
+    }
+
+    private fun savePatron() {
         // TODO: compile all fields into a new Patron object
+        val patron = Patron()
         viewModelScope.launch {
             patronRepository.savePatron(patron)
             _patronCreatedEvent.value = Event(Unit)
@@ -104,6 +114,12 @@ class RegistrationViewModel @Inject constructor(
             3 -> image_uri.value != null
             4 -> consent1.value != null && consent2.value != null && consent3.value != null
             else -> true
+        }
+    }
+
+    private fun <T> setValueIfDifferent(ld: MutableLiveData<T>, value: T) {
+        if (ld.value != value) {
+            ld.value = value
         }
     }
 }
