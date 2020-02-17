@@ -1,9 +1,7 @@
 package com.project.therollamissionapp.ui.registration
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.net.Uri
+import androidx.lifecycle.*
 import com.project.therollamissionapp.Event
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.repository.patronRepository
@@ -22,6 +20,37 @@ class RegistrationViewModel @Inject constructor(
         R.layout.reg_part4,
         R.layout.reg_part5
     )
+
+    val firstName = MutableLiveData<String>()
+
+    val lastName = MutableLiveData<String>()
+
+    private val _birthDate = MutableLiveData<String>()
+    val birthDate: LiveData<String> = _birthDate
+
+    val contactNumber = MutableLiveData<String>()
+
+    private val _gender = MutableLiveData<Int>()
+    val gender: LiveData<Int> = _gender
+
+    val city = MutableLiveData<String>()
+
+    private val _reason = MutableLiveData<Int>()
+    val reason: LiveData<Int> = _reason
+
+    val otherReason = MutableLiveData<String>()
+
+    private val _violence = MutableLiveData<Int>()
+    val violence: LiveData<Int> = _violence
+
+    private val _veteran = MutableLiveData<Int>()
+    val veteran: LiveData<Int> = _veteran
+
+    private val _sex_offender = MutableLiveData<Int>()
+    val sex_offender = _sex_offender
+
+    private val _image_uri = MutableLiveData<Uri>()
+    val image_uri: LiveData<Uri> = _image_uri
 
     private val _snackbarText = MutableLiveData<Event<Int>>()
     val snackbarText: LiveData<Event<Int>> = _snackbarText
