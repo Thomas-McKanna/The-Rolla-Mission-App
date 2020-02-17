@@ -52,6 +52,15 @@ class RegistrationViewModel @Inject constructor(
     private val _image_uri = MutableLiveData<Uri>()
     val image_uri: LiveData<Uri> = _image_uri
 
+    private val _consent1 = MutableLiveData<Boolean>()
+    val consent1: LiveData<Boolean> = _consent1
+
+    private val _consent2 = MutableLiveData<Boolean>()
+    val consent2: LiveData<Boolean> = _consent2
+
+    private val _consent3 = MutableLiveData<Boolean>()
+    val consent3: LiveData<Boolean> = _consent3
+
     private val _snackbarText = MutableLiveData<Event<Int>>()
     val snackbarText: LiveData<Event<Int>> = _snackbarText
 
@@ -88,7 +97,13 @@ class RegistrationViewModel @Inject constructor(
     }
 
     private fun fieldsFilledForIndex(index: Int): Boolean {
-        // TODO: based on the passed in index, check whether the appropriate fields have been filled
-        return true
+        return when (index) {
+            0 -> firstName.value != null && lastName.value != null && contactNumber.value != null && birthDate.value != null && gender.value != null
+            1 -> city.value != null && reason.value != null
+            2 -> violence.value != null && veteran.value != null && sex_offender.value != null
+            3 -> image_uri.value != null
+            4 -> consent1.value != null && consent2.value != null && consent3.value != null
+            else -> true
+        }
     }
 }
