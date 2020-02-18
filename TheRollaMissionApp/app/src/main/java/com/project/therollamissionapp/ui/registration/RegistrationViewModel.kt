@@ -1,16 +1,15 @@
 package com.project.therollamissionapp.ui.registration
 
-import android.net.Uri
 import androidx.lifecycle.*
 import com.project.therollamissionapp.Event
 import com.project.therollamissionapp.R
-import com.project.therollamissionapp.data.source.patronRepository
+import com.project.therollamissionapp.data.source.PatronRepository
 import com.project.therollamissionapp.data.Patron
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class RegistrationViewModel @Inject constructor(
-    private val patronRepository: patronRepository
+    private val patronRepository: PatronRepository
 ): ViewModel() {
     private var index = 0
     private val sections = listOf<Int>(
@@ -34,10 +33,10 @@ class RegistrationViewModel @Inject constructor(
 
     val violence = MutableLiveData<Int>()
     val veteran = MutableLiveData<Int>()
-    val sex_offender = MutableLiveData<Int>()
+    val sexOffender = MutableLiveData<Int>()
 
-    private val _image_uri = MutableLiveData<Uri>()
-    val image_uri: LiveData<Uri> = _image_uri
+    private val _imageUri = MutableLiveData<String>()
+    val imageUri: LiveData<String> = _imageUri
 
     val consent1 = MutableLiveData<Boolean>()
     val consent2 = MutableLiveData<Boolean>()
@@ -97,8 +96,8 @@ class RegistrationViewModel @Inject constructor(
         _takeImageEvent.value = Event(Unit)
     }
 
-    fun setImageUri(imageUri: Uri) {
-        setValueIfDifferent(_image_uri, imageUri)
+    fun setImageUri(stringUri: String) {
+        setValueIfDifferent(_imageUri, stringUri)
     }
 
     private fun savePatron() {
@@ -111,12 +110,11 @@ class RegistrationViewModel @Inject constructor(
     }
 
     private fun fieldsFilledForIndex(index: Int): Boolean {
-        return true
         return when (index) {
             0 -> firstName.value != null && lastName.value != null && contactNumber.value != null && birthDate.value != null && gender.value != null
-            1 -> city.value != null && reason.value != null
-            2 -> violence.value != null && veteran.value != null && sex_offender.value != null
-            3 -> image_uri.value != null
+            1 -> city.value != null
+            2 -> violence.value != null && veteran.value != null && sexOffender.value != null
+            3 -> imageUri.value != null
             4 -> consent1.value != null && consent2.value != null && consent3.value != null
             else -> true
         }

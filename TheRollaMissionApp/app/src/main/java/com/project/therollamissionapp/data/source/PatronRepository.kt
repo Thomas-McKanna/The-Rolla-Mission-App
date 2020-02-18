@@ -4,7 +4,7 @@ import com.project.therollamissionapp.data.Result
 import com.project.therollamissionapp.data.Patron
 import javax.inject.Inject
 
-class patronRepository @Inject constructor(
+class PatronRepository @Inject constructor(
 
 ) {
     suspend fun getPatrons(forceUpdate: Boolean = false): Result<List<Patron>> {
