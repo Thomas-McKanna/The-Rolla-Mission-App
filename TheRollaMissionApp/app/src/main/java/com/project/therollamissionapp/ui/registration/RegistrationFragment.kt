@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.project.therollamissionapp.EventObserver
 
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.*
+import com.project.therollamissionapp.util.setupSnackbar
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -45,6 +47,7 @@ class RegistrationFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupViewModel()
+        setupSnackbar()
     }
 
     private fun setupViewModel() {
@@ -73,5 +76,9 @@ class RegistrationFragment : Fragment() {
         }
         binding.content.removeAllViews()
         binding.content.addView(frameRoot)
+    }
+
+    private fun setupSnackbar() {
+        view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
     }
 }

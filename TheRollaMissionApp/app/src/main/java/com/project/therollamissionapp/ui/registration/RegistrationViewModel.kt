@@ -79,7 +79,7 @@ class RegistrationViewModel @Inject constructor(
                 _contentChangedEvent.value = Event(sections.get(index))
             }
         } else {
-            // set _snackbarText indicating what is missing
+            _snackbarText.value = Event(R.string.field_incomplete)
         }
     }
 

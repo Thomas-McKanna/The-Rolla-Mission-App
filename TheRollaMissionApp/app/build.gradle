@@ -40,7 +40,6 @@ android {
     testOptions.unitTests {
         includeAndroidResources = true
     }
-
 }
 
 dependencies {
@@ -82,4 +81,6 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+
+    implementation "com.google.android.material:material:$materialVersion"
 }
