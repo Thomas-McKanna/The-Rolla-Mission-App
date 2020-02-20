@@ -4,4 +4,8 @@
     <string name="next">Next</string>
     <string name="back">Back</string>
     <string name="field_incomplete">Please fill out all fields in the form.</string>
+    <string name="first_time_message">First time here?</string>
+    <string name="welcome_message">Welcome to The Rolla Mission!</string>
+    <string name="checkin">Check-in</string>
+    <string name="touch_to_register">Touch here to register</string>
 </resources>
