@@ -13,7 +13,7 @@ data class Patron (
     @ColumnInfo(name = "gender") var gender: String = "",
     @ColumnInfo(name = "phoneNumber") var phone: String = "",
     @ColumnInfo(name = "cityWhenBecameHomeless") var cityWhenBecameHomeless: String = "",
-    @ColumnInfo(name = "ReasonForComingRolla") var reasonRolla: String = "",
+    @ColumnInfo(name = "reasonForComingRolla") var reasonRolla: String = "",
     @ColumnInfo(name = "timeHomeless") var timeHomeless: String = "",
     @ColumnInfo(name = "veteran") var veteran: Boolean = false,
     @ColumnInfo(name = "fleeingViolence") var fleeingViolence: Boolean = false,
