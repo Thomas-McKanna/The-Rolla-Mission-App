@@ -1,14 +1,15 @@
-package com.project.therollamissionapp
+package com.project.therollamissionapp.data.source.local
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.project.therollamissionapp.MainCoroutineRule
+import com.project.therollamissionapp.TestUtil
 import com.project.therollamissionapp.data.CheckIn
 import com.project.therollamissionapp.data.Patron
-import com.project.therollamissionapp.data.source.local.MissionDb
-import com.project.therollamissionapp.data.source.local.PatronDao
+import com.project.therollamissionapp.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.CoreMatchers.`is`
@@ -50,7 +51,8 @@ class MissionDbTest {
 
     @Test
     fun insertPatron_findsPatronById() = runBlockingTest {
-        val patron: Patron = TestUtil.makePatron()
+        val patron: Patron =
+            TestUtil.makePatron()
         val id = patron.id
 
         patronDao.insertPatron(patron)
@@ -90,7 +92,8 @@ class MissionDbTest {
 
     @Test
     fun insertCheckIn_findsCheckInsForPatron() = runBlockingTest {
-        val patron = TestUtil.makePatron()
+        val patron =
+            TestUtil.makePatron()
         val checkIn = CheckIn(patron.id)
 
         patronDao.insertPatron(patron)
