@@ -19,5 +19,6 @@ data class Patron (
     @ColumnInfo(name = "fleeingViolence") var fleeingViolence: Boolean = false,
     @ColumnInfo(name = "sexOffender") var sexOffender: Boolean = false,
     @ColumnInfo(name = "photoUri") var photoUri: String = "",
+    @ColumnInfo(name = "lastUpdated") var lastUpdated: Long = System.currentTimeMillis(),
     @PrimaryKey @ColumnInfo(name = "patronId") var id: String = UUID.randomUUID().toString()
 )
