@@ -7,12 +7,12 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.project.therollamissionapp.MainCoroutineRule
 import com.project.therollamissionapp.TestUtil
-import com.project.therollamissionapp.data.CheckIn
 import com.project.therollamissionapp.data.Patron
 import com.project.therollamissionapp.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.nullValue
 import org.junit.Assert.*
 import org.junit.After
 import org.junit.Before
@@ -62,17 +62,6 @@ class MissionDbTest {
     }
 
     @Test
-    fun insertPatron_returnsAllPatrons() = runBlockingTest {
-        val numPatrons = 10
-        for (x in 0 until numPatrons) {
-            patronDao.insertPatron(TestUtil.makePatron())
-        }
-
-        val patrons = patronDao.getPatrons().getOrAwaitValue()
-        assertThat(patrons.size, `is`(numPatrons))
-    }
-
-    @Test
     fun insertPatron_findsPatronByName() = runBlockingTest {
         val patron1: Patron = Patron(firstName = "a", lastName = "")
         val patron2: Patron = Patron(firstName = "ab", lastName = "c")
@@ -91,16 +80,17 @@ class MissionDbTest {
     }
 
     @Test
-    fun insertCheckIn_findsCheckInsForPatron() = runBlockingTest {
-        val patron =
-            TestUtil.makePatron()
-        val checkIn = CheckIn(patron.id)
+    fun deletePatron_InsertTwoDeleteOne_OneRemains() = runBlockingTest {
+        val patron1 = TestUtil.makePatron()
+        val patron2 = TestUtil.makePatron()
 
-        patronDao.insertPatron(patron)
-        patronDao.insertCheckIn(checkIn)
+        patronDao.insertPatron(patron1)
+        patronDao.insertPatron(patron2)
+        patronDao.deletePatron(patron1)
 
-        val value = patronDao.getPatronsWithCheckIns()
-        assertThat(value.size, `is`(1))
-        assertThat(value.get(0).checkIns.size, `is`(1))
+        var value = patronDao.getPatronById(patron1.id).getOrAwaitValue()
+        assertThat(value, `is`(nullValue()))
+        value = patronDao.getPatronById(patron2.id).getOrAwaitValue()
+        assertThat(value.id, `is`(patron2.id))
     }
 }

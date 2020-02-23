@@ -3,7 +3,7 @@ package com.project.therollamissionapp.ui.registration
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.project.therollamissionapp.CoroutineTestRule
 import com.project.therollamissionapp.R
-import com.project.therollamissionapp.data.source.PatronRepository
+import com.project.therollamissionapp.data.source.FakePatronRepository
 import getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.hamcrest.CoreMatchers.`is`
@@ -19,7 +19,7 @@ class RegistrationViewModelTest {
 
     @Before
     fun setupViewModel() {
-        val repository = PatronRepository()
+        val repository = FakePatronRepository()
         registrationViewModel = RegistrationViewModel(repository)
     }
 

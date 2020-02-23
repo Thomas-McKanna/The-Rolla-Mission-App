@@ -3,8 +3,8 @@ package com.project.therollamissionapp.ui.registration
 import androidx.lifecycle.*
 import com.project.therollamissionapp.Event
 import com.project.therollamissionapp.R
+import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.source.PatronRepository
-import com.project.therollamissionapp.data.Patron
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -101,10 +101,10 @@ class RegistrationViewModel @Inject constructor(
     }
 
     private fun savePatron() {
-        // TODO: compile all fields into a new Patron object
-        val patron = Patron()
+        // TODO: compile all fields into a new ExtendedPatron object
+        val patron = ExtendedPatron()
         viewModelScope.launch {
-            patronRepository.savePatron(patron)
+            patronRepository.insertPatron(patron)
             _patronCreatedEvent.value = Event(Unit)
         }
     }

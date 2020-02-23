@@ -1,11 +1,19 @@
 package com.project.therollamissionapp
 
+import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.Patron
 
 class TestUtil {
     companion object {
         fun makePatron(): Patron {
             return Patron(
+                firstName = listOf("Tim", "Eric", "David", "Steve").random(),
+                lastName = listOf("Heidecker", "Wierheim", "Lieb-Hart", "Brule").random()
+            )
+        }
+
+        fun makeExtendedPatron(): ExtendedPatron {
+            return ExtendedPatron(
                 firstName = listOf("Tim", "Eric", "David", "Steve").random(),
                 lastName = listOf("Heidecker", "Wierheim", "Lieb-Hart", "Brule").random(),
                 dob = "02/22/2020",

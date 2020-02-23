@@ -1,0 +1,19 @@
+package com.project.therollamissionapp.data
+
+import java.util.*
+
+data class ExtendedPatron (
+    var firstName: String = "",
+    var lastName: String = "",
+    var dob: String = "",
+    var gender: String = "",
+    var phone: String = "",
+    var cityWhenBecameHomeless: String = "",
+    var reasonRolla: String = "",
+    var timeHomeless: String = "",
+    var veteran: Boolean = false,
+    var fleeingViolence: Boolean = false,
+    var sexOffender: Boolean = false,
+    var photoUri: String = "",
+    var id: String = UUID.randomUUID().toString()
+)

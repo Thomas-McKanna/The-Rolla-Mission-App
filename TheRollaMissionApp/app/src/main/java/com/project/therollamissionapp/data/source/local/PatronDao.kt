@@ -2,9 +2,8 @@ package com.project.therollamissionapp.data.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.project.therollamissionapp.data.CheckIn
 import com.project.therollamissionapp.data.Patron
-import com.project.therollamissionapp.data.PatronWithCheckIns
+import com.project.therollamissionapp.data.ExtendedPatron
 
 @Dao
 interface PatronDao {
@@ -15,16 +14,9 @@ interface PatronDao {
     @Query("SELECT * FROM patrons WHERE firstName || ' ' || lastName LIKE :name")
     fun getPatronsByName(name: String): LiveData<List<Patron>>
 
-    @Query("SELECT * FROM patrons")
-    fun getPatrons(): LiveData<List<Patron>>
-
-    @Transaction
-    @Query("SELECT * FROM patrons")
-    fun getPatronsWithCheckIns(): List<PatronWithCheckIns>
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPatron(patron: Patron)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCheckIn(checkIn: CheckIn)
+    @Delete
+    suspend fun deletePatron(patron: Patron)
 }
