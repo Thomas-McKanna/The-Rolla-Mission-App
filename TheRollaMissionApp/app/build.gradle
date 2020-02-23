@@ -94,4 +94,6 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
 
     implementation "com.google.android.material:material:$materialVersion"
+
+    implementation "com.github.gcacace:signature-pad:$signaturePadVersion"
 }

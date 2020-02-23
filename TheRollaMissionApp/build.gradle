@@ -56,4 +56,5 @@ ext {
     mockitoVersion = '2.19.0'
     robolectricVersion = '4.3.1'
     room_version = '2.2.3'
+    signaturePadVersion = '1.2.1'
 }
