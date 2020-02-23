@@ -3,4 +3,11 @@
     <dimen name="large_text">60sp</dimen>
     <dimen name="medium_text">28sp</dimen>
     <dimen name="small_margin">8dp</dimen>
+    <dimen name="medium_margin">16dp</dimen>
+    <dimen name="large_margin">32dp</dimen>
+    <dimen name="very_large_margin">64dp</dimen>
+    <dimen name="custom_margin_frag_complete">75dp</dimen>
+    <dimen name="huge_margin">128dp</dimen>
+    <dimen name="text_box_offset">180dp</dimen>
+    <dimen name="giant_margin">256dp</dimen>
 </resources>
