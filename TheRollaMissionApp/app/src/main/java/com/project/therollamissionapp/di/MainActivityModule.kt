@@ -1,6 +1,6 @@
 package com.project.therollamissionapp.di
 
-import com.project.therollamissionapp.ui.main.MainActivity
+import com.project.therollamissionapp.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

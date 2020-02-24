@@ -1,6 +1,10 @@
 package com.project.therollamissionapp.di
 
+import com.project.therollamissionapp.ui.checkin.CheckInSuccessFragment
+import com.project.therollamissionapp.ui.checkin.SearchFragment
 import com.project.therollamissionapp.ui.main.WelcomeFragment
+import com.project.therollamissionapp.ui.registration.RegistrationFragment
+import com.project.therollamissionapp.ui.registration.RegistrationSuccessFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,4 +12,16 @@ import dagger.android.ContributesAndroidInjector
 abstract class MainFragmentsModule {
     @ContributesAndroidInjector
     abstract fun contributeWelcomeFragment(): WelcomeFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeRegistrationFragment(): RegistrationFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeRegistrationSuccessFragment(): RegistrationSuccessFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeSearchFragment(): SearchFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeCheckInSuccessFragment(): CheckInSuccessFragment
 }
