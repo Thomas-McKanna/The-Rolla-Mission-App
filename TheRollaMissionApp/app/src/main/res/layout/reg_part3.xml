@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
     <data>
@@ -10,179 +8,182 @@
             type="com.project.therollamissionapp.ui.registration.RegistrationViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/homeless_question"
+        <LinearLayout
+            android:id="@+id/layout_homeless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/homeless_question"
-            android:textSize="@dimen/heading_5"
-            android:layout_marginLeft="@dimen/medium_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/domestic_question"
-        />
+            android:orientation="vertical">
 
-        <RadioGroup
-            android:id="@+id/homeless_time_checkboxes"
+            <TextView
+                android:id="@+id/homeless_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/homeless_question"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+            <RadioGroup
+                android:id="@+id/radio_homeless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin" >
+
+                <RadioButton
+                    android:id="@+id/radio_homeless_1to3month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_1to3_months"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_homeless_4to6month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_4to6_months"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_homeless_6to12month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_6to12_months"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_homeless_1to2year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_1to2_years"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_homeless_2plusyear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_2plus_years"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_violence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/homeless_question"
-            android:orientation="vertical"
-            android:layout_marginTop="@dimen/medium_margin">
+            android:layout_marginTop="@dimen/medium_margin"
+            android:orientation="vertical">
 
-            <RadioButton
+            <TextView
+                android:id="@+id/text_violence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/checkbox_1to3_months"
-                android:textSize="@dimen/heading_5"
-                />
+                android:text="@string/domestic_violence_question"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-            <RadioButton
+            <RadioGroup
+                android:id="@+id/radio_violence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/checkbox_4to6_months"
-                android:textSize="@dimen/heading_5"
-                />
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/medium_margin" >
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/checkbox_6to12_months"
-                android:textSize="@dimen/heading_5"
-                />
+                <RadioButton
+                    android:id="@+id/radio_violence_y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/large_margin"
+                    android:text="@string/radio_yes"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/checkbox_1to2_years"
-                android:textSize="@dimen/heading_5"
-                />
+                <RadioButton
+                    android:id="@+id/radio_violence_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_no"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+            </RadioGroup>
+        </LinearLayout>
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/checkbox_twoplus_years"
-                android:textSize="@dimen/heading_5"
-                />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/domestic_question"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/domestic_violence_question"
-            android:textSize="@dimen/heading_5"
-            app:layout_constraintStart_toStartOf="@id/homeless_question"
-            app:layout_constraintTop_toBottomOf="@id/homeless_question"
-            app:layout_constraintBottom_toTopOf="@id/veteran_question"
-            android:layout_marginTop="@dimen/very_large_margin"
-        />
-
-        <RadioGroup
+        <LinearLayout
+            android:id="@+id/layout_veteran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/domestic_question"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/medium_margin">
+            android:layout_marginTop="@dimen/medium_margin"
+            android:orientation="vertical">
 
-            <RadioButton
+            <TextView
+                android:id="@+id/text_veteran"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/checkbox_yes"
-                android:textSize="@dimen/heading_5"
-                android:paddingRight="@dimen/large_margin"
-                />
+                android:text="@string/veteran_question"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-            <RadioButton
+            <RadioGroup
+                android:id="@+id/radio_veteran"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/checkbox_no"
-                android:textSize="@dimen/heading_5"
-                />
-        </RadioGroup>
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/medium_margin" >
 
-        <TextView
-            android:id="@+id/veteran_question"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/veteran_question"
-            android:textSize="@dimen/heading_5"
-            app:layout_constraintStart_toStartOf="@id/homeless_question"
-            app:layout_constraintTop_toBottomOf="@id/domestic_question"
-            app:layout_constraintBottom_toTopOf="@id/sex_offender_question"
-            />
+                <RadioButton
+                    android:id="@+id/radio_veteran_y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/large_margin"
+                    android:text="@string/radio_yes"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/veteran_question"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/medium_margin">
+                <RadioButton
+                    android:id="@+id/radio_veteran_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_no"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+            </RadioGroup>
+        </LinearLayout>
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/checkbox_yes"
-                android:textSize="@dimen/heading_5"
-                android:paddingRight="@dimen/large_margin"
-                />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/checkbox_no"
-                android:textSize="@dimen/heading_5"
-                />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/sex_offender_question"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/sex_offender_question"
-            android:textSize="@dimen/heading_5"
-            app:layout_constraintStart_toStartOf="@id/homeless_question"
-            app:layout_constraintTop_toBottomOf="@id/veteran_question"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-        <RadioGroup
+        <LinearLayout
+            android:id="@+id/layout_offender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sex_offender_question"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/medium_margin">
+            android:layout_marginTop="@dimen/medium_margin"
+            android:orientation="vertical">
 
-            <RadioButton
+            <TextView
+                android:id="@+id/text_offender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/checkbox_yes"
-                android:textSize="@dimen/heading_5"
-                android:paddingRight="@dimen/large_margin"
-                />
+                android:text="@string/sex_offender_question"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-            <RadioButton
+            <RadioGroup
+                android:id="@+id/radio_offender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/checkbox_no"
-                android:textSize="@dimen/heading_5"
-                />
-        </RadioGroup>
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/medium_margin" >
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <RadioButton
+                    android:id="@+id/radio_offender_y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/large_margin"
+                    android:text="@string/radio_yes"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_offender_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_no"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+            </RadioGroup>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </layout>
 

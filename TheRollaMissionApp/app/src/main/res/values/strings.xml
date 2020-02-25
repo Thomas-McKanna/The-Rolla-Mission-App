@@ -12,14 +12,14 @@
     <string name="domestic_violence_question">Are you fleeing domestic violence?</string>
     <string name="veteran_question">Are you a veteran?</string>
     <string name="sex_offender_question">Are you a registered sex-offender?</string>
-    <string name="checkbox_yes">Yes</string>
-    <string name="checkbox_no">No</string>
+    <string name="radio_yes">Yes</string>
+    <string name="radio_no">No</string>
     <string name="checkbox_lessthan1_month">Less than 1 month</string>
-    <string name="checkbox_1to3_months">1 - 3 months</string>
-    <string name="checkbox_4to6_months">4 - 6 months</string>
-    <string name="checkbox_6to12_months">6 - 12 months</string>
-    <string name="checkbox_1to2_years">1 - 2 years</string>
-    <string name="checkbox_twoplus_years">2+ years</string>
+    <string name="radio_1to3_months">1 - 3 months</string>
+    <string name="radio_4to6_months">4 - 6 months</string>
+    <string name="radio_6to12_months">6 - 12 months</string>
+    <string name="radio_1to2_years">1 - 2 years</string>
+    <string name="radio_2plus_years">2+ years</string>
     <string name="picture_instructions">We need to take a picture of you for our records. When you touch the \"Take Picture\" button below, a camera app will open. Please position the camera directly in front of you and then press the white circle button at the bottom of the screen to take your picture.</string>
     <string name="take_picture_button">Take Picture</string>
 </resources>
