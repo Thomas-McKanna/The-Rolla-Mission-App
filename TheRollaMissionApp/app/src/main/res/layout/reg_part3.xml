@@ -94,7 +94,7 @@
                     android:id="@+id/radio_violence_y"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="@dimen/large_margin"
+                    android:paddingEnd="@dimen/large_margin"
                     android:text="@string/radio_yes"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
@@ -132,7 +132,7 @@
                     android:id="@+id/radio_veteran_y"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="@dimen/large_margin"
+                    android:paddingEnd="@dimen/large_margin"
                     android:text="@string/radio_yes"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
@@ -170,7 +170,7 @@
                     android:id="@+id/radio_offender_y"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="@dimen/large_margin"
+                    android:paddingEnd="@dimen/large_margin"
                     android:text="@string/radio_yes"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
