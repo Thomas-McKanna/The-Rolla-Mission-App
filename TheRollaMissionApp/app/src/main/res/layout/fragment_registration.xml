@@ -14,19 +14,13 @@
         android:layout_height="match_parent"
         tools:context=".ui.registration.RegistrationFragment">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
-
         <FrameLayout
             android:id="@+id/content"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:padding="@dimen/large_margin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -36,8 +30,9 @@
             android:layout_height="wrap_content"
             android:text="@string/back"
             android:onClick="@{() -> viewmodel.backPressed()}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+            android:layout_margin="@dimen/small_margin"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -46,8 +41,9 @@
             android:layout_height="wrap_content"
             android:text="@string/next"
             android:onClick="@{() -> viewmodel.nextPressed()}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+            android:layout_margin="@dimen/small_margin"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
