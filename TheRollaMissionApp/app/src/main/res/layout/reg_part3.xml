@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:orientation="horizontal">
 
     <data>
         <variable
@@ -8,16 +8,185 @@
             type="com.project.therollamissionapp.ui.registration.RegistrationViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.project.therollamissionapp.ui.registration.SpecialCaseFragment">
+        android:orientation="vertical" >
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="special case" />
+        <LinearLayout
+            android:id="@+id/layout_homeless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    </FrameLayout>
+            <TextView
+                android:id="@+id/homeless_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/homeless_question"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+            <RadioGroup
+                android:id="@+id/radio_homeless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin" >
+
+                <RadioButton
+                    android:id="@+id/radio_homeless_1to3month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_1to3_months"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_homeless_4to6month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_4to6_months"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_homeless_6to12month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_6to12_months"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_homeless_1to2year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_1to2_years"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_homeless_2plusyear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_2plus_years"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_violence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_violence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/domestic_violence_question"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+            <RadioGroup
+                android:id="@+id/radio_violence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/medium_margin" >
+
+                <RadioButton
+                    android:id="@+id/radio_violence_y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/large_margin"
+                    android:text="@string/radio_yes"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_violence_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_no"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_veteran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_veteran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/veteran_question"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+            <RadioGroup
+                android:id="@+id/radio_veteran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/medium_margin" >
+
+                <RadioButton
+                    android:id="@+id/radio_veteran_y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/large_margin"
+                    android:text="@string/radio_yes"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_veteran_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_no"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_offender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_offender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sex_offender_question"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+            <RadioGroup
+                android:id="@+id/radio_offender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/medium_margin" >
+
+                <RadioButton
+                    android:id="@+id/radio_offender_y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/large_margin"
+                    android:text="@string/radio_yes"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <RadioButton
+                    android:id="@+id/radio_offender_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_no"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+            </RadioGroup>
+        </LinearLayout>
+
+    </LinearLayout>
+
 </layout>
+
+
+
+
