@@ -1,23 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="viewmodel"
-            type="com.project.therollamissionapp.ui.registration.RegistrationViewModel" />
+
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.project.therollamissionapp.ui.registration.HomelessFragment">
+        android:layout_height="match_parent">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="homeless" />
+            android:id="@+id/residence_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/city_residence"
+            android:textSize="@dimen/medium_text"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/medium_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAlignment="center" />
 
-    </FrameLayout>
+        <EditText
+            android:id="@+id/enter_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="@dimen/medium_ems"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@id/residence_question"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/reason_for_rolla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reason_for_coming"
+            android:textSize="@dimen/medium_text"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/medium_margin"
+            app:layout_constraintTop_toBottomOf="@id/enter_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="center" />
+
+        <RadioGroup
+            android:id="@+id/left_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reason_for_rolla"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:paddingLeft="@dimen/extra_large_margin">
+
+
+            <RadioButton
+                android:id="@+id/Family"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/family"
+                android:paddingVertical="@dimen/large_margin"
+                android:textSize="@dimen/small_text"/>
+
+            <RadioButton
+                android:id="@+id/Work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/work"
+                android:paddingVertical="@dimen/large_margin"
+                android:textSize="@dimen/small_text"/>
+
+            <RadioButton
+                android:id="@+id/School"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/school"
+                android:paddingRight="@dimen/large_margin"
+                android:paddingVertical="@dimen/large_margin"
+                android:textSize="@dimen/small_text"/>
+
+            <RadioButton
+                android:id="@+id/relationship"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/relationship"
+                android:paddingVertical="@dimen/large_margin"
+                android:textSize="@dimen/small_text"/>
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/right_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/left_options"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reason_for_rolla"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/medium_margin">
+
+            <RadioButton
+                android:id="@+id/Hospital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hospital"
+                android:paddingVertical="@dimen/large_margin"
+                android:textSize="@dimen/small_text"/>
+
+            <RadioButton
+                android:id="@+id/Substance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/substance"
+                android:paddingVertical="@dimen/large_margin"
+                android:textAlignment="gravity"
+                android:textSize="@dimen/small_text"/>
+
+            <RadioButton
+                android:id="@+id/Mission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mission"
+                android:paddingRight="@dimen/large_margin"
+                android:paddingVertical="@dimen/large_margin"
+                android:textSize="@dimen/small_text"/>
+
+            <RadioButton
+                android:id="@+id/Other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other"
+                android:paddingVertical="@dimen/large_margin"
+                android:textSize="@dimen/small_text"/>
+        </RadioGroup>
+        <TextView
+            android:id="@+id/Picked_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/picked_other"
+            android:textSize="@dimen/medium_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent
+"
+            app:layout_constraintTop_toBottomOf="@id/left_options"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/short_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text|textMultiLine"
+            android:ems="@dimen/medium_ems"
+            app:layout_constraintTop_toBottomOf="@id/Picked_other"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="top"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

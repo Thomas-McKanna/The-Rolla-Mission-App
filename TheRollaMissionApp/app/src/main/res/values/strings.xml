@@ -8,4 +8,17 @@
     <string name="welcome_message">Welcome to The Rolla Mission!</string>
     <string name="checkin">Check-in</string>
     <string name="touch_to_register">Touch here to register</string>
+    <string name="city_residence">What city did you reside in before you became homeless"</string>
+    <string name="reason_for_coming">If you were not in Rolla when you became homeless, what was the primary reason for coming to Rolla?</string>
+    <string name="family">Family in the area</string>
+    <string name="school">School</string>
+    <string name="relationship">A relationship</string>
+    <string name="hospital">Hospital/Medical care</string>
+    <string name="substance">Substance Use Treatment Facility"</string>
+    <string name="mission">The Rolla Mission</string>
+    <string name="other">Other</string>
+    <string name="picked_other">If you chose other, explain below:</string>
+    <string name="work">Work/job offer</string>
+    <string name="picture_button">Take Picture</string>
+    <string name="take_picture">We need a picture of you for our records. When you touch the "Take Picture" button below, a camera app will open. Please position the camera directly in front of you and then press the white circle button at the bottom of the screen to take your picture</string>
 </resources>
