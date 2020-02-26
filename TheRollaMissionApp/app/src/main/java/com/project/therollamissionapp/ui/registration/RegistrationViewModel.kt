@@ -5,6 +5,12 @@ import com.project.therollamissionapp.Event
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.source.PatronRepository
+import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getGender
+import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getOffender
+import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getReasonRolla
+import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getTimeHomeless
+import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getVeteran
+import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getViolence
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -145,44 +151,6 @@ class RegistrationViewModel @Inject constructor(
     private fun <T> setValueIfDifferent(ld: MutableLiveData<T>, value: T) {
         if (ld.value != value) {
             ld.value = value
-        }
-    }
-
-    // TODO: all of these functions do not need to be in this class
-
-    private fun getGender(id: Int): String {
-        return when (id) {
-            else -> "TODO"
-        }
-    }
-
-    private fun getReasonRolla(id: Int): String {
-        return when (id) {
-            else -> "TODO"
-        }
-    }
-
-    private fun getTimeHomeless(id: Int): String {
-        return when (id) {
-            else -> "TODO"
-        }
-    }
-
-    private fun getVeteran(id: Int): Boolean {
-        return when (id) {
-            else -> false // TODO
-        }
-    }
-
-    private fun getViolence(id: Int): Boolean {
-        return when (id) {
-            else -> false // TODO
-        }
-    }
-
-    private fun getOffender(id: Int): Boolean {
-        return when (id) {
-            else -> false // TODO
         }
     }
 }
