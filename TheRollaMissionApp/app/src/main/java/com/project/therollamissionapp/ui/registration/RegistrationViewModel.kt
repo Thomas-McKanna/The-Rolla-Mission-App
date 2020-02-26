@@ -13,7 +13,7 @@ class RegistrationViewModel @Inject constructor(
 ): ViewModel() {
     private var index = 0
     private val sections = listOf<Int>(
-        R.layout.reg_part2,
+        R.layout.reg_part5,
         R.layout.reg_part2,
         R.layout.reg_part3,
         R.layout.reg_part4,

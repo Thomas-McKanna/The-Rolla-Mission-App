@@ -35,4 +35,10 @@
     <string name="work">Work/job offer</string>
     <string name="hint_city_name">Tap here to input city name</string>
     <string name="hint_other_reason">Tap here to input your \"other\" reason</string>
+    <string name="consent_directions">Please read the following lines and press the checkbox next to each to indicate that you agree:</string>
+    <string name="consent_1">I understand that the information provided will be kept confidential and only authorized staff of The Rolla Mission will review this information.</string>
+    <string name="consent_2">I understand that The Rolla Mission may release my name, date of birth, photo, and dates of overnight stay to Probation and Parole and the Rolla Police Department upon their request for information.</string>
+    <string name="consent_3">No information will be released to any other agencies or individuals without my written or expressed consent.</string>
+    <string name="signature_label">Signature (use finger):</string>
+    <string name="clear_signature">Clear Signature</string>
 </resources>

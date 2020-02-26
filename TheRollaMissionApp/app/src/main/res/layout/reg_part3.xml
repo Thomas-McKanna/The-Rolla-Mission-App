@@ -66,6 +66,7 @@
                     android:text="@string/radio_2plus_years"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
             </RadioGroup>
+
         </LinearLayout>
 
         <LinearLayout
@@ -104,6 +105,7 @@
                     android:text="@string/radio_no"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
             </RadioGroup>
+
         </LinearLayout>
 
         <LinearLayout
@@ -142,6 +144,7 @@
                     android:text="@string/radio_no"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
             </RadioGroup>
+
         </LinearLayout>
 
         <LinearLayout
@@ -180,6 +183,7 @@
                     android:text="@string/radio_no"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
             </RadioGroup>
+
         </LinearLayout>
 
     </LinearLayout>
