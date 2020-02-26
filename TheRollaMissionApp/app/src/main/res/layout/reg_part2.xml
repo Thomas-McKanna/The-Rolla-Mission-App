@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <data>
         <variable
@@ -8,16 +8,138 @@
             type="com.project.therollamissionapp.ui.registration.RegistrationViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.project.therollamissionapp.ui.registration.HomelessFragment">
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_city_before_homeless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                android:text="@string/city_residence" />
+
+            <EditText
+                android:id="@+id/edit_city_before_homeless"
+                android:hint="@string/hint_city_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/reason_for_rolla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reason_for_coming"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+            <RadioGroup
+                android:id="@+id/radio_reason_rolla"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:orientation="vertical" >
+
+                    <RadioButton
+                        android:id="@+id/radio_reason_family"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/family"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                    <RadioButton
+                        android:id="@+id/radio_reason_work"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/work"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                    <RadioButton
+                        android:id="@+id/radio_reason_school"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/school"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"/>
+
+                    <RadioButton
+                        android:id="@+id/radio_reason_relationship"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/relationship"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                    <RadioButton
+                        android:id="@+id/radio_reason_hospital"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hospital"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                    <RadioButton
+                        android:id="@+id/radio_reason_substance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/substance"
+                        android:textAlignment="gravity"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                    <RadioButton
+                        android:id="@+id/radio_reason_mission"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mission"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                    <RadioButton
+                        android:id="@+id/radio_reason_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/other"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="homeless" />
+            android:layout_marginTop="@dimen/medium_margin"
+            android:orientation="vertical">
 
-    </FrameLayout>
+            <TextView
+                android:id="@+id/text_other_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/picked_other"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+            <EditText
+                android:hint="@string/hint_other_reason"
+                android:id="@+id/edit_other_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:inputType="textMultiLine"
+                android:gravity="start"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </layout>

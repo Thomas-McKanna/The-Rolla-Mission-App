@@ -55,11 +55,11 @@ class RegistrationFragment : Fragment() {
             setContent(it)
         })
         viewModel.patronCreatedEvent.observe(viewLifecycleOwner, EventObserver {
-            val fragment = CompleteFragment()
+            val fragment = RegistrationSuccessFragment()
             val fragmentManager = activity?.supportFragmentManager
             fragmentManager?.apply {
                 val transaction = beginTransaction()
-                transaction.replace(R.id.content_frame, fragment)
+                transaction.replace(R.id.content, fragment)
                 transaction.commit()
             }
         })

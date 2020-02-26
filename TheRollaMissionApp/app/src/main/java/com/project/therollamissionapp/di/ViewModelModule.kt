@@ -2,6 +2,8 @@ package com.project.therollamissionapp.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.project.therollamissionapp.data.source.DefaultPatronRepository
+import com.project.therollamissionapp.data.source.PatronRepository
 import com.project.therollamissionapp.ui.checkin.CheckInViewModel
 import com.project.therollamissionapp.ui.registration.*
 import com.project.therollamissionapp.viewmodel.MissionViewModelFactory
@@ -23,4 +25,7 @@ abstract class ViewModelModule {
 
     @Binds
     abstract fun bindViewModelFactory(factory: MissionViewModelFactory): ViewModelProvider.Factory
+
+    @Binds
+    abstract fun bindPatronRepository(repository: DefaultPatronRepository): PatronRepository
 }

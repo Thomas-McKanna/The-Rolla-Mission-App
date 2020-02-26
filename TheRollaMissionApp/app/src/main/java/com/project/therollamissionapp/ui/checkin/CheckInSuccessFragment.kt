@@ -1,4 +1,4 @@
-package com.project.therollamissionapp.ui.registration
+package com.project.therollamissionapp.ui.checkin
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,14 +11,14 @@ import com.project.therollamissionapp.R
 /**
  * A simple [Fragment] subclass.
  */
-class CompleteFragment : Fragment() {
+class CheckInSuccessFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_complete, container, false)
+        return inflater.inflate(R.layout.fragment_check_in_success, container, false)
     }
 
 }
