@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -11,34 +10,36 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.project.therollamissionapp.ui.registration.PictureFragment">
+        android:layout_height="match_parent">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
-            android:id="@+id/picture_instructions"
+            android:id="@+id/take_picture_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/take_picture"
-            android:textSize="@dimen/larger_medium_text"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/medium_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:textAlignment="center" />
+            app:layout_constraintBottom_toTopOf="@id/take_picture_button"
+            android:text="@string/picture_instructions"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+            android:paddingLeft="@dimen/large_margin"
+            android:paddingRight="@dimen/large_margin"
+            />
 
         <Button
-            android:id="@+id/button_take_picture"
+            android:id="@+id/take_picture_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/picture_button"
-            android:textSize="@dimen/large_text"
-            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/take_picture_button"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/take_picture_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>
