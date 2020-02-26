@@ -30,6 +30,7 @@
             android:layout_marginStart="@dimen/medium_margin"
             android:background="@drawable/edit_text_border"
             android:inputType="text"
+            android:text="@={viewmodel.firstName}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_first_name"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +53,7 @@
             android:autofillHints="family-name"
             android:background="@drawable/edit_text_border"
             android:inputType="text"
+            android:text="@={viewmodel.lastName}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_last_name"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
+            android:text="@{viewmodel.birthDate}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_dob_label"
             app:layout_constraintStart_toEndOf="@id/text_dob_label"
@@ -84,6 +87,7 @@
             android:layout_marginStart="@dimen/medium_margin"
             android:text="@string/pick_birthdate"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:onClick="@{() -> viewmodel.startBirthDateDialogue()}"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_dob"
             app:layout_constraintStart_toEndOf="@+id/text_dob" />
 
@@ -104,6 +108,7 @@
             android:layout_marginStart="@dimen/medium_margin"
             android:background="@drawable/edit_text_border"
             android:inputType="phone"
+            android:text="@={viewmodel.contactNumber}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_phone"
             app:layout_constraintEnd_toEndOf="parent"
@@ -118,6 +123,59 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_phone" />
+
+
+        <TextView
+            android:id="@+id/text_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:text="@string/gender"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone_num_cont_text" />
+
+        <RadioGroup
+            android:id="@+id/radio_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:orientation="vertical"
+            android:checkedButton="@={viewmodel.gender}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_gender">
+
+            <RadioButton
+                android:id="@+id/radio_gender_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+            <RadioButton
+                android:id="@+id/radio_gender_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+
+            <RadioButton
+                android:id="@+id/radio_gender_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/other"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+
+            <RadioButton
+                android:id="@+id/radio_gender_no_ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pref_not_answer"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

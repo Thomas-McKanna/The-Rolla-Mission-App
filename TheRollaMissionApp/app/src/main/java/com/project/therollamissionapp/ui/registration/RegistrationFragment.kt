@@ -48,6 +48,7 @@ class RegistrationFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setupViewModel()
         setupSnackbar()
+        setupBirthDateListener()
     }
 
     private fun setupViewModel() {
@@ -67,18 +68,25 @@ class RegistrationFragment : Fragment() {
 
     private fun setContent(layoutId: Int) {
         val frameRoot = layoutInflater.inflate(layoutId, binding.content, false)
-        when (layoutId) {
+        val regBinding = when (layoutId) {
             R.layout.reg_part1 -> RegPart1Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
             R.layout.reg_part2 -> RegPart2Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
             R.layout.reg_part3 -> RegPart3Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
             R.layout.reg_part4 -> RegPart4Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
-            R.layout.reg_part5 -> RegPart5Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
+            else -> RegPart5Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
         }
+        regBinding.setLifecycleOwner { this.lifecycle }
         binding.content.removeAllViews()
         binding.content.addView(frameRoot)
     }
 
     private fun setupSnackbar() {
         view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
+    }
+
+    private fun setupBirthDateListener() {
+        viewModel.birthDateDialogueEvent.observe(viewLifecycleOwner, EventObserver{
+            it.show(activity!!.supportFragmentManager, "datePicker")
+        })
     }
 }
