@@ -52,72 +52,65 @@
                 android:id="@+id/radio_reason_rolla"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_marginStart="@dimen/medium_margin"
+                android:orientation="vertical" >
 
-                    <RadioGroup
+                    <RadioButton
+                        android:id="@+id/radio_reason_family"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/medium_margin"
-                        android:orientation="vertical" >
+                        android:text="@string/family"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-                        <RadioButton
-                            android:id="@+id/radio_reason_family"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/family"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                    <RadioButton
+                        android:id="@+id/radio_reason_work"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/work"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-                        <RadioButton
-                            android:id="@+id/radio_reason_work"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                    <RadioButton
+                        android:id="@+id/radio_reason_school"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/school"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"/>
 
-                        <RadioButton
-                            android:id="@+id/radio_reason_school"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/school"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"/>
+                    <RadioButton
+                        android:id="@+id/radio_reason_relationship"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/relationship"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-                        <RadioButton
-                            android:id="@+id/radio_reason_relationship"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/relationship"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                    <RadioButton
+                        android:id="@+id/radio_reason_hospital"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hospital"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-                        <RadioButton
-                            android:id="@+id/radio_reason_hospital"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/hospital"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                    <RadioButton
+                        android:id="@+id/radio_reason_substance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/substance"
+                        android:textAlignment="gravity"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-                        <RadioButton
-                            android:id="@+id/radio_reason_substance"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/substance"
-                            android:textAlignment="gravity"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                    <RadioButton
+                        android:id="@+id/radio_reason_mission"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mission"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-                        <RadioButton
-                            android:id="@+id/radio_reason_mission"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mission"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
-
-                        <RadioButton
-                            android:id="@+id/radio_reason_other"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/other"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
-
-                    </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/radio_reason_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/other"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
             </RadioGroup>
 
