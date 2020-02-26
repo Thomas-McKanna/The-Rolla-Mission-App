@@ -90,7 +90,7 @@ class RegistrationViewModel @Inject constructor(
             index -= 1
         }
         _contentChangedEvent.value = Event(sections.get(index))
-        _hideKeyboardEvent.value = Event(Unit)
+        triggerHideKeyboardEvent()
         _title.value = getTitle(index)
     }
 
@@ -107,7 +107,7 @@ class RegistrationViewModel @Inject constructor(
         } else {
             _snackbarText.value = Event(R.string.field_incomplete)
         }
-        _hideKeyboardEvent.value = Event(Unit)
+        triggerHideKeyboardEvent()
         _title.value = getTitle(index)
     }
 
@@ -135,6 +135,10 @@ class RegistrationViewModel @Inject constructor(
 
     fun onSignedSignature(sp: SignaturePad) {
         _signature.value = sp.signatureBitmap
+    }
+
+    fun triggerHideKeyboardEvent() {
+        _hideKeyboardEvent.value = Event(Unit)
     }
 
     private fun savePatron() {

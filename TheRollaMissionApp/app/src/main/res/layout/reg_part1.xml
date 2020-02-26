@@ -32,6 +32,7 @@
             android:inputType="text"
             android:text="@={viewmodel.firstName}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:imeOptions="actionDone"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_first_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_first_name" />
