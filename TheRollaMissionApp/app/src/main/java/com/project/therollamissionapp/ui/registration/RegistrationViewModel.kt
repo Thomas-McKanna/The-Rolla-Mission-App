@@ -12,6 +12,7 @@ import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.get
 import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getVeteran
 import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getViolence
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 class RegistrationViewModel @Inject constructor(
@@ -25,6 +26,8 @@ class RegistrationViewModel @Inject constructor(
         R.layout.reg_part4,
         R.layout.reg_part5
     )
+
+    val id = UUID.randomUUID().toString()
 
     val firstName = MutableLiveData<String>()
     val lastName = MutableLiveData<String>()
@@ -52,8 +55,8 @@ class RegistrationViewModel @Inject constructor(
     private val _showDatePickerEvent = MutableLiveData<Event<Unit>>()
     val showDatePickerEvent: LiveData<Event<Unit>> = _showDatePickerEvent
 
-    private val _takeImageEvent = MutableLiveData<Event<Unit>>()
-    val takeImageEvent: LiveData<Event<Unit>> = _takeImageEvent
+    private val _takeImageEvent = MutableLiveData<Event<String>>()
+    val takeImageEvent: LiveData<Event<String>> = _takeImageEvent
 
     private val _snackbarText = MutableLiveData<Event<Int>>()
     val snackbarText: LiveData<Event<Int>> = _snackbarText
@@ -108,7 +111,7 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun takeImage() {
-        _takeImageEvent.value = Event(Unit)
+        _takeImageEvent.value = Event(id)
     }
 
     fun setImageUri(stringUri: String) {
@@ -129,7 +132,8 @@ class RegistrationViewModel @Inject constructor(
             veteran = getVeteran(veteran.value ?: 0),
             fleeingViolence = getViolence(violence.value ?: 0),
             sexOffender = getOffender((sexOffender.value ?: 0)),
-            imageUri = imageUri.value ?: ""
+            imageUri = imageUri.value ?: "",
+            id = id
         )
         viewModelScope.launch {
             patronRepository.insertPatron(patron)

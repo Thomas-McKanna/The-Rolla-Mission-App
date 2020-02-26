@@ -1,11 +1,17 @@
 package com.project.therollamissionapp.ui.registration
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.FileProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -16,6 +22,8 @@ import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.*
 import com.project.therollamissionapp.util.setupSnackbar
 import dagger.android.support.AndroidSupportInjection
+import java.io.File
+import java.io.IOException
 import javax.inject.Inject
 
 class RegistrationFragment : Fragment() {
@@ -27,6 +35,10 @@ class RegistrationFragment : Fragment() {
     private val viewModel: RegistrationViewModel by viewModels {
         viewModelFactory
     }
+
+    val REQUEST_TAKE_PHOTO = 1
+
+    lateinit var currentPhotoPath: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +61,14 @@ class RegistrationFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setupViewModel()
         setupSnackbar()
-        setupBirthDateListener()
+        setupPickBirthDateEventListener()
+        setupImageEventListener()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
+            viewModel.setImageUri(currentPhotoPath)
+        }
     }
 
     private fun setupViewModel() {
@@ -80,9 +99,48 @@ class RegistrationFragment : Fragment() {
         view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
     }
 
-    private fun setupBirthDateListener() {
+    private fun setupPickBirthDateEventListener() {
         viewModel.birthDateDialogueEvent.observe(viewLifecycleOwner, EventObserver{
             it.show(activity!!.supportFragmentManager, "datePicker")
         })
+    }
+
+    private fun setupImageEventListener() {
+        viewModel.takeImageEvent.observe(viewLifecycleOwner, EventObserver{id ->
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+                // Ensure that there's a camera activity to handle the intent
+                takePictureIntent.resolveActivity(activity!!.packageManager)?.also {
+                    // Create the File where the photo should go
+                    val photoFile: File? = try {
+                        createImageFile(id)
+                    } catch (ex: IOException) {
+                        // TODO
+                        null
+                    }
+                    // Continue only if the File was successfully created
+                    photoFile?.also {
+                        val photoURI: Uri = FileProvider.getUriForFile(
+                            context!!,
+                            "com.project.therollamissionapp.fileprovider",
+                            it
+                        )
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                        startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO)
+                    }
+                }
+            }
+        })
+    }
+
+    @Throws(IOException::class)
+    private fun createImageFile(id: String): File {
+        val storageDir: File = activity!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
+        return File.createTempFile(
+            id,
+            ".jpg",
+            storageDir
+        ).apply {
+            currentPhotoPath = absolutePath
+        }
     }
 }
