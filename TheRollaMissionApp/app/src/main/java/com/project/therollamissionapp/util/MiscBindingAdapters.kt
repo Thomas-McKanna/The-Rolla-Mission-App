@@ -5,7 +5,6 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import java.io.File
 
-
 object MiscBindingAdapters {
     @JvmStatic
     @BindingAdapter("previewImage")
