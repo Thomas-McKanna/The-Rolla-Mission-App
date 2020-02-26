@@ -6,7 +6,7 @@
     <string name="field_incomplete">Please fill out all fields in the form.</string>
     <string name="first_time_message">First time here?</string>
     <string name="welcome_message">Welcome to The Rolla Mission!</string>
-    <string name="checkin">Check-in</string>
+    <string name="checkin">Check-In</string>
     <string name="touch_to_register">Touch here to register</string>
     <string name="homeless_question">How long have you been homeless?</string>
     <string name="domestic_violence_question">Are you fleeing domestic violence?</string>
@@ -22,4 +22,23 @@
     <string name="radio_2plus_years">2+ years</string>
     <string name="picture_instructions">We need to take a picture of you for our records. When you touch the \"Take Picture\" button below, a camera app will open. Please position the camera directly in front of you and then press the white circle button at the bottom of the screen to take your picture.</string>
     <string name="take_picture_button">Take Picture</string>
+    <string name="city_residence">What city did you reside in before you became homeless?"</string>
+    <string name="reason_for_coming">If you were not in Rolla when you became homeless, what was the primary reason for coming to Rolla?</string>
+    <string name="family">Family in the area</string>
+    <string name="school">School</string>
+    <string name="relationship">A relationship</string>
+    <string name="hospital">Hospital/Medical care</string>
+    <string name="substance">Substance Use Treatment Facility"</string>
+    <string name="mission">The Rolla Mission</string>
+    <string name="other">Other</string>
+    <string name="picked_other">If you chose other, explain below:</string>
+    <string name="work">Work/job offer</string>
+    <string name="hint_city_name">Tap here to input city name</string>
+    <string name="hint_other_reason">Tap here to input your \"other\" reason</string>
+    <string name="consent_directions">Please read the following lines and press the checkbox next to each to indicate that you agree:</string>
+    <string name="consent_1">I understand that the information provided will be kept confidential and only authorized staff of The Rolla Mission will review this information.</string>
+    <string name="consent_2">I understand that The Rolla Mission may release my name, date of birth, photo, and dates of overnight stay to Probation and Parole and the Rolla Police Department upon their request for information.</string>
+    <string name="consent_3">No information will be released to any other agencies or individuals without my written or expressed consent.</string>
+    <string name="signature_label">Signature (use finger):</string>
+    <string name="clear_signature">Clear Signature</string>
 </resources>

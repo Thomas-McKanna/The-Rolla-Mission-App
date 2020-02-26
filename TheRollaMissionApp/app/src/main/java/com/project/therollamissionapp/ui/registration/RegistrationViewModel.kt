@@ -13,7 +13,7 @@ class RegistrationViewModel @Inject constructor(
 ): ViewModel() {
     private var index = 0
     private val sections = listOf<Int>(
-        R.layout.reg_part1,
+        R.layout.reg_part5,
         R.layout.reg_part2,
         R.layout.reg_part3,
         R.layout.reg_part4,
@@ -31,6 +31,7 @@ class RegistrationViewModel @Inject constructor(
     val reason = MutableLiveData<Int>()
     val otherReason = MutableLiveData<String>()
 
+    val timeHomeless = MutableLiveData<Int>()
     val violence = MutableLiveData<Int>()
     val veteran = MutableLiveData<Int>()
     val sexOffender = MutableLiveData<Int>()
@@ -101,8 +102,21 @@ class RegistrationViewModel @Inject constructor(
     }
 
     private fun savePatron() {
-        // TODO: compile all fields into a new ExtendedPatron object
-        val patron = ExtendedPatron()
+        val patron = ExtendedPatron(
+            firstName = firstName.value ?: "",
+            lastName = lastName.value ?: "",
+            dob = birthDate.value ?: "",
+            gender = getGender(gender.value ?: 0),
+            phone = contactNumber.value ?: "",
+            cityWhenBecameHomeless = city.value ?: "",
+            reasonRolla = getReasonRolla(reason.value ?: 0),
+            otherReason = otherReason.value ?: "",
+            timeHomeless = getTimeHomeless(timeHomeless.value ?: 0),
+            veteran = getVeteran(veteran.value ?: 0),
+            fleeingViolence = getViolence(violence.value ?: 0),
+            sexOffender = getOffender((sexOffender.value ?: 0)),
+            imageUri = imageUri.value ?: ""
+        )
         viewModelScope.launch {
             patronRepository.insertPatron(patron)
             _patronCreatedEvent.value = Event(Unit)
@@ -113,7 +127,7 @@ class RegistrationViewModel @Inject constructor(
         return when (index) {
             0 -> firstName.value != null && lastName.value != null && contactNumber.value != null && birthDate.value != null && gender.value != null
             1 -> city.value != null
-            2 -> violence.value != null && veteran.value != null && sexOffender.value != null
+            2 -> timeHomeless.value != null || violence.value != null && veteran.value != null && sexOffender.value != null
             3 -> imageUri.value != null
             4 -> consent1.value != null && consent2.value != null && consent3.value != null
             else -> true
@@ -123,6 +137,44 @@ class RegistrationViewModel @Inject constructor(
     private fun <T> setValueIfDifferent(ld: MutableLiveData<T>, value: T) {
         if (ld.value != value) {
             ld.value = value
+        }
+    }
+
+    // TODO: all of these functions do not need to be in this class
+
+    private fun getGender(id: Int): String {
+        return when (id) {
+            else -> "TODO"
+        }
+    }
+
+    private fun getReasonRolla(id: Int): String {
+        return when (id) {
+            else -> "TODO"
+        }
+    }
+
+    private fun getTimeHomeless(id: Int): String {
+        return when (id) {
+            else -> "TODO"
+        }
+    }
+
+    private fun getVeteran(id: Int): Boolean {
+        return when (id) {
+            else -> false // TODO
+        }
+    }
+
+    private fun getViolence(id: Int): Boolean {
+        return when (id) {
+            else -> false // TODO
+        }
+    }
+
+    private fun getOffender(id: Int): Boolean {
+        return when (id) {
+            else -> false // TODO
         }
     }
 }

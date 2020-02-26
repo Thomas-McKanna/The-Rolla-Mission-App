@@ -21,7 +21,9 @@ package com.project.therollamissionapp.util
  * Extension functions and Binding Adapters.
  */
 
+import android.util.TypedValue
 import android.view.View
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
@@ -32,11 +34,20 @@ import com.project.therollamissionapp.Event
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.ScrollChildSwipeRefreshLayout
 
+fun Snackbar.changeFont()
+{
+    val tv = view.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 32f)
+}
+
 /**
  * Transforms static java function Snackbar.make() to an extension function on View.
  */
-fun View.showSnackbar(snackbarText: String, timeLength: Int) {
-    Snackbar.make(this, snackbarText, timeLength).run {
+fun View.showSnackbar(snackbarText: String, timeLength: Int, backgroundTint: Int = -1) {
+    val sb = Snackbar.make(this, snackbarText, timeLength)
+        .setBackgroundTint(ContextCompat.getColor(context, R.color.warningRed))
+    sb.changeFont()
+    sb.run {
         show()
     }
 }

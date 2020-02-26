@@ -10,10 +10,11 @@ data class ExtendedPatron (
     var phone: String = "",
     var cityWhenBecameHomeless: String = "",
     var reasonRolla: String = "",
+    var otherReason: String = "",
     var timeHomeless: String = "",
     var veteran: Boolean = false,
     var fleeingViolence: Boolean = false,
     var sexOffender: Boolean = false,
-    var photoUri: String = "",
+    var imageUri: String = "",
     var id: String = UUID.randomUUID().toString()
 )
