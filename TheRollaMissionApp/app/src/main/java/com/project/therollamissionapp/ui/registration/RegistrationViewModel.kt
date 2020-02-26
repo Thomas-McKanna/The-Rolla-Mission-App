@@ -29,6 +29,9 @@ class RegistrationViewModel @Inject constructor(
         R.layout.reg_part5
     )
 
+    private val _title = MutableLiveData<String>().apply { postValue(getTitle(index)) }
+    val title: LiveData<String> = _title
+
     val id = UUID.randomUUID().toString()
 
     val firstName = MutableLiveData<String>()
@@ -83,15 +86,15 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun backPressed() {
-        _hideKeyboardEvent.value = Event(Unit)
         if (index > 0) {
             index -= 1
         }
         _contentChangedEvent.value = Event(sections.get(index))
+        _hideKeyboardEvent.value = Event(Unit)
+        _title.value = getTitle(index)
     }
 
     fun nextPressed() {
-        _hideKeyboardEvent.value = Event(Unit)
         if (fieldsFilledForIndex(index)) {
             index += 1
             if (index >= sections.size) {
@@ -104,6 +107,8 @@ class RegistrationViewModel @Inject constructor(
         } else {
             _snackbarText.value = Event(R.string.field_incomplete)
         }
+        _hideKeyboardEvent.value = Event(Unit)
+        _title.value = getTitle(index)
     }
 
     fun showDatePicker() {
@@ -170,5 +175,9 @@ class RegistrationViewModel @Inject constructor(
         if (ld.value != value) {
             ld.value = value
         }
+    }
+
+    private fun getTitle(index: Int): String{
+        return "Registration Part ${index + 1} of ${sections.size}"
     }
 }

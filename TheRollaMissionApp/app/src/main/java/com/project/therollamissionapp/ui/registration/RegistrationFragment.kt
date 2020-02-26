@@ -50,6 +50,7 @@ class RegistrationFragment : Fragment() {
         binding = FragmentRegistrationBinding.bind(root).apply {
             this.viewmodel = viewModel
         }
+        binding.setLifecycleOwner { lifecycle }
         return binding.root
     }
 
@@ -92,7 +93,7 @@ class RegistrationFragment : Fragment() {
             R.layout.reg_part4 -> RegPart4Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
             else -> RegPart5Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
         }
-        regBinding.setLifecycleOwner { this.lifecycle }
+        regBinding.setLifecycleOwner { lifecycle }
         binding.content.removeAllViews()
         binding.content.addView(frameRoot)
     }
