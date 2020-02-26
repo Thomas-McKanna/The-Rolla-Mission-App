@@ -1,6 +1,8 @@
 package com.project.therollamissionapp.ui.registration
 
+import android.graphics.Bitmap
 import androidx.lifecycle.*
+import com.github.gcacace.signaturepad.views.SignaturePad
 import com.project.therollamissionapp.Event
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.data.ExtendedPatron
@@ -51,6 +53,9 @@ class RegistrationViewModel @Inject constructor(
     val consent1 = MutableLiveData<Boolean>()
     val consent2 = MutableLiveData<Boolean>()
     val consent3 = MutableLiveData<Boolean>()
+
+    private val _signature = MutableLiveData<Bitmap>()
+    val signature: LiveData<Bitmap> = _signature
 
     private val _showDatePickerEvent = MutableLiveData<Event<Unit>>()
     val showDatePickerEvent: LiveData<Event<Unit>> = _showDatePickerEvent
@@ -116,6 +121,10 @@ class RegistrationViewModel @Inject constructor(
 
     fun setImageUri(stringUri: String) {
         setValueIfDifferent(_imageUri, stringUri)
+    }
+
+    fun onSignedSignature(sp: SignaturePad) {
+        _signature.value = sp.signatureBitmap
     }
 
     private fun savePatron() {

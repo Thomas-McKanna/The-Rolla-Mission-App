@@ -69,13 +69,16 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
             <com.github.gcacace.signaturepad.views.SignaturePad
+                android:id="@+id/sp"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@color/lightGray" />
+                android:background="@color/lightGray"
+                onSigned="@{() -> viewmodel.onSignedSignature(sp)}" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:onClick="@{() -> sp.clear()}"
                 android:layout_marginTop="@dimen/small_margin"
                 android:text="@string/clear_signature"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
