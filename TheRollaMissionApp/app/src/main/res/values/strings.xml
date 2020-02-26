@@ -49,7 +49,5 @@
     <string name="phone_num">Phone Number:</string>
     <string name="phone_num_cont">(or phone number of close friend/relative)</string>
     <string name="congrats">Congratulations!</string>
-    <string name="description">You are now registered with The Rolla Mission as a patron! You still
-        need to check-in for tonight. To check in, touch the button below. On the next screen,
-        search for your name and then touch your picture.</string>
+    <string name="description">You are now registered with The Rolla Mission as a patron! You still need to check-in for tonight. To check in, touch the button below. On the next screen, search for your name and then touch your picture.</string>
 </resources>
