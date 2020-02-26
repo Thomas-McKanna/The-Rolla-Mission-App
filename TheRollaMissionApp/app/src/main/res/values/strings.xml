@@ -21,6 +21,8 @@
     <string name="radio_1to2_years">1 - 2 years</string>
     <string name="radio_2plus_years">2+ years</string>
     <string name="picture_instructions">We need to take a picture of you for our records. When you touch the \"Take Picture\" button below, a camera app will open. Please position the camera directly in front of you and then press the white circle button at the bottom of the screen to take your picture.</string>
+    <string name="post_picture_instructions">Here is the picture you took. If it is OK, then press the \"Next\" button.</string>
+    <string name="take_picture_again">Take picture again</string>
     <string name="take_picture_button">Take Picture</string>
     <string name="city_residence">What city did you reside in before you became homeless?"</string>
     <string name="reason_for_coming">If you were not in Rolla when you became homeless, what was the primary reason for coming to Rolla?</string>
