@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.content.FileProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -63,6 +64,7 @@ class RegistrationFragment : Fragment() {
         setupSnackbar()
         setupPickBirthDateEventListener()
         setupImageEventListener()
+        setupHideKeyboardEventListener()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -141,6 +143,19 @@ class RegistrationFragment : Fragment() {
             storageDir
         ).apply {
             currentPhotoPath = absolutePath
+        }
+    }
+
+    private fun setupHideKeyboardEventListener() {
+        viewModel.hideKeyboardEvent.observe(viewLifecycleOwner, EventObserver{
+            hideKeyboard()
+        })
+    }
+
+    private fun hideKeyboard() {
+        val imm = activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        view?.apply {
+            imm.hideSoftInputFromWindow(this.windowToken, 0)
         }
     }
 }

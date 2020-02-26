@@ -75,11 +75,15 @@ class RegistrationViewModel @Inject constructor(
     private val _birthDateDialogueEvent = MutableLiveData<Event<DatePickerFragment>>()
     val birthDateDialogueEvent: LiveData<Event<DatePickerFragment>> = _birthDateDialogueEvent
 
+    private val _hideKeyboardEvent = MutableLiveData<Event<Unit>>()
+    val hideKeyboardEvent: LiveData<Event<Unit>> = _hideKeyboardEvent
+
     init {
         _contentChangedEvent.value = Event(sections.get(index))
     }
 
     fun backPressed() {
+        _hideKeyboardEvent.value = Event(Unit)
         if (index > 0) {
             index -= 1
         }
@@ -87,6 +91,7 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun nextPressed() {
+        _hideKeyboardEvent.value = Event(Unit)
         if (fieldsFilledForIndex(index)) {
             index += 1
             if (index >= sections.size) {
