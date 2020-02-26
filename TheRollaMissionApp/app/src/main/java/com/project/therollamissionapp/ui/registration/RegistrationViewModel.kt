@@ -58,6 +58,9 @@ class RegistrationViewModel @Inject constructor(
     private val _contentChangedEvent = MutableLiveData<Event<Int>>()
     val contentChangedEvent: LiveData<Event<Int>> = _contentChangedEvent
 
+    private val _birthDateDialogueEvent = MutableLiveData<Event<DatePickerFragment>>()
+    val birthDateDialogueEvent: LiveData<Event<DatePickerFragment>> = _birthDateDialogueEvent
+
     init {
         _contentChangedEvent.value = Event(sections.get(index))
     }
@@ -88,8 +91,13 @@ class RegistrationViewModel @Inject constructor(
         _showDatePickerEvent.value = Event(Unit)
     }
 
+    fun startBirthDateDialogue() {
+        val newFragment = DatePickerFragment(this)
+        _birthDateDialogueEvent.value = Event(newFragment)
+    }
+
     fun setBirthDate(year: Int, month: Int, day: Int) {
-        val birthDate = String.format("%d/%d/%d", month, day, year)
+        val birthDate = String.format("%d/%d/%d", month + 1, day, year)
         setValueIfDifferent(_birthDate, birthDate)
     }
 
