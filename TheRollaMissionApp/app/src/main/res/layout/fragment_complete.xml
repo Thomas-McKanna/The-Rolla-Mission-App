@@ -13,12 +13,10 @@
         android:id="@+id/congrats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/giant_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="@string/congrats"
         android:textAlignment="center"
-        android:textSize="@dimen/large_text"
         android:textStyle="bold"
         />
     <TextView
@@ -28,17 +26,13 @@
         android:layout_marginTop="@dimen/large_margin"
         app:layout_constraintTop_toBottomOf="@id/congrats"
         app:layout_constraintStart_toStartOf="@id/congrats"
-        android:layout_marginStart="@dimen/very_large_margin"
-        android:paddingEnd="@dimen/custom_margin_frag_complete"
         android:text="@string/description"
-        android:textSize="@dimen/medium_text"
         />
     <Button
         android:id="@+id/button_checkin_complete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/checkin"
-        android:textSize="@dimen/large_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/congrats_descript"

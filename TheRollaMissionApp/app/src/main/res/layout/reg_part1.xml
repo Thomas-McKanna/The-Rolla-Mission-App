@@ -14,170 +14,111 @@
         android:layout_height="match_parent"
         tools:context="com.project.therollamissionapp.ui.registration.ConsentFragment">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
-            android:id="@+id/first_name_text"
+            android:id="@+id/text_first_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/first_name"
-            android:textSize="@dimen/medium_text"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/very_large_margin"
-            android:layout_marginStart="@dimen/large_margin"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
-            android:id="@+id/first_name_field"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/text_box_offset"
-            android:layout_marginEnd="@dimen/very_large_margin"
-            android:textSize="@dimen/medium_text"
-            android:inputType="text"
-            app:layout_constraintStart_toEndOf="@id/first_name_text"
-            app:layout_constraintBottom_toBottomOf="@id/first_name_text"
-            app:layout_constraintTop_toTopOf="@id/first_name_text"
-            android:autofillHints="cc-given-name"
-            android:hint="First name"
-            android:background="@drawable/edit_text_border"
-            />
-        <TextView
-            android:id="@+id/last_name_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/last_name"
-            android:textSize="@dimen/medium_text"
-            app:layout_constraintStart_toStartOf="@id/first_name_text"
-            app:layout_constraintTop_toBottomOf="@id/first_name_text"
-            android:layout_marginTop="@dimen/large_margin"
-            />
-        <EditText
-            android:id="@+id/last_name_field"
+            android:id="@+id/edit_first_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/medium_text"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="@id/first_name_field"
-            app:layout_constraintBottom_toBottomOf="@id/last_name_text"
-            app:layout_constraintTop_toTopOf="@id/last_name_text"
-            app:layout_constraintEnd_toEndOf="@id/first_name_field"
-            android:autofillHints="family-name"
-            android:hint="Last name"
+            android:layout_marginStart="@dimen/medium_margin"
             android:background="@drawable/edit_text_border"
-            />
-        <TextView
-            android:id="@+id/date_of_birth_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/date_of_birth"
-            android:textSize="@dimen/medium_text"
-            app:layout_constraintStart_toStartOf="@id/first_name_text"
-            app:layout_constraintTop_toBottomOf="@id/last_name_text"
-            android:layout_marginTop="@dimen/large_margin"
-            />
-        <EditText
-            android:id="@+id/month"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/medium_text"
             android:inputType="text"
-            app:layout_constraintStart_toEndOf="@id/date_of_birth_text"
-            app:layout_constraintBottom_toBottomOf="@id/date_of_birth_text"
-            app:layout_constraintTop_toTopOf="@id/date_of_birth_text"
-            android:autofillHints="DOB"
-            android:hint="MM"
-            />
-        <TextView
-            android:id="@+id/slash_month_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/slash"
-            android:textSize="@dimen/medium_text"
-            app:layout_constraintStart_toEndOf="@id/month"
-            app:layout_constraintBottom_toBottomOf="@id/month"
-            app:layout_constraintTop_toTopOf="@id/month"
-            />
-        <EditText
-            android:id="@+id/day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/medium_text"
-            android:inputType="text"
-            app:layout_constraintStart_toEndOf="@id/slash_month_day"
-            app:layout_constraintBottom_toBottomOf="@id/month"
-            app:layout_constraintTop_toTopOf="@id/month"
-            android:autofillHints="DOB"
-            android:hint="DD"
-            />
-        <TextView
-            android:id="@+id/slash_day_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/slash"
-            android:textSize="@dimen/medium_text"
-            app:layout_constraintStart_toEndOf="@id/day"
-            app:layout_constraintBottom_toBottomOf="@id/day"
-            app:layout_constraintTop_toTopOf="@id/day"
-            />
-        <EditText
-            android:id="@+id/year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/medium_text"
-            android:inputType="text"
-            app:layout_constraintStart_toEndOf="@id/slash_day_year"
-            app:layout_constraintBottom_toBottomOf="@id/day"
-            app:layout_constraintTop_toTopOf="@id/day"
-            android:autofillHints="DOB"
-            android:hint="YYYY"
-            />
-        <Button
-            android:id="@+id/pick_birthdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pick_birthdate"
-            android:textSize="@dimen/medium_text"
-            android:textAllCaps="false"
-            app:layout_constraintStart_toEndOf="@id/year"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_first_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/year"
-            app:layout_constraintBottom_toBottomOf="@id/year"
-            android:layout_marginStart="@dimen/large_margin"
-            android:layout_marginEnd="@dimen/large_margin"/>
+            app:layout_constraintStart_toEndOf="@id/text_first_name" />
+
         <TextView
-            android:id="@+id/phone_num_text"
+            android:id="@+id/text_last_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/phone_num"
-            android:textSize="@dimen/medium_text"
-            app:layout_constraintStart_toStartOf="@id/first_name_text"
-            app:layout_constraintTop_toBottomOf="@id/date_of_birth_text"
             android:layout_marginTop="@dimen/large_margin"
-            />
+            android:text="@string/last_name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_first_name" />
+
         <EditText
-            android:id="@+id/phone_num_field"
+            android:id="@+id/edit_last_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_margin"
-            android:textSize="@dimen/medium_text"
-            android:inputType="phone"
-            app:layout_constraintStart_toEndOf="@id/phone_num_text"
-            app:layout_constraintBottom_toBottomOf="@id/phone_num_text"
-            app:layout_constraintTop_toTopOf="@id/phone_num_text"
-            app:layout_constraintEnd_toEndOf="@id/first_name_field"
-            android:autofillHints="Phone Number"
-            android:hint="Phone #"
+            android:autofillHints="family-name"
             android:background="@drawable/edit_text_border"
-            />
+            android:inputType="text"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_last_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/edit_first_name" />
+
+        <TextView
+            android:id="@+id/text_dob_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/date_of_birth"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_last_name" />
+
+        <TextView
+            android:id="@+id/text_dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_dob_label"
+            app:layout_constraintStart_toEndOf="@id/text_dob_label"
+            tools:text="MM/DD/YYYY" />
+
+        <Button
+            android:id="@+id/button_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:text="@string/pick_birthdate"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_dob"
+            app:layout_constraintStart_toEndOf="@+id/text_dob" />
+
+        <TextView
+            android:id="@+id/text_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/phone_num"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_dob_label" />
+
+        <EditText
+            android:id="@+id/edit_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:background="@drawable/edit_text_border"
+            android:inputType="phone"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_phone" />
+
         <TextView
             android:id="@+id/phone_num_cont_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
             android:text="@string/phone_num_cont"
-            android:textSize="@dimen/medium_text"
-            app:layout_constraintStart_toStartOf="@id/first_name_text"
-            app:layout_constraintTop_toBottomOf="@id/phone_num_text"
-            android:layout_marginTop="@dimen/large_margin"
-            />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_phone" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
