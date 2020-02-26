@@ -27,6 +27,7 @@
 
             <EditText
                 android:id="@+id/edit_city_before_homeless"
+                android:hint="@string/hint_city_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
@@ -53,10 +54,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                    <LinearLayout
-                        android:layout_width="0dp"
+                    <RadioGroup
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginStart="@dimen/medium_margin"
                         android:orientation="vertical" >
 
@@ -82,20 +82,11 @@
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"/>
 
                         <RadioButton
-                            android:id="@+id/radio_reason_substance"
+                            android:id="@+id/radio_reason_relationship"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/substance"
-                            android:textAlignment="gravity"
+                            android:text="@string/relationship"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
 
                         <RadioButton
                             android:id="@+id/radio_reason_hospital"
@@ -105,10 +96,11 @@
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
                         <RadioButton
-                            android:id="@+id/radio_reason_relationship"
+                            android:id="@+id/radio_reason_substance"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/relationship"
+                            android:text="@string/substance"
+                            android:textAlignment="gravity"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
                         <RadioButton
@@ -125,7 +117,7 @@
                             android:text="@string/other"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
-                    </LinearLayout>
+                    </RadioGroup>
 
             </RadioGroup>
 
@@ -145,10 +137,12 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
             <EditText
+                android:hint="@string/hint_other_reason"
                 android:id="@+id/edit_other_explanation"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:inputType="text|textMultiLine"
+                android:inputType="textMultiLine"
+                android:gravity="start"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
         </LinearLayout>
