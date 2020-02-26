@@ -29,6 +29,7 @@
                 android:id="@+id/checkbox_consent_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="@={viewmodel.consent1}"
                 android:text="@string/consent_1"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 android:gravity="start" />
@@ -37,6 +38,7 @@
                 android:id="@+id/checkbox_consent_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="@={viewmodel.consent2}"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:text="@string/consent_2"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
@@ -46,6 +48,7 @@
                 android:id="@+id/checkbox_consent_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="@={viewmodel.consent3}"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:text="@string/consent_3"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"

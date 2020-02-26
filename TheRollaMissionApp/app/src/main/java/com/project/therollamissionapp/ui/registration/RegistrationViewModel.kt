@@ -133,9 +133,9 @@ class RegistrationViewModel @Inject constructor(
 
     private fun fieldsFilledForIndex(index: Int): Boolean {
         return when (index) {
-            0 -> firstName.value != null && lastName.value != null && contactNumber.value != null && birthDate.value != null && gender.value != null
-            1 -> city.value != null
-            2 -> timeHomeless.value != null || violence.value != null && veteran.value != null && sexOffender.value != null
+            0 -> firstName.value != null && lastName.value != null && contactNumber.value != null && birthDate.value != null && gender.value != 0
+            1 -> city.value != null && reason.value != 0
+            2 -> timeHomeless.value != 0 && violence.value != 0 && veteran.value != 0 && sexOffender.value != 0
             3 -> imageUri.value != null
             4 -> consent1.value != null && consent2.value != null && consent3.value != null
             else -> true

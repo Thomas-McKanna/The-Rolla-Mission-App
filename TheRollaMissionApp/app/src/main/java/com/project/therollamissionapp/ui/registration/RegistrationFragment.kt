@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.project.therollamissionapp.EventObserver
 
@@ -56,13 +57,8 @@ class RegistrationFragment : Fragment() {
             setContent(it)
         })
         viewModel.patronCreatedEvent.observe(viewLifecycleOwner, EventObserver {
-            val fragment = RegistrationSuccessFragment()
-            val fragmentManager = activity?.supportFragmentManager
-            fragmentManager?.apply {
-                val transaction = beginTransaction()
-                transaction.replace(R.id.content, fragment)
-                transaction.commit()
-            }
+            val action = RegistrationFragmentDirections.actionRegistrationFragmentToRegistrationSuccessFragment()
+            view!!.findNavController().navigate(action)
         })
     }
 

@@ -16,7 +16,7 @@
             android:id="@+id/layout_homeless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/homeless_question"
@@ -29,6 +29,7 @@
                 android:id="@+id/radio_homeless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checkedButton="@={viewmodel.timeHomeless}"
                 android:layout_marginStart="@dimen/medium_margin" >
 
                 <RadioButton
@@ -87,6 +88,7 @@
                 android:id="@+id/radio_violence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checkedButton="@={viewmodel.violence}"
                 android:orientation="horizontal"
                 android:layout_marginStart="@dimen/medium_margin" >
 
@@ -126,6 +128,7 @@
                 android:id="@+id/radio_veteran"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checkedButton="@={viewmodel.veteran}"
                 android:orientation="horizontal"
                 android:layout_marginStart="@dimen/medium_margin" >
 
@@ -165,6 +168,7 @@
                 android:id="@+id/radio_offender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checkedButton="@={viewmodel.sexOffender}"
                 android:orientation="horizontal"
                 android:layout_marginStart="@dimen/medium_margin" >
 

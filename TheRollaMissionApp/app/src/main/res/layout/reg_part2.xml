@@ -27,9 +27,10 @@
 
             <EditText
                 android:id="@+id/edit_city_before_homeless"
-                android:hint="@string/hint_city_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@={viewmodel.city}"
+                android:hint="@string/hint_city_name"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
                 android:inputType="text" />
 
@@ -52,6 +53,7 @@
                 android:id="@+id/radio_reason_rolla"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checkedButton="@={viewmodel.reason}"
                 android:layout_marginStart="@dimen/medium_margin"
                 android:orientation="vertical" >
 
@@ -130,10 +132,12 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
             <EditText
-                android:hint="@string/hint_other_reason"
+
                 android:id="@+id/edit_other_explanation"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:text="@={viewmodel.otherReason}"
+                android:hint="@string/hint_other_reason"
                 android:inputType="textMultiLine"
                 android:gravity="start"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
