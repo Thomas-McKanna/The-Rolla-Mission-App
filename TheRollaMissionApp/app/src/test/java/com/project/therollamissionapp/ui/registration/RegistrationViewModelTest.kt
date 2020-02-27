@@ -6,8 +6,7 @@ import com.project.therollamissionapp.R
 import com.project.therollamissionapp.data.source.FakePatronRepository
 import getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.CoreMatchers.nullValue
+import org.hamcrest.CoreMatchers.*
 import org.hamcrest.Matchers.not
 import org.junit.Assert.*
 import org.junit.Before
@@ -47,15 +46,6 @@ class RegistrationViewModelTest {
         assertThat(value.getContentIfNotHandled(), `is`(R.layout.reg_part5))
     }
 
-    @ExperimentalCoroutinesApi
-    @Test
-    fun nextPressed_indexOneBeforeMax_PatronCreatedEventTriggered() {
-        fillRegistrationViewModel(registrationViewModel)
-        for (x in 0..4) registrationViewModel.nextPressed()
-        val value = registrationViewModel.patronCreatedEvent.getOrAwaitValue()
-        assertThat(value.getContentIfNotHandled(), `is`(not(nullValue())))
-    }
-
     @Test
     fun nextPressed_notFilledOut_setSnackbarEvent() {
         registrationViewModel.nextPressed()
@@ -64,15 +54,16 @@ class RegistrationViewModelTest {
     }
 
     @Test
-    fun showDatePicker_setsShowDatePickerEvent() {
-        registrationViewModel.showDatePicker()
-        val value = registrationViewModel.showDatePickerEvent.getOrAwaitValue()
+    fun startBirthDateDialogue_setsShowDatePickerEvent() {
+        registrationViewModel.startBirthDateDialogue()
+        val value = registrationViewModel.birthDateDialogueEvent.getOrAwaitValue()
         assertThat(value.getContentIfNotHandled(), `is`(not(nullValue())))
     }
 
     @Test
     fun setBirthDate_Feb172020_setTo02172020() {
-        registrationViewModel.setBirthDate(2020, 2, 17)
+        // DatePicker results zero-indexed months
+        registrationViewModel.setBirthDate(2020, 2 - 1, 17)
         val value = registrationViewModel.birthDate.getOrAwaitValue()
         assertThat(value, `is`("2/17/2020"))
     }

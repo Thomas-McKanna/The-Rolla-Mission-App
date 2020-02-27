@@ -63,9 +63,6 @@ class RegistrationViewModel @Inject constructor(
     private val _signature = MutableLiveData<Bitmap>()
     val signature: LiveData<Bitmap> = _signature
 
-    private val _showDatePickerEvent = MutableLiveData<Event<Unit>>()
-    val showDatePickerEvent: LiveData<Event<Unit>> = _showDatePickerEvent
-
     private val _takeImageEvent = MutableLiveData<Event<String>>()
     val takeImageEvent: LiveData<Event<String>> = _takeImageEvent
 
@@ -109,7 +106,7 @@ class RegistrationViewModel @Inject constructor(
             index += 1
             if (index >= sections.size) {
                 index -= 1
-                if (_uploadPatronResult.value == null) {
+                if (_uploadPatronResult.value == null || _uploadPatronResult.value is Result.Error) {
                     savePatron()
                 }
             } else {
@@ -119,10 +116,6 @@ class RegistrationViewModel @Inject constructor(
             _snackbarText.value = Event(R.string.field_incomplete)
         }
         updateTitle()
-    }
-
-    fun showDatePicker() {
-        _showDatePickerEvent.value = Event(Unit)
     }
 
     fun startBirthDateDialogue() {
@@ -172,12 +165,16 @@ class RegistrationViewModel @Inject constructor(
             _uploadPatronResult.value = Result.Loading
             val result = patronRepository.insertPatron(patron)
             _uploadPatronResult.value = result
-            _patronCreatedEvent.value = Event(Unit)
+            if (result is Result.Success) {
+                _patronCreatedEvent.value = Event(Unit)
+            } else {
+                // TODO: show error message
+            }
         }
     }
 
     private fun fieldsFilledForIndex(index: Int): Boolean {
-        return !when (index) {
+        return when (index) {
             0 -> firstName.value != null && lastName.value != null && contactNumber.value != null && birthDate.value != null && gender.value != 0
             1 -> city.value != null && reason.value != 0
             2 -> timeHomeless.value != 0 && violence.value != 0 && veteran.value != 0 && sexOffender.value != 0
