@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <import type="android.view.View"/>
@@ -50,7 +51,8 @@
             previewImage="@{viewmodel.imageUri}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="invisible" />
 
         <TextView
             android:id="@+id/text_post_picture"
@@ -62,7 +64,8 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_preview" />
+            app:layout_constraintTop_toBottomOf="@id/image_preview"
+            tools:visibility="invisible" />
 
         <Button
             android:layout_width="wrap_content"
@@ -71,9 +74,11 @@
             android:layout_marginTop="@dimen/medium_margin"
             android:text="@string/take_picture_again"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
+            android:onClick="@{() -> viewmodel.takeImage()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_post_picture" />
+            app:layout_constraintTop_toBottomOf="@id/text_post_picture"
+            tools:visibility="invisible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
