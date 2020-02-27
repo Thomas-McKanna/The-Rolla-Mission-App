@@ -82,6 +82,9 @@ class RegistrationFragment : Fragment() {
             val action = RegistrationFragmentDirections.actionRegistrationFragmentToRegistrationSuccessFragment()
             view!!.findNavController().navigate(action)
         })
+        viewModel.registrationCanceledEvent.observe(viewLifecycleOwner, EventObserver {
+            view!!.findNavController().navigateUp()
+        })
     }
 
     private fun setContent(layoutId: Int) {

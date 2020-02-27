@@ -78,6 +78,9 @@ class RegistrationViewModel @Inject constructor(
     private val _contentChangedEvent = MutableLiveData<Event<Int>>()
     val contentChangedEvent: LiveData<Event<Int>> = _contentChangedEvent
 
+    private val _registrationCanceledEvent = MutableLiveData<Event<Unit>>()
+    val registrationCanceledEvent: LiveData<Event<Unit>> = _registrationCanceledEvent
+
     private val _birthDateDialogueEvent = MutableLiveData<Event<DatePickerFragment>>()
     val birthDateDialogueEvent: LiveData<Event<DatePickerFragment>> = _birthDateDialogueEvent
 
@@ -94,6 +97,8 @@ class RegistrationViewModel @Inject constructor(
     fun backPressed() {
         if (index > 0) {
             index -= 1
+        } else {
+            _registrationCanceledEvent.value = Event(Unit)
         }
         _contentChangedEvent.value = Event(sections.get(index))
         updateTitle()
