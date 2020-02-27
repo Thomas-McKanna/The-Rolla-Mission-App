@@ -32,7 +32,6 @@ import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.project.therollamissionapp.Event
 import com.project.therollamissionapp.R
-import com.project.therollamissionapp.ScrollChildSwipeRefreshLayout
 
 fun Snackbar.changeFont()
 {
@@ -66,19 +65,4 @@ fun View.setupSnackbar(
             showSnackbar(context.getString(it), timeLength)
         }
     })
-}
-
-fun Fragment.setupRefreshLayout(
-    refreshLayout: ScrollChildSwipeRefreshLayout,
-    scrollUpChild: View? = null
-) {
-    refreshLayout.setColorSchemeColors(
-        ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
-        ContextCompat.getColor(requireActivity(), R.color.colorAccent),
-        ContextCompat.getColor(requireActivity(), R.color.colorPrimaryDark)
-    )
-    // Set the scrolling view in the custom SwipeRefreshLayout.
-    scrollUpChild?.let {
-        refreshLayout.scrollUpChild = it
-    }
 }
