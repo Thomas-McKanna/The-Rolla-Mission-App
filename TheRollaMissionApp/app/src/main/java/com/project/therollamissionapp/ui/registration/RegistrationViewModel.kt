@@ -8,12 +8,14 @@ import com.project.therollamissionapp.R
 import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.source.PatronRepository
 import com.project.therollamissionapp.data.Result
-import com.project.therollamissionapp.ui.registration.ResIdMapping.getGender
-import com.project.therollamissionapp.ui.registration.ResIdMapping.getOffender
-import com.project.therollamissionapp.ui.registration.ResIdMapping.getReasonRolla
-import com.project.therollamissionapp.ui.registration.ResIdMapping.getTimeHomeless
-import com.project.therollamissionapp.ui.registration.ResIdMapping.getVeteran
-import com.project.therollamissionapp.ui.registration.ResIdMapping.getViolence
+import com.project.therollamissionapp.ui.registration.Helpers.getGender
+import com.project.therollamissionapp.ui.registration.Helpers.getOffender
+import com.project.therollamissionapp.ui.registration.Helpers.getReasonRolla
+import com.project.therollamissionapp.ui.registration.Helpers.getTimeHomeless
+import com.project.therollamissionapp.ui.registration.Helpers.getTitle
+import com.project.therollamissionapp.ui.registration.Helpers.getVeteran
+import com.project.therollamissionapp.ui.registration.Helpers.getViolence
+import com.project.therollamissionapp.ui.registration.Helpers.setValueIfDifferent
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -30,7 +32,7 @@ class RegistrationViewModel @Inject constructor(
         R.layout.reg_part5
     )
 
-    private val _title = MutableLiveData<String>().apply { postValue(getTitle(index)) }
+    private val _title = MutableLiveData<String>().apply { postValue(getTitle(index, sections)) }
     val title: LiveData<String> = _title
 
     val id = UUID.randomUUID().toString()
@@ -94,15 +96,13 @@ class RegistrationViewModel @Inject constructor(
             index -= 1
         }
         _contentChangedEvent.value = Event(sections.get(index))
-        triggerHideKeyboardEvent()
-        _title.value = getTitle(index)
+        updateTitle()
     }
 
     fun nextPressed() {
         if (fieldsFilledForIndex(index)) {
             index += 1
-            if (index >= sections.size) {
-                index = sections.size - 1 // prevent array out of bounds exceptions
+            if (index >= sections.size && _uploadPatronResult.value == null) {
                 savePatron()
             } else {
                 _contentChangedEvent.value = Event(sections.get(index))
@@ -110,8 +110,7 @@ class RegistrationViewModel @Inject constructor(
         } else {
             _snackbarText.value = Event(R.string.field_incomplete)
         }
-        triggerHideKeyboardEvent()
-        _title.value = getTitle(index)
+        updateTitle()
     }
 
     fun showDatePicker() {
@@ -180,13 +179,8 @@ class RegistrationViewModel @Inject constructor(
         }
     }
 
-    private fun <T> setValueIfDifferent(ld: MutableLiveData<T>, value: T) {
-        if (ld.value != value) {
-            ld.value = value
-        }
-    }
-
-    private fun getTitle(index: Int): String{
-        return "Registration Part ${index + 1} of ${sections.size}"
+    private fun updateTitle() {
+        triggerHideKeyboardEvent()
+        _title.value = getTitle(index, sections)
     }
 }

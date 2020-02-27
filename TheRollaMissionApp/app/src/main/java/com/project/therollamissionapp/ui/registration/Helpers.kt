@@ -1,8 +1,9 @@
 package com.project.therollamissionapp.ui.registration
 
+import androidx.lifecycle.MutableLiveData
 import com.project.therollamissionapp.R
 
-object ResIdMapping {
+object Helpers {
     fun getGender(id: Int): String {
         return when (id) {
             R.id.radio_gender_male -> "Male"
@@ -58,6 +59,16 @@ object ResIdMapping {
             R.id.radio_offender_y -> true
             R.id.radio_offender_n -> false
             else -> false
+        }
+    }
+
+    fun getTitle(index: Int, sections: List<Int>): String{
+        return "Registration Part ${index + 1} of ${sections.size}"
+    }
+
+    fun <T> setValueIfDifferent(ld: MutableLiveData<T>, value: T) {
+        if (ld.value != value) {
+            ld.value = value
         }
     }
 }
