@@ -107,8 +107,11 @@ class RegistrationViewModel @Inject constructor(
     fun nextPressed() {
         if (fieldsFilledForIndex(index)) {
             index += 1
-            if (index >= sections.size && _uploadPatronResult.value == null) {
-                savePatron()
+            if (index >= sections.size) {
+                index -= 1
+                if (_uploadPatronResult.value == null) {
+                    savePatron()
+                }
             } else {
                 _contentChangedEvent.value = Event(sections.get(index))
             }
