@@ -4,10 +4,7 @@ import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.Patron
 import com.project.therollamissionapp.data.Result
 import com.project.therollamissionapp.data.source.local.PatronDao
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 class DefaultPatronRepository (
@@ -18,6 +15,7 @@ class DefaultPatronRepository (
     constructor(patronDao: PatronDao) : this(patronDao, Dispatchers.IO)
 
     override suspend fun insertPatron(extendedPatron: ExtendedPatron): Result<Unit> {
+        delay(3000) // TODO: currently simulating upload time to demonstrate progress bar
         withContext(ioDispatcher) {
             // TODO:
             // (1) Attempt to upload ExtendedPatron to external web service.
@@ -38,8 +36,9 @@ class DefaultPatronRepository (
         patronDao.insertPatron(patron)
     }
 
-    override suspend fun checkIn(patron: Patron) {
+    override suspend fun checkIn(patron: Patron): Result<Unit> {
         // TODO: Attempt to upload checkin instance to external web service.
+        return Result.Success(Unit)
     }
 
     override suspend fun deletePatron(patron: Patron) {

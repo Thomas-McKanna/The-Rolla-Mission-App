@@ -7,6 +7,7 @@ import com.project.therollamissionapp.Event
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.source.PatronRepository
+import com.project.therollamissionapp.data.Result
 import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getGender
 import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getOffender
 import com.project.therollamissionapp.ui.registration.ResIdMapping.Companion.getReasonRolla
@@ -81,6 +82,9 @@ class RegistrationViewModel @Inject constructor(
     private val _hideKeyboardEvent = MutableLiveData<Event<Unit>>()
     val hideKeyboardEvent: LiveData<Event<Unit>> = _hideKeyboardEvent
 
+    private val _uploadPatronResult = MutableLiveData<Result<Unit>>()
+    val uploadPatronResult: LiveData<Result<Unit>> = _uploadPatronResult
+
     init {
         _contentChangedEvent.value = Event(sections.get(index))
     }
@@ -100,7 +104,6 @@ class RegistrationViewModel @Inject constructor(
             if (index >= sections.size) {
                 index = sections.size - 1 // prevent array out of bounds exceptions
                 savePatron()
-                _patronCreatedEvent.value = Event(Unit)
             } else {
                 _contentChangedEvent.value = Event(sections.get(index))
             }
@@ -159,7 +162,9 @@ class RegistrationViewModel @Inject constructor(
             id = id
         )
         viewModelScope.launch {
-            patronRepository.insertPatron(patron)
+            _uploadPatronResult.value = Result.Loading
+            val result = patronRepository.insertPatron(patron)
+            _uploadPatronResult.value = result
             _patronCreatedEvent.value = Event(Unit)
         }
     }

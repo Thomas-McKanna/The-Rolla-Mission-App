@@ -9,7 +9,7 @@ interface PatronRepository {
 
     suspend fun insertPatron(patron: Patron)
 
-    suspend fun checkIn(patron: Patron)
+    suspend fun checkIn(patron: Patron): Result<Unit>
 
     suspend fun deletePatron(patron: Patron)
 }
