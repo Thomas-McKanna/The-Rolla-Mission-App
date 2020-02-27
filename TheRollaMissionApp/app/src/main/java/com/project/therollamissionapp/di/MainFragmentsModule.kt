@@ -11,13 +11,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class MainFragmentsModule {
     @ContributesAndroidInjector
-    abstract fun contributeWelcomeFragment(): WelcomeFragment
-
-    @ContributesAndroidInjector
     abstract fun contributeRegistrationFragment(): RegistrationFragment
-
-    @ContributesAndroidInjector
-    abstract fun contributeRegistrationSuccessFragment(): RegistrationSuccessFragment
 
     @ContributesAndroidInjector
     abstract fun contributeSearchFragment(): SearchFragment
