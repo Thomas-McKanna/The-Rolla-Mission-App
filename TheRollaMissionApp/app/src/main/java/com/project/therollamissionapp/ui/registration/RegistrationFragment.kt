@@ -159,7 +159,7 @@ class RegistrationFragment : Fragment() {
     private fun hideKeyboard() {
         val imm = activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         view?.apply {
-            imm.hideSoftInputFromWindow(this.windowToken, 0)
+            imm.hideSoftInputFromWindow(windowToken, 0)
         }
     }
 }
