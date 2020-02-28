@@ -56,4 +56,8 @@
     <string name="pref_not_answer">Prefer not to answer</string>
     <string name="congrats">Congratulations!</string>
     <string name="description">You are now registered with The Rolla Mission as a patron! You still need to check-in for tonight. To check in, touch the button below. On the next screen, search for your name and then touch your picture.</string>
+    <string name="registraton_error">An error occurred while trying to create your profile. Please make sure that you are connected to the internet. If the problem persists, contact the developers of this application.</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Retry</string>
+    <string name="error">Error</string>
 </resources>

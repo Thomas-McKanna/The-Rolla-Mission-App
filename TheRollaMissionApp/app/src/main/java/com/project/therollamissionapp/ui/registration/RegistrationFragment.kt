@@ -66,6 +66,7 @@ class RegistrationFragment : Fragment() {
         setupPickBirthDateEventListener()
         setupImageEventListener()
         setupHideKeyboardEventListener()
+        setupErrorDialogueEvent()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -161,5 +162,11 @@ class RegistrationFragment : Fragment() {
         view?.apply {
             imm.hideSoftInputFromWindow(windowToken, 0)
         }
+    }
+
+    private fun setupErrorDialogueEvent() {
+        viewModel.errorDialogueEvent.observe(viewLifecycleOwner, EventObserver{
+            viewModel.getErrorDialogue(context)?.show()
+        })
     }
 }

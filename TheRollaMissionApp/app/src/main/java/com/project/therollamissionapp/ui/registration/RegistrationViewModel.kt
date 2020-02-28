@@ -1,6 +1,9 @@
 package com.project.therollamissionapp.ui.registration
 
+import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Bitmap
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.*
 import com.github.gcacace.signaturepad.views.SignaturePad
 import com.project.therollamissionapp.Event
@@ -87,6 +90,9 @@ class RegistrationViewModel @Inject constructor(
     private val _uploadPatronResult = MutableLiveData<Result<Unit>>()
     val uploadPatronResult: LiveData<Result<Unit>> = _uploadPatronResult
 
+    private val _errorDialogueEvent = MutableLiveData<Event<Unit>>()
+    val errorDialogueEvent: LiveData<Event<Unit>> = _errorDialogueEvent
+
     init {
         _contentChangedEvent.value = Event(sections.get(index))
     }
@@ -144,6 +150,26 @@ class RegistrationViewModel @Inject constructor(
         _hideKeyboardEvent.value = Event(Unit)
     }
 
+    fun getErrorDialogue(context: Context?): AlertDialog? {
+        val builder: AlertDialog.Builder? = context?.let {
+            AlertDialog.Builder(it)
+        }
+        builder?.apply {
+            setIcon(R.drawable.ic_warning)
+            setMessage(R.string.registraton_error)
+            setTitle(R.string.error)
+            setPositiveButton(R.string.retry,
+                DialogInterface.OnClickListener { dialog, id ->
+                    savePatron()
+                })
+            setNegativeButton(R.string.cancel,
+                DialogInterface.OnClickListener { dialog, id ->
+                    _registrationCanceledEvent.value = Event(Unit)
+                })
+        }
+        return builder?.create()
+    }
+
     private fun savePatron() {
         val patron = ExtendedPatron(
             firstName = firstName.value ?: "",
@@ -168,7 +194,7 @@ class RegistrationViewModel @Inject constructor(
             if (result is Result.Success) {
                 _patronCreatedEvent.value = Event(Unit)
             } else {
-                // TODO: show error message
+                _errorDialogueEvent.value = Event(Unit)
             }
         }
     }
