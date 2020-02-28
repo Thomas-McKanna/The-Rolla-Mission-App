@@ -75,7 +75,9 @@ class RegistrationViewModel @Inject constructor(
     private val _patronCreatedEvent = MutableLiveData<Event<Unit>>()
     val patronCreatedEvent: LiveData<Event<Unit>> = _patronCreatedEvent
 
-    private val _contentChangedEvent = MutableLiveData<Event<Int>>()
+    private val _contentChangedEvent = MutableLiveData<Event<Int>>().apply {
+        postValue(Event(sections.get(index)))
+    }
     val contentChangedEvent: LiveData<Event<Int>> = _contentChangedEvent
 
     private val _registrationCanceledEvent = MutableLiveData<Event<Unit>>()
@@ -92,10 +94,6 @@ class RegistrationViewModel @Inject constructor(
 
     private val _errorDialogueEvent = MutableLiveData<Event<Unit>>()
     val errorDialogueEvent: LiveData<Event<Unit>> = _errorDialogueEvent
-
-    init {
-        _contentChangedEvent.value = Event(sections.get(index))
-    }
 
     fun backPressed() {
         if (index > 0) {
