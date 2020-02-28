@@ -21,13 +21,14 @@ import com.project.therollamissionapp.EventObserver
 
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.*
+import com.project.therollamissionapp.di.Injectable
 import com.project.therollamissionapp.util.setupSnackbar
 import dagger.android.support.AndroidSupportInjection
 import java.io.File
 import java.io.IOException
 import javax.inject.Inject
 
-class RegistrationFragment : Fragment() {
+class RegistrationFragment : Fragment(), Injectable {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -52,11 +53,6 @@ class RegistrationFragment : Fragment() {
         }
         binding.setLifecycleOwner { lifecycle }
         return binding.root
-    }
-
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

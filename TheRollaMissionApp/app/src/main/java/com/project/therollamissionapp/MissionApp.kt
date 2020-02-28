@@ -1,7 +1,7 @@
 package com.project.therollamissionapp
 
 import android.app.Application
-import com.project.therollamissionapp.di.DaggerAppComponent
+import com.project.therollamissionapp.di.AppInjector
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -14,7 +14,7 @@ class MissionApp : Application(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.builder().application(this).build().inject(this)
+        AppInjector.init(this)
     }
 
     override fun androidInjector(): AndroidInjector<Any> {

@@ -15,7 +15,4 @@ abstract class MainFragmentsModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSearchFragment(): SearchFragment
-
-    @ContributesAndroidInjector
-    abstract fun contributeCheckInSuccessFragment(): CheckInSuccessFragment
 }

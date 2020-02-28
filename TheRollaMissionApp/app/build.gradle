@@ -102,4 +102,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
     implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    implementation "androidx.fragment:fragment-testing:$fragmentVersion"
+    implementation "androidx.fragment:fragment:$fragmentVersion"
 }

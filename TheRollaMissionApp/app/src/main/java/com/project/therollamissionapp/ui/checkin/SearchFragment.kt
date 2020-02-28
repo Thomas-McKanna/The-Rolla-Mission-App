@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.project.therollamissionapp.R
+import com.project.therollamissionapp.di.Injectable
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(), Injectable {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
