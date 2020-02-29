@@ -1,9 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-allopen'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation 'com.project.therollamissionapp.testing.OpenClass'
+}
 android {
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion "29.0.3"
@@ -24,7 +29,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.project.therollamissionapp.util.MissionTestRunner"
     }
 
     buildTypes {
@@ -36,6 +41,11 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
     }
 
     testOptions.unitTests {
@@ -64,6 +74,8 @@ dependencies {
     androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$espressoVersion"
     androidTestImplementation "org.robolectric:annotations:$robolectricVersion"
     androidTestImplementation "org.hamcrest:hamcrest-library:$hamcrestVersion"
+    androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$mockitoAndroidVersion"
     implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
 
     implementation "androidx.room:room-runtime:$room_version"
@@ -83,11 +95,9 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     testImplementation "androidx.test.ext:junit:$androidXTestExtKotlinRunnerVersion"
     testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
-    testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
     testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
     testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
-    testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "androidx.room:room-testing:$room_version"
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"

@@ -1,4 +1,4 @@
-package com.project.therollamissionapp
+package com.project.therollamissionapp.util
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

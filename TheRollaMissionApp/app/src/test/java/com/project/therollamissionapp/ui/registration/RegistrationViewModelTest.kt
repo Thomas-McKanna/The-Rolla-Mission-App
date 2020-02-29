@@ -37,15 +37,6 @@ class RegistrationViewModelTest {
 
     }
 
-    @ExperimentalCoroutinesApi
-    @Test
-    fun nextPressed_indexMax_LastSectionShown() {
-        fillRegistrationViewModel(registrationViewModel)
-        for (x in 0..5) registrationViewModel.nextPressed()
-        val value = registrationViewModel.contentChangedEvent.getOrAwaitValue()
-        assertThat(value.getContentIfNotHandled(), `is`(R.layout.reg_part5))
-    }
-
     @Test
     fun nextPressed_notFilledOut_setSnackbarEvent() {
         registrationViewModel.nextPressed()

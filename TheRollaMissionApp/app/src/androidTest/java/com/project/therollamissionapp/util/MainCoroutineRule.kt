@@ -1,4 +1,4 @@
-package com.project.therollamissionapp
+package com.project.therollamissionapp.util
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

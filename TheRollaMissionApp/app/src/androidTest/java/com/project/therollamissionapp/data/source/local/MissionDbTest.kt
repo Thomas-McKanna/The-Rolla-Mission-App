@@ -5,10 +5,10 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.project.therollamissionapp.MainCoroutineRule
-import com.project.therollamissionapp.TestUtil
+import com.project.therollamissionapp.util.MainCoroutineRule
+import com.project.therollamissionapp.util.TestUtil
 import com.project.therollamissionapp.data.Patron
-import com.project.therollamissionapp.getOrAwaitValue
+import com.project.therollamissionapp.util.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.CoreMatchers.`is`
@@ -30,7 +30,8 @@ class MissionDbTest {
     // Set the main coroutines dispatcher for unit testing.
     @ExperimentalCoroutinesApi
     @get:Rule
-    var mainCoroutineRule = MainCoroutineRule()
+    var mainCoroutineRule =
+        MainCoroutineRule()
 
     // Executes each task synchronously using Architecture Components.
     @get:Rule

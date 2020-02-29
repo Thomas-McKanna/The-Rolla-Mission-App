@@ -1,4 +1,4 @@
-package com.project.therollamissionapp
+package com.project.therollamissionapp.util
 
 import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.Patron

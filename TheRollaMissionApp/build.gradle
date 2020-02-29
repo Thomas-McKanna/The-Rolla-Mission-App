@@ -12,6 +12,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.6.0-rc03'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
     }
 }
 
@@ -54,7 +55,9 @@ ext {
     junitVersion = '4.12'
     lifecycle_version = '2.2.0'
     materialVersion = '1.2.0-alpha01'
-    mockitoVersion = '2.19.0'
+    mockitoAllVersion = '1.10.19'
+    mockitoAndroidVersion = '2.25.0'
+    mockitoVersion = '2.25.0'
     navigationVersion = '2.2.1'
     robolectricVersion = '4.3.1'
     room_version = '2.2.3'
