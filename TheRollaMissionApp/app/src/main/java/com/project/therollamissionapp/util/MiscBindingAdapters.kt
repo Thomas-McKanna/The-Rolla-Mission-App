@@ -20,8 +20,8 @@ object MiscBindingAdapters {
     }
 
     @JvmStatic
-    @BindingAdapter("uploading")
-    fun uploadStatus(view: ProgressBar, result: Result<Unit>?) {
+    @BindingAdapter("loading")
+    fun loadingStatus(view: ProgressBar, result: Result<Unit>?) {
         if (result != null && result is Result.Loading) {
             view.visibility = View.VISIBLE
         } else {
