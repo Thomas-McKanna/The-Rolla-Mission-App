@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="500dp"
             android:visibility="@{viewmodel.imageUri != null ? View.VISIBLE : View.GONE}"
-            previewImage="@{viewmodel.imageUri}"
+            previewPatronImage="@{viewmodel.imageUri}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

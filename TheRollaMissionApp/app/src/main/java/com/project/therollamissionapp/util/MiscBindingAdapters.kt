@@ -1,5 +1,6 @@
 package com.project.therollamissionapp.util
 
+import android.os.Environment
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -10,8 +11,8 @@ import java.io.File
 
 object MiscBindingAdapters {
     @JvmStatic
-    @BindingAdapter("previewImage")
-    fun loadImage(view: ImageView, path: String?) {
+    @BindingAdapter("previewPatronImage")
+    fun previewPatronImage(view: ImageView, path: String?) {
         path?.apply {
             Glide.with(view.context)
                 .load(File(this))
@@ -20,8 +21,20 @@ object MiscBindingAdapters {
     }
 
     @JvmStatic
+    @BindingAdapter("loadPatronImage")
+    fun loadPatronImage(view: ImageView, id: String?) {
+        id?.apply {
+            val prefix = view.context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString()
+            val path = String.format("%s/%s.jpg", prefix, id)
+            Glide.with(view.context)
+                .load(File(path))
+                .into(view)
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("loading")
-    fun loadingStatus(view: ProgressBar, result: Result<Unit>?) {
+    fun loading(view: ProgressBar, result: Result<Unit>?) {
         if (result != null && result is Result.Loading) {
             view.visibility = View.VISIBLE
         } else {

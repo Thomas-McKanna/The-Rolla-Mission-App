@@ -137,12 +137,8 @@ class RegistrationFragment : Fragment(), Injectable {
 
     @Throws(IOException::class)
     private fun createImageFile(id: String): File {
-        val storageDir: File = activity!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
-        return File.createTempFile(
-            id,
-            ".jpg",
-            storageDir
-        ).apply {
+        val storageDir: File? = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File(storageDir, "${id}.jpg").apply {
             currentPhotoPath = absolutePath
         }
     }

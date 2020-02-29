@@ -1,7 +1,7 @@
 package com.project.therollamissionapp.ui.checkin
 
+import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,8 +52,12 @@ class CheckInSearchFragment : Fragment(), Injectable {
         val pAdapter = PatronListAdapter(
             appExecutors = appExecutors
         ) { patron ->
-            // TODO: show confirmation dialogue
-            Log.d("TEST", "CLICKED")
+            CheckInConfirmationDialogue(
+                patron = patron,
+                positiveListener = DialogInterface.OnClickListener() { dialog, id ->
+                    // TODO: do checkin
+                }
+            ).show(requireActivity().supportFragmentManager, "confirmation")
         }
         binding.patronList.adapter = pAdapter
         adapter = pAdapter
