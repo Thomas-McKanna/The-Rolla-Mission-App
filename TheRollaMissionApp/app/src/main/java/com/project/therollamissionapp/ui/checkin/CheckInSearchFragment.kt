@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.di.Injectable
 
-class SearchFragment : Fragment(), Injectable {
+class CheckInSearchFragment : Fragment(), Injectable {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
