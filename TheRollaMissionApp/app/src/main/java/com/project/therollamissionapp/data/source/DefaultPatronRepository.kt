@@ -24,7 +24,6 @@ class DefaultPatronRepository (
             val patron = Patron(
                 extendedPatron.firstName,
                 extendedPatron.lastName,
-                extendedPatron.imageUri,
                 extendedPatron.id
             )
             patronDao.insertPatron(patron)

@@ -9,6 +9,5 @@ import java.util.*
 data class Patron (
     @ColumnInfo(name = "firstName") var firstName: String = "",
     @ColumnInfo(name = "lastName") var lastName: String = "",
-    @ColumnInfo(name = "imageUri") var imageUri: String = "",
     @PrimaryKey @ColumnInfo(name = "patronId") var id: String = UUID.randomUUID().toString()
 )

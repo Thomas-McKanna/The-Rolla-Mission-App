@@ -15,6 +15,5 @@ data class ExtendedPatron (
     var veteran: Boolean = false,
     var fleeingViolence: Boolean = false,
     var sexOffender: Boolean = false,
-    var imageUri: String = "",
     var id: String = UUID.randomUUID().toString()
 )

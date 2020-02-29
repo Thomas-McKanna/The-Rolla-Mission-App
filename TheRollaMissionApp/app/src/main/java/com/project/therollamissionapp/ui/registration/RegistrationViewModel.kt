@@ -182,7 +182,6 @@ class RegistrationViewModel @Inject constructor(
             veteran = getVeteran(veteran.value ?: 0),
             fleeingViolence = getViolence(violence.value ?: 0),
             sexOffender = getOffender((sexOffender.value ?: 0)),
-            imageUri = imageUri.value ?: "",
             id = id
         )
         viewModelScope.launch {
