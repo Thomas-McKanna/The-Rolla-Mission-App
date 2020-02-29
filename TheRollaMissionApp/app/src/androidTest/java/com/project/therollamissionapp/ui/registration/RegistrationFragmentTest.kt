@@ -1,5 +1,9 @@
 package com.project.therollamissionapp.ui.registration
 
+import android.app.Activity
+import android.app.Instrumentation
+import android.content.Intent
+import android.provider.MediaStore
 import android.view.View
 import android.widget.DatePicker
 import androidx.test.espresso.Espresso.onView
@@ -9,10 +13,12 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.PickerActions
+import androidx.test.espresso.intent.Intents.intending
+import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
+import androidx.test.espresso.intent.rule.IntentsTestRule
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
-import androidx.test.rule.ActivityTestRule
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.data.source.local.FakePatronRepository
 import com.project.therollamissionapp.testing.SingleFragmentActivity
@@ -20,6 +26,7 @@ import com.project.therollemissionapp.util.*
 import com.project.therollamissionapp.util.mock
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.hamcrest.Matchers
+import org.hamcrest.Matchers.allOf
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -43,7 +50,7 @@ import org.robolectric.annotation.TextLayoutMode
 class RegistrationFragmentTest {
     @Rule
     @JvmField
-    val activityRule = ActivityTestRule(SingleFragmentActivity::class.java, true, true)
+    val activityRule = IntentsTestRule(SingleFragmentActivity::class.java, true, true)
 
     private val navController = mock<NavController>()
     private lateinit var viewModel: RegistrationViewModel
@@ -83,5 +90,39 @@ class RegistrationFragmentTest {
         onView(withId(R.id.button_birthday)).perform(click())
         onView(withClassName(Matchers.equalTo(DatePicker::class.java.name))).perform(PickerActions.setDate(1985, 5, 5))
         onView(withText("OK")).perform(click());
+
+        onView(withId(R.id.next))
+            .perform(click())
+
+        onView(withId(R.id.edit_city_before_homeless))
+            .perform(ViewActions.typeText("Rolla"))
+        onView(withId(R.id.radio_reason_relationship)).perform(click())
+
+        onView(withId(R.id.next))
+            .perform(click())
+
+        onView(withId(R.id.radio_homeless_1to3month)).perform(click())
+        onView(withId(R.id.radio_violence_n)).perform(click())
+        onView(withId(R.id.radio_veteran_n)).perform(click())
+        onView(withId(R.id.radio_offender_y)).perform(click())
+
+        onView(withId(R.id.next))
+            .perform(click())
+
+       val expectedIntent = allOf(hasAction(MediaStore.ACTION_IMAGE_CAPTURE))
+
+        intending(expectedIntent)
+            .respondWith(Instrumentation.ActivityResult(Activity.RESULT_OK, Intent()))
+
+        onView(withId(R.id.take_picture_button))
+            .perform(click())
+
+        onView(withId(R.id.next))
+            .perform(click())
+
+        onView(withId(R.id.checkbox_consent_1)).perform(click())
+        onView(withId(R.id.checkbox_consent_2)).perform(click())
+        onView(withId(R.id.checkbox_consent_3)).perform(click())
+        onView(withId(R.id.sp)).perform(ViewActions.swipeRight())
     }
 }
