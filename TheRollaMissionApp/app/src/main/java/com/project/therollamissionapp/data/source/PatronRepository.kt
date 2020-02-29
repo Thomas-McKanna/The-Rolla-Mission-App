@@ -9,6 +9,8 @@ interface PatronRepository {
 
     suspend fun insertPatron(patron: Patron)
 
+    suspend fun getPatronsWithName(name: String): Result<List<Patron>>
+
     suspend fun checkIn(patron: Patron): Result<Unit>
 
     suspend fun deletePatron(patron: Patron)

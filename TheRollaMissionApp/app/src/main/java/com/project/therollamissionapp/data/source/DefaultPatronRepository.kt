@@ -31,6 +31,15 @@ class DefaultPatronRepository (
         return Result.Success<Unit>(Unit)
     }
 
+    override suspend fun getPatronsWithName(name: String): Result<List<Patron>> {
+        if (name.isEmpty()) {
+            return Result.Success(emptyList())
+        } else {
+            val patrons = patronDao.getPatronsByName("${name}%")
+            return Result.Success(patrons)
+        }
+    }
+
     override suspend fun insertPatron(patron: Patron) {
         patronDao.insertPatron(patron)
     }
