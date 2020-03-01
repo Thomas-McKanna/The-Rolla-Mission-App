@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.FragmentCheckInSuccessBinding
-import kotlinx.coroutines.*
 
 class CheckInSuccessFragment : Fragment() {
     lateinit var binding: FragmentCheckInSuccessBinding
@@ -26,16 +25,6 @@ class CheckInSuccessFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        CoroutineScope(Dispatchers.IO).launch {
-            // Automatically return to start screen after 10 seconds
-            returnToStartAfterDelay(10000)
-        }
-
         return binding.root
-    }
-
-    private suspend fun returnToStartAfterDelay(timeMillis: Long) {
-        delay(timeMillis)
-        binding.buttonReturnStart.callOnClick()
     }
 }

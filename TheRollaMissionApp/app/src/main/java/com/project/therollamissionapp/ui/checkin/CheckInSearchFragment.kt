@@ -18,6 +18,7 @@ import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.FragmentSearchBinding
 import com.project.therollamissionapp.di.Injectable
 import com.project.therollamissionapp.ui.common.Helpers.hideKeyboard
+import com.project.therollamissionapp.ui.main.WelcomeFragmentDirections
 import javax.inject.Inject
 
 class CheckInSearchFragment : Fragment(), Injectable {
@@ -71,7 +72,9 @@ class CheckInSearchFragment : Fragment(), Injectable {
             findNavController().navigateUp()
         })
         viewModel.patronCheckInEvent.observe(viewLifecycleOwner, Observer {
-            val action = CheckInSearchFragmentDirections.actionSearchFragmentToCheckInSuccessFragment()
+            val navController = findNavController()
+            navController.popBackStack(R.id.welcomeFragment, false)
+            val action = WelcomeFragmentDirections.actionWelcomeFragmentToCheckInSuccessFragment()
             findNavController().navigate(action)
         })
         viewModel.checkInErrorEvent.observe(viewLifecycleOwner, Observer {

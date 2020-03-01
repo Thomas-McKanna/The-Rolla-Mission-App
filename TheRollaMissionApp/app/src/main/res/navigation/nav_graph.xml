@@ -18,17 +18,16 @@
         <action
             android:id="@+id/action_welcomeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_checkInSuccessFragment"
+            app:destination="@id/checkInSuccessFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.project.therollamissionapp.ui.checkin.CheckInSearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_searchFragment_to_checkInSuccessFragment"
-            app:destination="@id/checkInSuccessFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/registrationFragment"
