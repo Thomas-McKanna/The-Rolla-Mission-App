@@ -11,6 +11,7 @@ import com.project.therollamissionapp.R
 import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.source.PatronRepository
 import com.project.therollamissionapp.data.Result
+import com.project.therollamissionapp.ui.common.DialogUtil
 import com.project.therollamissionapp.ui.registration.Helpers.getGender
 import com.project.therollamissionapp.ui.registration.Helpers.getOffender
 import com.project.therollamissionapp.ui.registration.Helpers.getReasonRolla
@@ -149,23 +150,13 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun getErrorDialogue(context: Context?): AlertDialog? {
-        val builder: AlertDialog.Builder? = context?.let {
-            AlertDialog.Builder(it)
-        }
-        builder?.apply {
-            setIcon(R.drawable.ic_warning)
-            setMessage(R.string.registraton_error)
-            setTitle(R.string.error)
-            setPositiveButton(R.string.retry,
-                DialogInterface.OnClickListener { dialog, id ->
-                    savePatron()
-                })
-            setNegativeButton(R.string.cancel,
-                DialogInterface.OnClickListener { dialog, id ->
-                    _registrationCanceledEvent.value = Event(Unit)
-                })
-        }
-        return builder?.create()
+        return DialogUtil.makeErrorDialogue(context,
+            onPositive = DialogInterface.OnClickListener { dialog, id ->
+                savePatron()
+            },
+            onNegative = DialogInterface.OnClickListener { dialog, id ->
+                _registrationCanceledEvent.value = Event(Unit)
+            })
     }
 
     private fun savePatron() {

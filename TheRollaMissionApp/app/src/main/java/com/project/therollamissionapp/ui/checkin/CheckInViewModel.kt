@@ -1,5 +1,8 @@
 package com.project.therollamissionapp.ui.checkin
 
+import android.content.Context
+import android.content.DialogInterface
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +11,7 @@ import com.project.therollamissionapp.Event
 import com.project.therollamissionapp.data.Patron
 import com.project.therollamissionapp.data.Result
 import com.project.therollamissionapp.data.source.PatronRepository
+import com.project.therollamissionapp.ui.common.DialogUtil
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,6 +34,8 @@ class CheckInViewModel @Inject constructor(
 
     private val _checkInErrorEvent = MutableLiveData<Event<Unit>>()
     val checkInErrorEvent: LiveData<Event<Unit>> = _checkInErrorEvent
+
+    lateinit var lastAttemptedCheckIn: Patron
 
     fun onQueryChanged() {
         _loadingStatus.value = Result.Loading
@@ -56,8 +62,18 @@ class CheckInViewModel @Inject constructor(
             if (result is Result.Success) {
                 _patronCheckInEvent.value = Event(Unit)
             } else {
+                lastAttemptedCheckIn = patron
                 _checkInErrorEvent.value = Event(Unit)
             }
         }
+    }
+
+    fun getErrorDialogue(context: Context?): AlertDialog? {
+        return DialogUtil.makeErrorDialogue(context,
+            onPositive = DialogInterface.OnClickListener() {dialog, id ->
+                lastAttemptedCheckIn?.apply { checkIn(this) }
+            },
+            onNegative = null
+        )
     }
 }

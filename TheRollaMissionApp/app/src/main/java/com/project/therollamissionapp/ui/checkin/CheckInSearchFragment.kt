@@ -73,7 +73,7 @@ class CheckInSearchFragment : Fragment(), Injectable {
             findNavController().navigate(action)
         })
         viewModel.checkInErrorEvent.observe(viewLifecycleOwner, Observer {
-            // TODO
+            viewModel.getErrorDialogue(context)?.show()
         })
     }
 
