@@ -137,7 +137,7 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun setImageUri(stringUri: String) {
-        setValueIfDifferent(_imageUri, stringUri)
+        _imageUri.value = stringUri
     }
 
     fun onSignedSignature(sp: SignaturePad) {

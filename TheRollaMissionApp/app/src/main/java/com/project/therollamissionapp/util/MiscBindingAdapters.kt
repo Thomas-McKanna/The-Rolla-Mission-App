@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.signature.ObjectKey
 import com.project.therollamissionapp.data.Result
 import java.io.File
 
@@ -16,6 +17,8 @@ object MiscBindingAdapters {
         path?.apply {
             Glide.with(view.context)
                 .load(File(this))
+                // Always update image (do not cache)
+                .signature(ObjectKey(System.currentTimeMillis().toString()))
                 .into(view)
         }
     }
