@@ -1,7 +1,6 @@
 package com.project.therollamissionapp.ui.registration
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,7 +10,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.core.content.FileProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -22,8 +20,8 @@ import com.project.therollamissionapp.EventObserver
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.*
 import com.project.therollamissionapp.di.Injectable
+import com.project.therollamissionapp.ui.common.Helpers.hideKeyboard
 import com.project.therollamissionapp.util.setupSnackbar
-import dagger.android.support.AndroidSupportInjection
 import java.io.File
 import java.io.IOException
 import javax.inject.Inject
@@ -145,15 +143,8 @@ class RegistrationFragment : Fragment(), Injectable {
 
     private fun setupHideKeyboardEventListener() {
         viewModel.hideKeyboardEvent.observe(viewLifecycleOwner, EventObserver{
-            hideKeyboard()
+            hideKeyboard(view)
         })
-    }
-
-    private fun hideKeyboard() {
-        val imm = activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        view?.apply {
-            imm.hideSoftInputFromWindow(windowToken, 0)
-        }
     }
 
     private fun setupErrorDialogueEvent() {

@@ -12,14 +12,13 @@ import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.source.PatronRepository
 import com.project.therollamissionapp.data.Result
 import com.project.therollamissionapp.ui.common.DialogUtil
-import com.project.therollamissionapp.ui.registration.Helpers.getGender
-import com.project.therollamissionapp.ui.registration.Helpers.getOffender
-import com.project.therollamissionapp.ui.registration.Helpers.getReasonRolla
-import com.project.therollamissionapp.ui.registration.Helpers.getTimeHomeless
-import com.project.therollamissionapp.ui.registration.Helpers.getTitle
-import com.project.therollamissionapp.ui.registration.Helpers.getVeteran
-import com.project.therollamissionapp.ui.registration.Helpers.getViolence
-import com.project.therollamissionapp.ui.registration.Helpers.setValueIfDifferent
+import com.project.therollamissionapp.ui.common.Helpers.setValueIfDifferent
+import com.project.therollamissionapp.ui.registration.IdMappings.getGender
+import com.project.therollamissionapp.ui.registration.IdMappings.getOffender
+import com.project.therollamissionapp.ui.registration.IdMappings.getReasonRolla
+import com.project.therollamissionapp.ui.registration.IdMappings.getTimeHomeless
+import com.project.therollamissionapp.ui.registration.IdMappings.getVeteran
+import com.project.therollamissionapp.ui.registration.IdMappings.getViolence
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -201,5 +200,9 @@ class RegistrationViewModel @Inject constructor(
     private fun updateTitle() {
         triggerHideKeyboardEvent()
         _title.value = getTitle(index, sections)
+    }
+
+    private fun getTitle(index: Int, sections: List<Int>): String{
+        return "Registration Part ${index + 1} of ${sections.size}"
     }
 }

@@ -3,7 +3,7 @@ package com.project.therollamissionapp.ui.registration
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.project.therollamissionapp.CoroutineTestRule
 import com.project.therollamissionapp.R
-import com.project.therollamissionapp.data.source.FakePatronRepository
+import com.project.therollamissionapp.util.FakePatronRepository
 import getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.hamcrest.CoreMatchers.*

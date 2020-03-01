@@ -72,11 +72,11 @@ class MissionDbTest {
         patronDao.insertPatron(patron2)
         patronDao.insertPatron(patron3)
 
-        var patrons = patronDao.getPatronsByName("a%").getOrAwaitValue()
+        var patrons = patronDao.getPatronsByName("a%")
         assertThat(patrons.size, `is`(3)) // should match all 3
-        patrons = patronDao.getPatronsByName("ab%").getOrAwaitValue()
+        patrons = patronDao.getPatronsByName("ab%")
         assertThat(patrons.size, `is`(2)) // should match 2
-        patrons = patronDao.getPatronsByName("ab cd%").getOrAwaitValue()
+        patrons = patronDao.getPatronsByName("ab cd%")
         assertThat(patrons.size, `is`(1)) // should match 1
     }
 

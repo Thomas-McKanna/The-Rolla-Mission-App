@@ -17,6 +17,7 @@ import com.project.therollamissionapp.AppExecutors
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.FragmentSearchBinding
 import com.project.therollamissionapp.di.Injectable
+import com.project.therollamissionapp.ui.common.Helpers.hideKeyboard
 import javax.inject.Inject
 
 class CheckInSearchFragment : Fragment(), Injectable {
@@ -53,6 +54,7 @@ class CheckInSearchFragment : Fragment(), Injectable {
         val pAdapter = PatronListAdapter(
             appExecutors = appExecutors
         ) { patron ->
+            hideKeyboard(view)
             CheckInConfirmationDialogue(
                 patron = patron,
                 positiveListener = DialogInterface.OnClickListener() { dialog, id ->
@@ -66,7 +68,7 @@ class CheckInSearchFragment : Fragment(), Injectable {
 
     fun setupViewModel() {
         viewModel.cancelEvent.observe(viewLifecycleOwner, Observer {
-            findNavController()?.navigateUp()
+            findNavController().navigateUp()
         })
         viewModel.patronCheckInEvent.observe(viewLifecycleOwner, Observer {
             val action = CheckInSearchFragmentDirections.actionSearchFragmentToCheckInSuccessFragment()

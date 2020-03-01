@@ -20,7 +20,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.project.therollamissionapp.R
-import com.project.therollamissionapp.data.source.local.FakePatronRepository
+import com.project.therollamissionapp.util.FakePatronRepository
 import com.project.therollamissionapp.testing.SingleFragmentActivity
 import com.project.therollemissionapp.util.*
 import com.project.therollamissionapp.util.mock
