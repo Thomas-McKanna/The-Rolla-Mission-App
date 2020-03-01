@@ -21,8 +21,7 @@ class CheckInSuccessFragment : Fragment() {
         binding = FragmentCheckInSuccessBinding.bind(root)
 
         binding.buttonReturnStart.setOnClickListener {
-            val action = CheckInSuccessFragmentDirections.actionGlobalWelcomeFragment()
-            findNavController().navigate(action)
+            findNavController().popBackStack()
         }
 
         return binding.root

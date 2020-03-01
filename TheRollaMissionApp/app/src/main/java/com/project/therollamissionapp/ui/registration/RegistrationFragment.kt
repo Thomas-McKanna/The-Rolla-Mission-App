@@ -14,6 +14,7 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.project.therollamissionapp.EventObserver
 
@@ -21,6 +22,7 @@ import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.*
 import com.project.therollamissionapp.di.Injectable
 import com.project.therollamissionapp.ui.common.Helpers.hideKeyboard
+import com.project.therollamissionapp.ui.main.WelcomeFragmentDirections
 import com.project.therollamissionapp.util.setupSnackbar
 import java.io.File
 import java.io.IOException
@@ -74,8 +76,10 @@ class RegistrationFragment : Fragment(), Injectable {
             setContent(it)
         })
         viewModel.patronCreatedEvent.observe(viewLifecycleOwner, EventObserver {
-            val action = RegistrationFragmentDirections.actionRegistrationFragmentToRegistrationSuccessFragment()
-            view!!.findNavController().navigate(action)
+            val navController = findNavController()
+            navController.popBackStack(R.id.welcomeFragment, false)
+            val action = WelcomeFragmentDirections.actionWelcomeFragmentToRegistrationSuccessFragment()
+            navController.navigate(action)
         })
         viewModel.registrationCanceledEvent.observe(viewLifecycleOwner, EventObserver {
             view!!.findNavController().navigateUp()

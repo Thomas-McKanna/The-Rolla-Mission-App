@@ -5,8 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/welcomeFragment">
 
-    <action android:id="@+id/action_global_welcomeFragment" app:destination="@id/welcomeFragment"/>
-
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.project.therollamissionapp.ui.main.WelcomeFragment"
@@ -21,6 +19,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_checkInSuccessFragment"
             app:destination="@id/checkInSuccessFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_registrationSuccessFragment"
+            app:destination="@id/registrationSuccessFragment" />
     </fragment>
 
     <fragment
@@ -33,11 +34,7 @@
         android:id="@+id/registrationFragment"
         android:name="com.project.therollamissionapp.ui.registration.RegistrationFragment"
         android:label="RegistrationFragment"
-        tools:layout="@layout/fragment_registration" >
-        <action
-            android:id="@+id/action_registrationFragment_to_registrationSuccessFragment"
-            app:destination="@id/registrationSuccessFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_registration" />
 
     <fragment
         android:id="@+id/registrationSuccessFragment"
