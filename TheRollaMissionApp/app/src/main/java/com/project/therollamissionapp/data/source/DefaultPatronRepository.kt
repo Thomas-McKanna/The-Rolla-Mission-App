@@ -15,7 +15,7 @@ class DefaultPatronRepository (
     constructor(patronDao: PatronDao) : this(patronDao, Dispatchers.IO)
 
     override suspend fun insertPatron(extendedPatron: ExtendedPatron): Result<Unit> {
-        delay(3000) // TODO: currently simulating upload time to demonstrate progress bar
+        delay(3000) // simulate uploade time
         withContext(ioDispatcher) {
             // TODO:
             // (1) Attempt to upload ExtendedPatron to external web service.
@@ -46,6 +46,7 @@ class DefaultPatronRepository (
 
     override suspend fun checkIn(patron: Patron): Result<Unit> {
         // TODO: Attempt to upload checkin instance to external web service.
+        delay(2000) // simulate upload time
         return Result.Success(Unit)
     }
 

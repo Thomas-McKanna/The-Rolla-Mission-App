@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.therollamissionapp.AppExecutors
 
@@ -55,7 +56,7 @@ class CheckInSearchFragment : Fragment(), Injectable {
             CheckInConfirmationDialogue(
                 patron = patron,
                 positiveListener = DialogInterface.OnClickListener() { dialog, id ->
-                    // TODO: do checkin
+                    viewModel.checkIn(patron)
                 }
             ).show(requireActivity().supportFragmentManager, "confirmation")
         }
@@ -65,7 +66,14 @@ class CheckInSearchFragment : Fragment(), Injectable {
 
     fun setupViewModel() {
         viewModel.cancelEvent.observe(viewLifecycleOwner, Observer {
-            view?.findNavController()?.navigateUp()
+            findNavController()?.navigateUp()
+        })
+        viewModel.patronCheckInEvent.observe(viewLifecycleOwner, Observer {
+            val action = CheckInSearchFragmentDirections.actionSearchFragmentToCheckInSuccessFragment()
+            findNavController().navigate(action)
+        })
+        viewModel.checkInErrorEvent.observe(viewLifecycleOwner, Observer {
+            // TODO
         })
     }
 

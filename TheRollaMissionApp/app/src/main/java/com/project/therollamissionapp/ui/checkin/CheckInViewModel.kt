@@ -25,6 +25,12 @@ class CheckInViewModel @Inject constructor(
     private val _loadingStatus = MutableLiveData<Result<Unit>>()
     val loadingStatus: LiveData<Result<Unit>> = _loadingStatus
 
+    private val _patronCheckInEvent = MutableLiveData<Event<Unit>>()
+    val patronCheckInEvent: LiveData<Event<Unit>> = _patronCheckInEvent
+
+    private val _checkInErrorEvent = MutableLiveData<Event<Unit>>()
+    val checkInErrorEvent: LiveData<Event<Unit>> = _checkInErrorEvent
+
     fun onQueryChanged() {
         _loadingStatus.value = Result.Loading
         query.value?.apply query@ {
@@ -40,5 +46,18 @@ class CheckInViewModel @Inject constructor(
 
     fun cancelCheckIn() {
         _cancelEvent.value = Event(Unit)
+    }
+
+    fun checkIn(patron: Patron) {
+        _loadingStatus.value = Result.Loading
+        viewModelScope.launch {
+            val result = patronRepository.checkIn(patron)
+            _loadingStatus.value = null
+            if (result is Result.Success) {
+                _patronCheckInEvent.value = Event(Unit)
+            } else {
+                _checkInErrorEvent.value = Event(Unit)
+            }
+        }
     }
 }
