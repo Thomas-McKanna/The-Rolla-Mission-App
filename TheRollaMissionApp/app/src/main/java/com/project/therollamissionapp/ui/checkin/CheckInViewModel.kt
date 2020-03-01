@@ -35,7 +35,7 @@ class CheckInViewModel @Inject constructor(
     private val _checkInErrorEvent = MutableLiveData<Event<Unit>>()
     val checkInErrorEvent: LiveData<Event<Unit>> = _checkInErrorEvent
 
-    lateinit var lastAttemptedCheckIn: Patron
+    var lastAttemptedCheckIn: Patron? = null
 
     fun onQueryChanged() {
         _loadingStatus.value = Result.Loading
