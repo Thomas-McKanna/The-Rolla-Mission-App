@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/first_name"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +30,7 @@
             android:layout_marginStart="@dimen/medium_margin"
             android:inputType="textCapWords"
             android:text="@={viewmodel.firstName}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_first_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_first_name" />
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_margin"
             android:text="@string/last_name"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_first_name" />
 
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
             android:text="@={viewmodel.lastName}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_last_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/edit_first_name" />
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_margin"
             android:text="@string/date_of_birth"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_last_name" />
 
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
             android:text="@{viewmodel.birthDate}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_dob_label"
             app:layout_constraintStart_toEndOf="@id/text_dob_label"
             tools:text="MM/DD/YYYY" />
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
             android:text="@string/pick_birthdate"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:onClick="@{() -> viewmodel.startBirthDateDialogue()}"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_dob"
             app:layout_constraintStart_toEndOf="@+id/text_dob" />
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_margin"
             android:text="@string/phone_num"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_dob_label" />
 
@@ -105,7 +105,7 @@
             android:layout_marginStart="@dimen/medium_margin"
             android:inputType="phone"
             android:text="@={viewmodel.contactNumber}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_phone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_phone" />
@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
             android:text="@string/phone_num_cont"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_phone" />
 
@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
             android:text="@string/gender"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone_num_cont_text" />
 
@@ -135,7 +135,7 @@
             android:id="@+id/radio_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginStart="@dimen/medium_margin"
             android:orientation="vertical"
             android:checkedButton="@={viewmodel.gender}"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,14 +146,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/male"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
             <RadioButton
                 android:id="@+id/radio_gender_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/female"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
 
             <RadioButton
@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/other"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
 
             <RadioButton
@@ -169,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pref_not_answer"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
         </RadioGroup>
 

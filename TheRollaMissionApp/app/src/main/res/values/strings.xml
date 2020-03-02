@@ -11,7 +11,7 @@
     <string name="first_time_message">First time here?</string>
     <string name="welcome_message">Welcome to The Rolla Mission!</string>
     <string name="checkin">Check-In</string>
-    <string name="touch_to_register">Touch here to register</string>
+    <string name="tap_to_register">Tap here to register</string>
     <string name="homeless_question">How long have you been homeless?</string>
     <string name="domestic_violence_question">Are you fleeing domestic violence?</string>
     <string name="veteran_question">Are you a veteran?</string>
@@ -24,7 +24,7 @@
     <string name="radio_6to12_months">6 &#8211; 12 months</string>
     <string name="radio_1to2_years">1 &#8211; 2 years</string>
     <string name="radio_2plus_years">2+ years</string>
-    <string name="picture_instructions">We need to take a picture of you for our records. When you touch the \"Take Picture\" button below, a camera app will open. Please position the camera directly in front of you and then press the white circle button at the bottom of the screen to take your picture.</string>
+    <string name="picture_instructions">We need to take a picture of you for our records. When you tap the \"Take Picture\" button below, a camera app will open. Please position the camera directly in front of you and then press the white circle button at the bottom of the screen to take your picture.</string>
     <string name="post_picture_instructions">Here is the picture you took. If it is OK, then press the \"Next\" button.</string>
     <string name="take_picture_again">Take picture again</string>
     <string name="take_picture_button">Take Picture</string>
@@ -59,7 +59,7 @@
     <string name="other_gender">Other</string>
     <string name="pref_not_answer">Prefer not to answer</string>
     <string name="congrats">Congratulations!</string>
-    <string name="description">You are now registered with The Rolla Mission as a patron! You still need to check-in for tonight. To check in, touch the button below. On the next screen, search for your name and then touch your picture.</string>
+    <string name="description">You are now registered with The Rolla Mission as a patron! You still need to check in for tonight. To check in, tap the button below. On the next screen, search for your name and then tap on your name.</string>
     <string name="error_message">The intended action was not successful. Please make sure that you are connected to the internet. If the problem persists, contact the developers of this application.</string>
     <string name="cancel">Cancel</string>
     <string name="retry">Retry</string>

@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/consent_directions"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"/>
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/signature_label"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
             <com.github.gcacace.signaturepad.views.SignaturePad
                 android:id="@+id/sp"
@@ -81,7 +81,7 @@
                 android:onClick="@{() -> sp.clear()}"
                 android:layout_marginTop="@dimen/small_margin"
                 android:text="@string/clear_signature"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
         </LinearLayout>
 
