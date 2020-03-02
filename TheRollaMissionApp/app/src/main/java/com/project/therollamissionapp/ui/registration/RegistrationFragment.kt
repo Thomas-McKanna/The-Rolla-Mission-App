@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.telephony.PhoneNumberFormattingTextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -89,7 +90,10 @@ class RegistrationFragment : Fragment(), Injectable {
     private fun setContent(layoutId: Int) {
         val frameRoot = layoutInflater.inflate(layoutId, binding.content, false)
         val regBinding = when (layoutId) {
-            R.layout.reg_part1 -> RegPart1Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
+            R.layout.reg_part1 -> RegPart1Binding.bind(frameRoot).apply {
+                this.viewmodel = viewModel
+                editPhone.addTextChangedListener(PhoneNumberFormattingTextWatcher())
+            }
             R.layout.reg_part2 -> RegPart2Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
             R.layout.reg_part3 -> RegPart3Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
             R.layout.reg_part4 -> RegPart4Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
