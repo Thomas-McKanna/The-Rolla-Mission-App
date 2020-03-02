@@ -26,25 +26,16 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/text_confirmation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/medium_margin"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-            android:text="@string/confirmation"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image_patron"/>
-
-        <TextView
             android:id="@+id/text_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
             android:text="@{String.format(`%s %s %s`, @string/checkin_as, patron.firstName, patron.lastName)}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-            app:layout_constraintStart_toStartOf="@id/text_confirmation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_confirmation"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_patron"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="You are about to check in as Tim Heidecker" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
