@@ -36,7 +36,7 @@
             loading="@{viewmodel.uploadPatronResult}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/back"/>
+            app:layout_constraintTop_toBottomOf="@id/button_hide_keyboard"/>
 
         <Button
             android:id="@+id/back"
@@ -68,6 +68,16 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/next"
             app:layout_constraintEnd_toStartOf="@id/next"
             app:layout_constraintStart_toEndOf="@id/back" />
+
+        <Button
+            android:id="@+id/button_hide_keyboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_margin"
+            android:text="@string/hide_keyboard"
+            android:onClick="@{() -> viewmodel.triggerHideKeyboardEvent()}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintTop_toBottomOf="@id/back" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -151,7 +151,7 @@ class RegistrationFragment : Fragment(), Injectable {
 
     private fun setupHideKeyboardEventListener() {
         viewModel.hideKeyboardEvent.observe(viewLifecycleOwner, EventObserver{
-            hideKeyboard(view)
+            hideKeyboard(requireActivity())
         })
     }
 

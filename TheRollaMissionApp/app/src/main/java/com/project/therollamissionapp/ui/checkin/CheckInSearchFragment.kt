@@ -55,7 +55,7 @@ class CheckInSearchFragment : Fragment(), Injectable {
         val pAdapter = PatronListAdapter(
             appExecutors = appExecutors
         ) { patron ->
-            hideKeyboard(view)
+            hideKeyboard(requireActivity())
             CheckInConfirmationDialogue(
                 patron = patron,
                 positiveListener = DialogInterface.OnClickListener() { dialog, id ->

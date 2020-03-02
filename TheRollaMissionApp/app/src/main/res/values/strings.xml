@@ -64,4 +64,5 @@
     <string name="cancel">Cancel</string>
     <string name="retry">Retry</string>
     <string name="error">Error</string>
+    <string name="hide_keyboard">Hide Keyboard</string>
 </resources>

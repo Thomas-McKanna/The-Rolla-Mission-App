@@ -12,11 +12,12 @@ object Helpers {
         }
     }
 
-    fun hideKeyboard(view: View?) {
-        val context = view?.context
-        val imm = context?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        view?.apply {
-            imm.hideSoftInputFromWindow(windowToken, 0)
+    fun hideKeyboard(activity: Activity) {
+        val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        var view = activity.currentFocus
+        if (view == null) {
+            view = View(activity)
         }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
