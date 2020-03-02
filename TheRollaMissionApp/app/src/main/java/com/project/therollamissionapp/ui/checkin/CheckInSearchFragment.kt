@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.therollamissionapp.AppExecutors
 
@@ -87,5 +88,7 @@ class CheckInSearchFragment : Fragment(), Injectable {
             adapter.submitList(it)
         })
         binding.patronList.layoutManager = LinearLayoutManager(context)
+        binding.patronList.addItemDecoration(
+            DividerItemDecoration(binding.patronList.context, DividerItemDecoration.VERTICAL))
     }
 }
