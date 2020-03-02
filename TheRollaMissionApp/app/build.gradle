@@ -115,4 +115,6 @@ dependencies {
 
     implementation "androidx.fragment:fragment-testing:$fragmentVersion"
     implementation "androidx.fragment:fragment:$fragmentVersion"
+
+    implementation "com.github.Ibotta:Supported-Picker-Dialogs:$datePickerVersion"
 }

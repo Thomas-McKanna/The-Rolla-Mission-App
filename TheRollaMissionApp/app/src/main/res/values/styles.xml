@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SpinnerDatePickerDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <!-- android:datePickerStyle was not added until API 21 -->
+        <item name="android:datePickerStyle">@style/DatePickerStyle</item>
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+    </style>
+
+    <style name="DatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+    </style>
+
 </resources>

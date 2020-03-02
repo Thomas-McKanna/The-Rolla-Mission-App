@@ -20,7 +20,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -47,6 +47,7 @@ ext {
     appCompatVersion = '1.1.0'
     coroutinesVersion = '1.3.0-M1'
     dagger_version = '2.26'
+    datePickerVersion = '1.0.0'
     espressoVersion = '3.2.0'
     fragmentVersion = '1.2.0-rc02'
     fragmentKtxVersion = '1.2.0'
