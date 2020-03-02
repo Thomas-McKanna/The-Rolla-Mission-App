@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
             android:hint="@string/what_is_name"
-            android:inputType="textVisiblePassword"
+            android:inputType="textVisiblePassword|textCapWords"
             android:drawableLeft="@drawable/ic_search"
             android:text="@={viewmodel.query}"
             android:afterTextChanged="@{() -> viewmodel.onQueryChanged()}"
