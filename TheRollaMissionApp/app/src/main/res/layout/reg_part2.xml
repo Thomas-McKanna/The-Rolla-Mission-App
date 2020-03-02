@@ -29,10 +29,10 @@
                 android:id="@+id/edit_city_before_homeless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textCapWords"
                 android:text="@={viewmodel.city}"
                 android:hint="@string/hint_city_name"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-                android:inputType="text" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
         </LinearLayout>
 
@@ -132,13 +132,12 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
             <EditText
-
                 android:id="@+id/edit_other_explanation"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@={viewmodel.otherReason}"
                 android:hint="@string/hint_other_reason"
-                android:inputType="textMultiLine"
+                android:inputType="textMultiLine|textCapSentences"
                 android:gravity="start"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
