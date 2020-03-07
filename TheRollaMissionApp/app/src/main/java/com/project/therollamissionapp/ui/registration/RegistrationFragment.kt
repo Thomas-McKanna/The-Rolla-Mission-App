@@ -64,6 +64,7 @@ class RegistrationFragment : Fragment(), Injectable {
         setupImageEventListener()
         setupHideKeyboardEventListener()
         setupErrorDialogueEvent()
+        viewModel.refresh()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

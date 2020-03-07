@@ -75,9 +75,7 @@ class RegistrationViewModel @Inject constructor(
     private val _patronCreatedEvent = MutableLiveData<Event<Unit>>()
     val patronCreatedEvent: LiveData<Event<Unit>> = _patronCreatedEvent
 
-    private val _contentChangedEvent = MutableLiveData<Event<Int>>().apply {
-        postValue(Event(sections.get(index)))
-    }
+    private val _contentChangedEvent = MutableLiveData<Event<Int>>()
     val contentChangedEvent: LiveData<Event<Int>> = _contentChangedEvent
 
     private val _registrationCanceledEvent = MutableLiveData<Event<Unit>>()
@@ -95,13 +93,17 @@ class RegistrationViewModel @Inject constructor(
     private val _errorDialogueEvent = MutableLiveData<Event<Unit>>()
     val errorDialogueEvent: LiveData<Event<Unit>> = _errorDialogueEvent
 
+    fun refresh() {
+        _contentChangedEvent.value = Event(sections.get(index))
+    }
+
     fun backPressed() {
         if (index > 0) {
             index -= 1
         } else {
             _registrationCanceledEvent.value = Event(Unit)
         }
-        _contentChangedEvent.value = Event(sections.get(index))
+        refresh()
         updateTitle()
     }
 
@@ -114,7 +116,7 @@ class RegistrationViewModel @Inject constructor(
                     savePatron()
                 }
             } else {
-                _contentChangedEvent.value = Event(sections.get(index))
+                refresh()
             }
         } else {
             _snackbarText.value = Event(R.string.field_incomplete)
