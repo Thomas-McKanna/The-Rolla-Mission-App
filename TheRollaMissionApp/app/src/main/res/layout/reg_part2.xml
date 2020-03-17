@@ -22,8 +22,9 @@
                 android:id="@+id/text_city_before_homeless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/city_residence"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                android:text="@string/city_residence" />
+                style="@style/TextAppearance.AppCompat.Headline1"/>
 
             <EditText
                 android:id="@+id/edit_city_before_homeless"
@@ -32,7 +33,8 @@
                 android:inputType="textCapWords"
                 android:text="@={viewmodel.city}"
                 android:hint="@string/hint_city_name"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Body1"/>
 
         </LinearLayout>
 
@@ -47,7 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/reason_for_coming"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Headline1"/>
 
             <RadioGroup
                 android:id="@+id/radio_reason_rolla"
@@ -55,42 +58,48 @@
                 android:layout_height="wrap_content"
                 android:checkedButton="@={viewmodel.reason}"
                 android:layout_marginStart="@dimen/medium_margin"
-                android:orientation="vertical" >
+                android:orientation="vertical">
+
 
                     <RadioButton
                         android:id="@+id/radio_reason_family"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/family"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        style="@style/TextAppearance.AppCompat.Body1"/>
 
                     <RadioButton
                         android:id="@+id/radio_reason_work"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/work"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        style="@style/TextAppearance.AppCompat.Body1"/>
 
                     <RadioButton
                         android:id="@+id/radio_reason_school"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/school"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"/>
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        style="@style/TextAppearance.AppCompat.Body1"/>
 
                     <RadioButton
                         android:id="@+id/radio_reason_relationship"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/relationship"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        style="@style/TextAppearance.AppCompat.Body1"/>
 
                     <RadioButton
                         android:id="@+id/radio_reason_hospital"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hospital"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        style="@style/TextAppearance.AppCompat.Body1"/>
 
                     <RadioButton
                         android:id="@+id/radio_reason_substance"
@@ -98,21 +107,24 @@
                         android:layout_height="wrap_content"
                         android:text="@string/substance"
                         android:textAlignment="gravity"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        style="@style/TextAppearance.AppCompat.Body1"/>
 
                     <RadioButton
                         android:id="@+id/radio_reason_mission"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/mission"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        style="@style/TextAppearance.AppCompat.Body1"/>
 
                     <RadioButton
                         android:id="@+id/radio_reason_other"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/other"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        style="@style/TextAppearance.AppCompat.Body1"/>
 
             </RadioGroup>
 
@@ -129,7 +141,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/picked_other"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Headline1"/>
 
             <EditText
                 android:id="@+id/edit_other_explanation"
@@ -139,7 +152,8 @@
                 android:hint="@string/hint_other_reason"
                 android:inputType="textMultiLine|textCapSentences"
                 android:gravity="start"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Body1"/>
 
         </LinearLayout>
 

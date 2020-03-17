@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -16,7 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/consent_directions"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"/>
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            style="@style/TextAppearance.AppCompat.Headline1"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,6 +34,7 @@
                 android:checked="@={viewmodel.consent1}"
                 android:text="@string/consent_1"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Body1"
                 android:gravity="start" />
 
             <CheckBox
@@ -42,6 +45,7 @@
                 android:layout_marginTop="@dimen/medium_margin"
                 android:text="@string/consent_2"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Body1"
                 android:gravity="start" />
 
             <CheckBox
@@ -52,11 +56,12 @@
                 android:layout_marginTop="@dimen/medium_margin"
                 android:text="@string/consent_3"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Body1"
                 android:gravity="start" />
 
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
@@ -66,7 +71,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/signature_label"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Body1"/>
 
             <com.github.gcacace.signaturepad.views.SignaturePad
                 android:id="@+id/sp"
@@ -76,14 +82,20 @@
                 onSigned="@{() -> viewmodel.onSignedSignature(sp)}" />
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sp"
                 android:onClick="@{() -> sp.clear()}"
                 android:layout_marginTop="@dimen/small_margin"
                 android:text="@string/clear_signature"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Headline1"
 
-        </LinearLayout>
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

@@ -23,7 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/homeless_question"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Headline1"/>
 
             <RadioGroup
                 android:id="@+id/radio_homeless"
@@ -37,35 +38,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radio_1to3_months"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
 
                 <RadioButton
                     android:id="@+id/radio_homeless_4to6month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radio_4to6_months"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
 
                 <RadioButton
                     android:id="@+id/radio_homeless_6to12month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radio_6to12_months"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
 
                 <RadioButton
                     android:id="@+id/radio_homeless_1to2year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radio_1to2_years"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
 
                 <RadioButton
                     android:id="@+id/radio_homeless_2plusyear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radio_2plus_years"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
             </RadioGroup>
 
         </LinearLayout>
@@ -82,7 +88,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/domestic_violence_question"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Headline1"/>
 
             <RadioGroup
                 android:id="@+id/radio_violence"
@@ -98,14 +105,16 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/large_margin"
                     android:text="@string/radio_yes"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
 
                 <RadioButton
                     android:id="@+id/radio_violence_n"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radio_no"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
             </RadioGroup>
 
         </LinearLayout>
@@ -122,7 +131,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/veteran_question"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Headline1"/>
 
             <RadioGroup
                 android:id="@+id/radio_veteran"
@@ -138,14 +148,16 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/large_margin"
                     android:text="@string/radio_yes"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
 
                 <RadioButton
                     android:id="@+id/radio_veteran_n"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radio_no"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
             </RadioGroup>
 
         </LinearLayout>
@@ -162,7 +174,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sex_offender_question"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Headline1"/>
 
             <RadioGroup
                 android:id="@+id/radio_offender"
@@ -178,14 +191,16 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/large_margin"
                     android:text="@string/radio_yes"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
 
                 <RadioButton
                     android:id="@+id/radio_offender_n"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radio_no"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    style="@style/TextAppearance.AppCompat.Body1"/>
             </RadioGroup>
 
         </LinearLayout>

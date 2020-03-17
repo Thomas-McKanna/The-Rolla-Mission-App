@@ -4,7 +4,7 @@
     <string name="what_is_name">What is your name?</string>
     <string name="confirmation"><u>Confirmation:</u></string>
     <string name="checkin_as">You are about to check in as </string>
-    <string name="thanks_for_checkin">Thanks for checking in!</string>
+    <string name="thanks_for_checkin">Thanks for Checking In!</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
     <string name="field_incomplete">Please fill out all fields in the form.</string>

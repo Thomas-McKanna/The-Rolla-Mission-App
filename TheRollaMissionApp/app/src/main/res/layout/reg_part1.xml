@@ -21,7 +21,8 @@
             android:text="@string/first_name"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/TextAppearance.AppCompat.Body1"/>
 
         <EditText
             android:id="@+id/edit_first_name"
@@ -33,7 +34,8 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_first_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/text_first_name" />
+            app:layout_constraintStart_toEndOf="@id/text_first_name"
+            style="@style/TextAppearance.AppCompat.Body1"/>
 
         <TextView
             android:id="@+id/text_last_name"
@@ -43,7 +45,8 @@
             android:text="@string/last_name"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_first_name" />
+            app:layout_constraintTop_toBottomOf="@id/text_first_name"
+            style="@style/TextAppearance.AppCompat.Body1"/>
 
         <EditText
             android:id="@+id/edit_last_name"
@@ -54,7 +57,8 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_last_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/edit_first_name" />
+            app:layout_constraintStart_toStartOf="@id/edit_first_name"
+            style="@style/TextAppearance.AppCompat.Body1"/>
 
         <TextView
             android:id="@+id/text_dob_label"
@@ -64,7 +68,8 @@
             android:text="@string/date_of_birth"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_last_name" />
+            app:layout_constraintTop_toBottomOf="@id/text_last_name"
+            style="@style/TextAppearance.AppCompat.Body1"/>
 
         <TextView
             android:id="@+id/text_dob"
@@ -75,7 +80,8 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_dob_label"
             app:layout_constraintStart_toEndOf="@id/text_dob_label"
-            tools:text="MM/DD/YYYY" />
+            tools:text="MM/DD/YYYY"
+            style="@style/TextAppearance.AppCompat.Body1"/>
 
         <Button
             android:id="@+id/button_birthday"
@@ -86,7 +92,9 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:onClick="@{() -> viewmodel.startBirthDateDialogue()}"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_dob"
-            app:layout_constraintStart_toEndOf="@+id/text_dob" />
+            app:layout_constraintStart_toEndOf="@+id/text_dob"
+            style="@style/TextAppearance.AppCompat.Button1"
+            android:background="@drawable/rounded_button"/>
 
         <TextView
             android:id="@+id/text_phone"
@@ -96,7 +104,8 @@
             android:text="@string/phone_num"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_dob_label" />
+            app:layout_constraintTop_toBottomOf="@+id/text_dob_label"
+            style="@style/TextAppearance.AppCompat.Body1"/>
 
         <EditText
             android:id="@+id/edit_phone"
@@ -108,7 +117,8 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_phone"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/text_phone" />
+            app:layout_constraintStart_toEndOf="@+id/text_phone"
+            style="@style/TextAppearance.AppCompat.Body1"/>
 
         <TextView
             android:id="@+id/phone_num_cont_text"
@@ -118,7 +128,8 @@
             android:text="@string/phone_num_cont"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_phone" />
+            app:layout_constraintTop_toBottomOf="@+id/text_phone"
+            style="@style/TextAppearance.AppCompat.Body1"/>
 
 
         <TextView
@@ -129,7 +140,8 @@
             android:text="@string/gender"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone_num_cont_text" />
+            app:layout_constraintTop_toBottomOf="@+id/phone_num_cont_text"
+            style="@style/TextAppearance.AppCompat.Body1"/>
 
         <RadioGroup
             android:id="@+id/radio_gender"
@@ -146,14 +158,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/male"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Body1"/>
 
             <RadioButton
                 android:id="@+id/radio_gender_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/female"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Body1"/>
 
 
             <RadioButton
@@ -161,7 +175,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/other"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Body1"/>
 
 
             <RadioButton
@@ -169,7 +184,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pref_not_answer"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                style="@style/TextAppearance.AppCompat.Body1"/>
 
         </RadioGroup>
 

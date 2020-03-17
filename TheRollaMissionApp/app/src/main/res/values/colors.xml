@@ -2,7 +2,11 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#333399</color>
     <color name="warningRed">#FF5050</color>
     <color name="lightGray">#F3F3F3</color>
+    <color name="black">#000000</color>
+    <color name="RollaMission_grey">#6F6F75</color>
+    <color name="RollaMission_green">#7D955B</color>
+    <color name="white">#FFFFFF</color>
 </resources>
