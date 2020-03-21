@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -83,8 +84,8 @@ class CheckInSearchFragment : Fragment(), Injectable {
         viewModel.patronCheckInEvent.observe(viewLifecycleOwner, Observer {
             val navController = findNavController()
             navController.popBackStack(R.id.welcomeFragment, false)
-            val action = WelcomeFragmentDirections.actionWelcomeFragmentToCheckInSuccessFragment()
-            findNavController().navigate(action)
+            val toast = Toast.makeText(
+                requireContext(), R.string.checkin_recorded, Toast.LENGTH_LONG).show()
         })
         viewModel.checkInErrorEvent.observe(viewLifecycleOwner, Observer {
             viewModel.getErrorDialogue(context)?.show()

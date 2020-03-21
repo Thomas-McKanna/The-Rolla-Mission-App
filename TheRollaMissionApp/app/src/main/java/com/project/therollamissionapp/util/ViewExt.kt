@@ -44,7 +44,7 @@ fun Snackbar.changeFont()
  */
 fun View.showSnackbar(snackbarText: String, timeLength: Int, backgroundTint: Int = -1) {
     val sb = Snackbar.make(this, snackbarText, timeLength)
-        .setBackgroundTint(ContextCompat.getColor(context, R.color.warningRed))
+        .setBackgroundTint(ContextCompat.getColor(context, R.color.error))
     sb.changeFont()
     sb.run {
         show()

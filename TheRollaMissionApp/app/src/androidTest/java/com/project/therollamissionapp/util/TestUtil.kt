@@ -7,15 +7,13 @@ class TestUtil {
     companion object {
         fun makePatron(): Patron {
             return Patron(
-                firstName = listOf("Tim", "Eric", "David", "Steve").random(),
-                lastName = listOf("Heidecker", "Wierheim", "Lieb-Hart", "Brule").random()
+                name = listOf("Tim", "Eric", "David", "Steve").random()
             )
         }
 
         fun makeExtendedPatron(): ExtendedPatron {
             return ExtendedPatron(
-                firstName = listOf("Tim", "Eric", "David", "Steve").random(),
-                lastName = listOf("Heidecker", "Wierheim", "Lieb-Hart", "Brule").random(),
+                name = listOf("Tim", "Eric", "David", "Steve").random(),
                 dob = "02/22/2020",
                 gender = listOf("Male", "Female", "Other", "NA").random(),
                 phone = "(555) 555-5555",

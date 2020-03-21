@@ -13,11 +13,11 @@
         android:layout_height="wrap_content">
 
         <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
             android:textAlignment="center"
-            android:text="@{String.format(`%s %s`, patron.firstName, patron.lastName)}"
+            android:text="@{patron.name}"
             tools:text="Tim Heidecker" />
 
     </FrameLayout>

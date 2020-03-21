@@ -16,12 +16,6 @@
         <action
             android:id="@+id/action_welcomeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_checkInSuccessFragment"
-            app:destination="@id/checkInSuccessFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_registrationSuccessFragment"
-            app:destination="@id/registrationSuccessFragment" />
     </fragment>
 
     <fragment
@@ -35,17 +29,5 @@
         android:name="com.project.therollamissionapp.ui.registration.RegistrationFragment"
         android:label="RegistrationFragment"
         tools:layout="@layout/fragment_registration" />
-
-    <fragment
-        android:id="@+id/registrationSuccessFragment"
-        android:name="com.project.therollamissionapp.ui.registration.RegistrationSuccessFragment"
-        android:label="fragment_registratrion_success"
-        tools:layout="@layout/fragment_registration_success" />
-
-    <fragment
-        android:id="@+id/checkInSuccessFragment"
-        android:name="com.project.therollamissionapp.ui.checkin.CheckInSuccessFragment"
-        android:label="fragment_check_in_success"
-        tools:layout="@layout/fragment_check_in_success" />
 
 </navigation>

@@ -64,19 +64,19 @@ class MissionDbTest {
 
     @Test
     fun insertPatron_findsPatronByName() = runBlockingTest {
-        val patron1: Patron = Patron(firstName = "a", lastName = "")
-        val patron2: Patron = Patron(firstName = "ab", lastName = "c")
-        val patron3: Patron = Patron(firstName = "ab", lastName = "cd")
+        val patron1: Patron = Patron(name = "smith")
+        val patron2: Patron = Patron(name = "michael")
+        val patron3: Patron = Patron(name = "marry")
 
         patronDao.insertPatron(patron1)
         patronDao.insertPatron(patron2)
         patronDao.insertPatron(patron3)
 
-        var patrons = patronDao.getPatronsByName("a%")
+        var patrons = patronDao.getPatronsByName("%m%")
         assertThat(patrons.size, `is`(3)) // should match all 3
-        patrons = patronDao.getPatronsByName("ab%")
+        patrons = patronDao.getPatronsByName("%mi%")
         assertThat(patrons.size, `is`(2)) // should match 2
-        patrons = patronDao.getPatronsByName("ab cd%")
+        patrons = patronDao.getPatronsByName("%smi%")
         assertThat(patrons.size, `is`(1)) // should match 1
     }
 

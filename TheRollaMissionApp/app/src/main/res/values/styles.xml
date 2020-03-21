@@ -6,16 +6,27 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/TextAppearance.MaterialComponents.Body1</item>
+        <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Body1</item>
     </style>
 
     <style name="SpinnerDatePickerDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog">
         <!-- android:datePickerStyle was not added until API 21 -->
         <item name="android:datePickerStyle">@style/DatePickerStyle</item>
         <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+        <item name="android:editTextStyle">@style/TextAppearance.MaterialComponents.Headline4</item>
     </style>
 
     <style name="DatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
         <item name="android:datePickerMode">spinner</item>
+    </style>
+
+    <style name="ThemeOverlay.MaterialComponents.Dialog.LargeTitle" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="android:windowTitleStyle">@style/DialogTitle</item>
+    </style>
+
+    <style name="DialogTitle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

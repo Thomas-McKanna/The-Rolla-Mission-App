@@ -3,11 +3,15 @@ package com.project.therollamissionapp.util
 import android.os.Environment
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.ProgressBar
+import android.widget.RadioGroup
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.signature.ObjectKey
+import com.project.therollamissionapp.R
 import com.project.therollamissionapp.data.Result
+import kotlinx.android.synthetic.main.fragment_registration.view.*
 import java.io.File
 
 object MiscBindingAdapters {

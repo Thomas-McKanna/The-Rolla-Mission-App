@@ -18,19 +18,19 @@
             android:id="@+id/button_return_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="32sp"
             android:text="@string/return_start"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:onClick="@{() -> viewmodel.cancelCheckIn()}"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
+            style="@style/TextAppearance.MaterialComponents.Headline2"
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
             android:hint="@string/what_is_name"
             android:inputType="textVisiblePassword|textCapWords"
-            android:drawableLeft="@drawable/ic_search"
+            android:drawableStart="@drawable/ic_search"
             android:text="@={viewmodel.query}"
             android:afterTextChanged="@{() -> viewmodel.onQueryChanged()}"
             app:iconifiedByDefault="false"

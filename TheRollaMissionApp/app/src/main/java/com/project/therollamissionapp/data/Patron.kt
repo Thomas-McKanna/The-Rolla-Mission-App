@@ -7,7 +7,6 @@ import java.util.*
 
 @Entity(tableName = "patrons")
 data class Patron (
-    @ColumnInfo(name = "firstName") var firstName: String = "",
-    @ColumnInfo(name = "lastName") var lastName: String = "",
+    @ColumnInfo(name = "name") var name: String = "",
     @PrimaryKey @ColumnInfo(name = "patronId") var id: String = UUID.randomUUID().toString()
 )

@@ -14,16 +14,18 @@ class CheckInConfirmationDialogue (
     private val positiveListener: DialogInterface.OnClickListener
 ): DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return activity?.let {
-            val builder = AlertDialog.Builder(it)
+        return requireActivity().let {
+            val builder = AlertDialog.Builder(it,
+                R.style.ThemeOverlay_MaterialComponents_Dialog_LargeTitle)
             val inflater = requireActivity().layoutInflater;
             val root = inflater.inflate(R.layout.dialogue_check_in_confirmation, null)
             val binding = DialogueCheckInConfirmationBinding.bind(root)
             binding.patron = patron
+            builder.setTitle(R.string.is_this_you)
             builder.setView(binding.root)
-                .setPositiveButton(R.string.checkin, positiveListener)
-                .setNegativeButton(R.string.cancel, null)
+                .setPositiveButton(R.string.yes, positiveListener)
+                .setNegativeButton(R.string.no, null)
             builder.create()
-        } ?: throw IllegalStateException("Activity cannot be null")
+        }
     }
 }

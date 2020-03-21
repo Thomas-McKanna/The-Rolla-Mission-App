@@ -20,8 +20,7 @@ class PatronListAdapter(
         }
 
         override fun areContentsTheSame(oldItem: Patron, newItem: Patron): Boolean {
-            return oldItem.firstName == newItem.firstName
-                    && oldItem.lastName == newItem.lastName
+            return oldItem.name == newItem.name
         }
     }
 ) {

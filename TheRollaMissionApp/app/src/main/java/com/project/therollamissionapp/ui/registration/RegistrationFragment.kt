@@ -1,5 +1,6 @@
 package com.project.therollamissionapp.ui.registration
 
+import DateFormattingTextWatcher
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -11,12 +12,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
 import androidx.core.content.FileProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.project.therollamissionapp.EventObserver
 
 import com.project.therollamissionapp.R
@@ -24,7 +25,6 @@ import com.project.therollamissionapp.databinding.*
 import com.project.therollamissionapp.di.Injectable
 import com.project.therollamissionapp.ui.common.Helpers.hideKeyboard
 import com.project.therollamissionapp.ui.main.WelcomeFragmentDirections
-import com.project.therollamissionapp.util.setupSnackbar
 import java.io.File
 import java.io.IOException
 import javax.inject.Inject
@@ -59,12 +59,12 @@ class RegistrationFragment : Fragment(), Injectable {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupViewModel()
-        setupSnackbar()
-        setupPickBirthDateEventListener()
+        setupDropdownMenus()
         setupImageEventListener()
         setupHideKeyboardEventListener()
-        setupErrorDialogueEvent()
-        viewModel.refresh()
+        setupDialogEvents()
+        binding.editPhoneNumber.addTextChangedListener(PhoneNumberFormattingTextWatcher())
+        binding.editBirthdate.addTextChangedListener(DateFormattingTextWatcher(binding.editBirthdate))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -74,44 +74,19 @@ class RegistrationFragment : Fragment(), Injectable {
     }
 
     private fun setupViewModel() {
-        viewModel.contentChangedEvent.observe(viewLifecycleOwner, EventObserver {
-            setContent(it)
-        })
         viewModel.patronCreatedEvent.observe(viewLifecycleOwner, EventObserver {
             val navController = findNavController()
             navController.popBackStack(R.id.welcomeFragment, false)
-            val action = WelcomeFragmentDirections.actionWelcomeFragmentToRegistrationSuccessFragment()
+            val action = WelcomeFragmentDirections.actionWelcomeFragmentToSearchFragment()
             navController.navigate(action)
         })
         viewModel.registrationCanceledEvent.observe(viewLifecycleOwner, EventObserver {
-            view!!.findNavController().navigateUp()
+            requireView().findNavController().navigateUp()
         })
-    }
-
-    private fun setContent(layoutId: Int) {
-        val frameRoot = layoutInflater.inflate(layoutId, binding.content, false)
-        val regBinding = when (layoutId) {
-            R.layout.reg_part1 -> RegPart1Binding.bind(frameRoot).apply {
-                this.viewmodel = viewModel
-                editPhone.addTextChangedListener(PhoneNumberFormattingTextWatcher())
+        viewModel.verifyPatronEvent.observe(viewLifecycleOwner, EventObserver {
+            if (FormValidator(requireContext(), binding, viewModel).validateForm()) {
+                viewModel.savePatron()
             }
-            R.layout.reg_part2 -> RegPart2Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
-            R.layout.reg_part3 -> RegPart3Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
-            R.layout.reg_part4 -> RegPart4Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
-            else -> RegPart5Binding.bind(frameRoot).apply { this.viewmodel = viewModel }
-        }
-        regBinding.setLifecycleOwner { lifecycle }
-        binding.content.removeAllViews()
-        binding.content.addView(frameRoot)
-    }
-
-    private fun setupSnackbar() {
-        view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
-    }
-
-    private fun setupPickBirthDateEventListener() {
-        viewModel.birthDateDialogueEvent.observe(viewLifecycleOwner, EventObserver{
-            it.show(activity!!.supportFragmentManager, "datePicker")
         })
     }
 
@@ -156,9 +131,43 @@ class RegistrationFragment : Fragment(), Injectable {
         })
     }
 
-    private fun setupErrorDialogueEvent() {
-        viewModel.errorDialogueEvent.observe(viewLifecycleOwner, EventObserver{
-            viewModel.getErrorDialogue(context)?.show()
+    private fun setupDialogEvents() {
+        viewModel.errorDialogEvent.observe(viewLifecycleOwner, EventObserver{
+            viewModel.getErrorDialog(context)?.show()
         })
+        viewModel.warningDialogEvent.observe(viewLifecycleOwner, EventObserver{
+            viewModel.getWarningDialog(context)?.show()
+        })
+        viewModel.successDialogEvent.observe(viewLifecycleOwner, EventObserver{
+            val dialog = viewModel.getSuccessDialog(context)
+            dialog?.setCancelable(false)
+            dialog?.show()
+        })
+    }
+
+    private fun setupDropdownMenus() {
+        val GENDERS = arrayOf(
+            getString(R.string.male), getString(R.string.female),
+            getString(R.string.other), getString(R.string.pref_not_answer)
+        )
+        val DURATIONS = arrayOf(
+            getString(R.string.less_1_month), getString(R.string.months_1to3),
+            getString(R.string.months_4to6), getString(R.string.months_6to12),
+            getString(R.string.years_1to2), getString(R.string.more_2_years)
+        )
+        val REASONS_ROLLA = arrayOf(
+            getString(R.string.family), getString(R.string.work), getString(R.string.school),
+            getString(R.string.relationship), getString(R.string.hospital),
+            getString(R.string.substance), getString(R.string.mission), getString(R.string.other)
+        )
+        setupDropDownMenu(binding.dropdownGender, GENDERS)
+        setupDropDownMenu(binding.dropDownDurationHomeless, DURATIONS)
+        setupDropDownMenu(binding.dropdownReasonRolla, REASONS_ROLLA)
+    }
+
+    private fun setupDropDownMenu(dropdown: AutoCompleteTextView, options: Array<String>) {
+        val adapter = ArrayAdapter<String>(
+            requireContext(), R.layout.dropdown_menu_popup_item, options)
+        dropdown.setAdapter(adapter)
     }
 }

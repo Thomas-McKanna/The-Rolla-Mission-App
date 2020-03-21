@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -10,17 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome_message"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="600dp"
+            android:layout_height="314dp"
+            android:src="@drawable/mission_logo"
+            android:layout_marginEnd="@dimen/large_margin"
             app:layout_constraintBottom_toTopOf="@id/button_checkin"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textAlignment="center" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button_checkin"
@@ -38,17 +38,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tap_to_register"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_checkin"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/first_time_message"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
             android:layout_marginBottom="@dimen/small_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

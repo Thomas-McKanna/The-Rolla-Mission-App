@@ -11,7 +11,7 @@ interface PatronDao {
     fun getPatronById(id: String): LiveData<Patron>
 
     // If you want to use wildcards, you must put them in the name parameter itself.
-    @Query("SELECT * FROM patrons WHERE firstName || ' ' || lastName LIKE :name")
+    @Query("SELECT * FROM patrons WHERE name LIKE :name")
     suspend fun getPatronsByName(name: String): List<Patron>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

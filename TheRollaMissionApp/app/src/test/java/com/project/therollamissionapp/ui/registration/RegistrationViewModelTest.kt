@@ -30,36 +30,6 @@ class RegistrationViewModelTest {
     val coroutineTestRule = CoroutineTestRule()
 
     @Test
-    fun backPressed_indexZero_FirstSectionShown() {
-        registrationViewModel.backPressed()
-        val value = registrationViewModel.contentChangedEvent.getOrAwaitValue()
-        assertThat(value.getContentIfNotHandled(), `is`(R.layout.reg_part1))
-
-    }
-
-    @Test
-    fun nextPressed_notFilledOut_setSnackbarEvent() {
-        registrationViewModel.nextPressed()
-        val value = registrationViewModel.snackbarText.getOrAwaitValue()
-        assertThat(value.getContentIfNotHandled(), `is`(not(nullValue())))
-    }
-
-    @Test
-    fun startBirthDateDialogue_setsShowDatePickerEvent() {
-        registrationViewModel.startBirthDateDialogue()
-        val value = registrationViewModel.birthDateDialogueEvent.getOrAwaitValue()
-        assertThat(value.getContentIfNotHandled(), `is`(not(nullValue())))
-    }
-
-    @Test
-    fun setBirthDate_Feb172020_setTo02172020() {
-        // DatePicker results zero-indexed months
-        registrationViewModel.setBirthDate(2020, 2 - 1, 17)
-        val value = registrationViewModel.birthDate.getOrAwaitValue()
-        assertThat(value, `is`("2/17/2020"))
-    }
-
-    @Test
     fun takeImage_setTakeImageEvent() {
         registrationViewModel.takeImage()
         val value = registrationViewModel.takeImageEvent.getOrAwaitValue()
@@ -74,11 +44,10 @@ class RegistrationViewModelTest {
     }
 
     private fun fillRegistrationViewModel(viewModel: RegistrationViewModel) {
-        viewModel.firstName.value = ""
-        viewModel.lastName.value = ""
+        viewModel.name.value = ""
         viewModel.contactNumber.value = ""
-        viewModel.gender.value = 0
-        viewModel.setBirthDate(0, 0, 0)
+        viewModel.gender.value = "Male"
+        viewModel.birthDate.value = "01/02/2020"
         viewModel.city.value = ""
         viewModel.violence.value = 0
         viewModel.veteran.value = 0

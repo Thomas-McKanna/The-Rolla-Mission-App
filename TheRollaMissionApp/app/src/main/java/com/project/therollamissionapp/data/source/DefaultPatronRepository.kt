@@ -22,8 +22,7 @@ class DefaultPatronRepository (
             // (2) If successful, insert Patron into local db and return Success
             // (3) If fails, return Failure.
             val patron = Patron(
-                extendedPatron.firstName,
-                extendedPatron.lastName,
+                extendedPatron.name,
                 extendedPatron.id
             )
             patronDao.insertPatron(patron)
@@ -35,7 +34,7 @@ class DefaultPatronRepository (
         if (name.isEmpty()) {
             return Result.Success(emptyList())
         } else {
-            val patrons = patronDao.getPatronsByName("${name}%")
+            val patrons = patronDao.getPatronsByName("%${name}%")
             return Result.Success(patrons)
         }
     }

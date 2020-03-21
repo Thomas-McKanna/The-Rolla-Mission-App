@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <data>
-        <import type="com.project.therollamissionapp.data.Result"/>
+        <import type="com.project.therollamissionapp.data.Result" />
+        <import type="android.view.View"/>
 
         <variable
             name="viewmodel"
@@ -14,18 +15,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.registration.RegistrationFragment">
-
-        <FrameLayout
-            android:id="@+id/content"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/medium_margin"
-            android:onClick="@{() -> viewmodel.triggerHideKeyboardEvent()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/progress_bar" />
+        android:layout_margin="@dimen/medium_margin"
+        android:onClick="@{() -> viewmodel.triggerHideKeyboardEvent()}"
+        tools:context=".ui.registration.RegistrationFragment" >
 
         <ProgressBar
             style="?android:attr/progressBarStyle"
@@ -36,48 +28,460 @@
             loading="@{viewmodel.uploadPatronResult}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_hide_keyboard"/>
+            app:layout_constraintTop_toBottomOf="@id/button_hide_keyboard" />
 
         <Button
-            android:id="@+id/back"
+            android:id="@+id/button_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/small_margin"
             android:onClick="@{() -> viewmodel.backPressed()}"
             android:text="@string/back"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/next"
+            android:id="@+id/button_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/small_margin"
-            android:onClick="@{() -> viewmodel.nextPressed()}"
-            android:text="@string/next"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:onClick="@{() -> viewmodel.submitPressed()}"
+            android:text="@string/submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewmodel.title}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-            app:layout_constraintBaseline_toBaselineOf="@+id/next"
-            app:layout_constraintEnd_toStartOf="@id/next"
-            app:layout_constraintStart_toEndOf="@id/back" />
+            android:text="@string/patron_registration_form"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_submit"
+            app:layout_constraintEnd_toStartOf="@id/button_submit"
+            app:layout_constraintStart_toEndOf="@id/button_back" />
 
         <Button
             android:id="@+id/button_hide_keyboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/small_margin"
             android:text="@string/hide_keyboard"
             android:onClick="@{() -> viewmodel.triggerHideKeyboardEvent()}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-            app:layout_constraintTop_toBottomOf="@id/back" />
+            app:layout_constraintTop_toBottomOf="@id/button_back" />
+
+        <LinearLayout
+            android:id="@+id/layout_name_birth_phone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:layout_marginEnd="@dimen/medium_margin"
+            app:layout_constraintTop_toTopOf="@id/img_patron"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/img_patron"
+            app:layout_constraintBottom_toBottomOf="@id/button_take_picture" >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                app:helperText="@string/name_helper"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textCapWords"
+                    android:text="@={viewmodel.name}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_birthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/birthdate_hint"
+                app:helperText="@string/birthdate_helper"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_birthdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@={viewmodel.birthDate}"
+                    android:inputType="datetime" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_contact_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone_num"
+                app:helperText="@string/phone_num_helper"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:maxLength="14"
+                    android:text="@={viewmodel.contactNumber}"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_patron"
+            android:layout_width="120dp"
+            android:layout_height="160dp"
+            android:background="@color/lightGray"
+            previewPatronImage="@{viewmodel.imageUri}"
+            app:layout_constraintTop_toBottomOf="@id/progress_bar"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/button_take_picture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/take_picture_button"
+            android:onClick="@{() -> viewmodel.takeImage()}"
+            app:layout_constraintTop_toBottomOf="@id/img_patron"
+            app:layout_constraintStart_toStartOf="@id/img_patron"
+            app:layout_constraintEnd_toEndOf="@id/img_patron" />
+
+        <LinearLayout
+            android:id="@+id/layout_gender_duration_homeless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/layout_name_birth_phone" >
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:id="@+id/layout_gender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:layout_weight="1"
+                android:hint="@string/gender" >
+
+                <AutoCompleteTextView
+                    android:id="@+id/dropdown_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:text="@={viewmodel.gender}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:id="@+id/layout_duration_homeless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="@string/homeless_question" >
+
+                <AutoCompleteTextView
+                    android:id="@+id/drop_down_duration_homeless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:text="@={viewmodel.timeHomeless}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_rolla_when_became_homeless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center|start"
+            app:layout_constraintTop_toBottomOf="@id/layout_gender_duration_homeless"
+            app:layout_constraintStart_toStartOf="parent" >
+
+            <TextView
+                android:id="@+id/text_rolla_when_became_homeless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rolla_when_became_homeless" />
+
+            <RadioGroup
+                android:id="@+id/radio_from_rolla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/medium_margin" >
+
+                <RadioButton
+                    android:id="@+id/radio_from_rolla_y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/radio_from_rolla_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_city_reason_rolla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:visibility="@{radioFromRollaN.checked ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_rolla_when_became_homeless" >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:hint="@string/what_city_from"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textCapWords"
+                    android:text="@={viewmodel.city}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_reason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="@string/reason_for_coming"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/dropdown_reason_rolla"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:text="@={viewmodel.reason}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_status_questions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/layout_city_reason_rolla" >
+
+            <LinearLayout
+                android:id="@+id/layout_violence"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/text_violence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/domestic_violence_question" />
+
+                <RadioGroup
+                    android:id="@+id/radio_violence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@={viewmodel.violence}"
+                    android:orientation="vertical" >
+
+                    <RadioButton
+                        android:id="@+id/radio_violence_y"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/yes" />
+
+                    <RadioButton
+                        android:id="@+id/radio_violence_n"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_veteran"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/text_veteran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/veteran_question" />
+
+                <RadioGroup
+                    android:id="@+id/radio_veteran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@={viewmodel.veteran}"
+                    android:orientation="vertical" >
+
+                    <RadioButton
+                        android:id="@+id/radio_veteran_y"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/yes" />
+
+                    <RadioButton
+                        android:id="@+id/radio_veteran_n"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_offender"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/text_offender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sex_offender_question" />
+
+                <RadioGroup
+                    android:id="@+id/radio_offender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@={viewmodel.sexOffender}"
+                    android:orientation="vertical" >
+
+                    <RadioButton
+                        android:id="@+id/radio_offender_y"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/yes" />
+
+                    <RadioButton
+                        android:id="@+id/radio_offender_n"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/layout_status_questions" >
+
+            <TextView
+                android:id="@+id/text_consent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/consent_directions" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:orientation="vertical" >
+
+                <CheckBox
+                    android:id="@+id/checkbox_consent_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.consent1}"
+                    android:text="@string/consent_1"
+                    android:gravity="start" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_consent_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.consent2}"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="@string/consent_2"
+                    android:gravity="start" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_consent_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.consent3}"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="@string/consent_3"
+                    android:gravity="start" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/text_signature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/signature_label" />
+
+                <com.github.gcacace.signaturepad.views.SignaturePad
+                    android:id="@+id/sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:background="@color/lightGray"
+                    onSigned="@{() -> viewmodel.onSignedSignature(sp)}" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="@{() -> sp.clear()}"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:text="@string/clear_signature" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

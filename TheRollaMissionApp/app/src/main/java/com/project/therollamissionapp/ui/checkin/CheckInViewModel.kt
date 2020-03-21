@@ -69,7 +69,7 @@ class CheckInViewModel @Inject constructor(
     }
 
     fun getErrorDialogue(context: Context?): AlertDialog? {
-        return DialogUtil.makeErrorDialogue(context,
+        return DialogUtil.makeErrorDialog(context,
             onPositive = DialogInterface.OnClickListener() {dialog, id ->
                 lastAttemptedCheckIn?.apply { checkIn(this) }
             },

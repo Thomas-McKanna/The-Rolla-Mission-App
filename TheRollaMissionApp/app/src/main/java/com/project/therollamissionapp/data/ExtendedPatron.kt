@@ -3,8 +3,7 @@ package com.project.therollamissionapp.data
 import java.util.*
 
 data class ExtendedPatron (
-    var firstName: String = "",
-    var lastName: String = "",
+    var name: String = "",
     var dob: String = "",
     var gender: String = "",
     var phone: String = "",
