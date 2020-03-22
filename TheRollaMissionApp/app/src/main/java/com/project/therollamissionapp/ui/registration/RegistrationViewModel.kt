@@ -7,11 +7,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.*
 import com.github.gcacace.signaturepad.views.SignaturePad
 import com.project.therollamissionapp.Event
-import com.project.therollamissionapp.R
 import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.source.PatronRepository
 import com.project.therollamissionapp.data.Result
 import com.project.therollamissionapp.ui.common.DialogUtil
+import com.project.therollamissionapp.ui.common.Helpers
 import com.project.therollamissionapp.ui.registration.IdMappings.getOffender
 import com.project.therollamissionapp.ui.registration.IdMappings.getVeteran
 import com.project.therollamissionapp.ui.registration.IdMappings.getViolence
@@ -104,10 +104,10 @@ class RegistrationViewModel @Inject constructor(
         _hideKeyboardEvent.value = Event(Unit)
     }
 
-    fun getErrorDialog(context: Context?): AlertDialog? {
+    fun getErrorDialog(context: Context): AlertDialog? {
         return DialogUtil.makeErrorDialog(context,
             onPositive = DialogInterface.OnClickListener { dialog, id ->
-                savePatron()
+                savePatron(context)
             },
             onNegative = DialogInterface.OnClickListener { dialog, id ->
                 _registrationCanceledEvent.value = Event(Unit)
@@ -143,19 +143,19 @@ class RegistrationViewModel @Inject constructor(
         return _signature.value != null
     }
 
-    fun savePatron() {
+    fun savePatron(context: Context) {
+        val date_homeless = Helpers.getDateHomeless(context, timeHomeless.value)
         val patron = ExtendedPatron(
             name = name.value ?: "",
-            dob = birthDate.value ?: "",
+            birth_date = birthDate.value ?: "",
             gender = gender.value ?: "",
             phone = contactNumber.value ?: "",
-            cityWhenBecameHomeless = city.value ?: "",
-            reasonRolla = reason.value ?: "",
-            otherReason = otherReason.value ?: "",
-            timeHomeless = timeHomeless.value ?: "",
+            city = city.value ?: "",
+            reason = reason.value ?: "",
+            time_homeless = date_homeless,
             veteran = getVeteran(veteran.value ?: 0),
-            fleeingViolence = getViolence(violence.value ?: 0),
-            sexOffender = getOffender((sexOffender.value ?: 0)),
+            violence = getViolence(violence.value ?: 0),
+            offender = getOffender((sexOffender.value ?: 0)),
             id = id
         )
         viewModelScope.launch {

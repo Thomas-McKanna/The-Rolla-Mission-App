@@ -18,7 +18,7 @@
     <string name="or">or</string>
     <string name="less_1_month">Less than 1 month</string>
     <string name="months_1to3">1 &#8211; 3 months</string>
-    <string name="months_4to6">4 &#8211; 6 months</string>
+    <string name="months_3to6">3 &#8211; 6 months</string>
     <string name="months_6to12">6 &#8211; 12 months</string>
     <string name="years_1to2">1 &#8211; 2 years</string>
     <string name="more_2_years">2+ years</string>

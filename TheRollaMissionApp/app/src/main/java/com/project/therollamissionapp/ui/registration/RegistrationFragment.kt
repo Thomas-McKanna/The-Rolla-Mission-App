@@ -21,7 +21,7 @@ import androidx.navigation.fragment.findNavController
 import com.project.therollamissionapp.EventObserver
 
 import com.project.therollamissionapp.R
-import com.project.therollamissionapp.databinding.*
+import com.project.therollamissionapp.databinding.FragmentRegistrationBinding
 import com.project.therollamissionapp.di.Injectable
 import com.project.therollamissionapp.ui.common.Helpers.hideKeyboard
 import com.project.therollamissionapp.ui.main.WelcomeFragmentDirections
@@ -85,7 +85,7 @@ class RegistrationFragment : Fragment(), Injectable {
         })
         viewModel.verifyPatronEvent.observe(viewLifecycleOwner, EventObserver {
             if (FormValidator(requireContext(), binding, viewModel).validateForm()) {
-                viewModel.savePatron()
+                viewModel.savePatron(requireContext())
             }
         })
     }
@@ -133,7 +133,7 @@ class RegistrationFragment : Fragment(), Injectable {
 
     private fun setupDialogEvents() {
         viewModel.errorDialogEvent.observe(viewLifecycleOwner, EventObserver{
-            viewModel.getErrorDialog(context)?.show()
+            viewModel.getErrorDialog(requireContext())?.show()
         })
         viewModel.warningDialogEvent.observe(viewLifecycleOwner, EventObserver{
             viewModel.getWarningDialog(context)?.show()
@@ -152,7 +152,7 @@ class RegistrationFragment : Fragment(), Injectable {
         )
         val DURATIONS = arrayOf(
             getString(R.string.less_1_month), getString(R.string.months_1to3),
-            getString(R.string.months_4to6), getString(R.string.months_6to12),
+            getString(R.string.months_3to6), getString(R.string.months_6to12),
             getString(R.string.years_1to2), getString(R.string.more_2_years)
         )
         val REASONS_ROLLA = arrayOf(
