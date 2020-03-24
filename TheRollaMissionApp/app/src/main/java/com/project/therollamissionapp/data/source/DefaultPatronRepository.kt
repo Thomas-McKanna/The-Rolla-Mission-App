@@ -1,33 +1,47 @@
 package com.project.therollamissionapp.data.source
 
+import com.project.therollamissionapp.data.ApiEndpointInterface
 import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.Patron
 import com.project.therollamissionapp.data.Result
 import com.project.therollamissionapp.data.source.local.PatronDao
 import kotlinx.coroutines.*
+import okhttp3.*
+import java.io.File
+import java.lang.Exception
+import java.net.ConnectException
 import javax.inject.Inject
 
-class DefaultPatronRepository (
+class DefaultPatronRepository @Inject constructor (
     private val patronDao: PatronDao,
-    private val ioDispatcher: CoroutineDispatcher
+    private val retrofitService: ApiEndpointInterface
 ) : PatronRepository {
-    @Inject
-    constructor(patronDao: PatronDao) : this(patronDao, Dispatchers.IO)
-
-    override suspend fun insertPatron(extendedPatron: ExtendedPatron): Result<Unit> {
-        delay(3000) // simulate uploade time
-        withContext(ioDispatcher) {
-            // TODO:
-            // (1) Attempt to upload ExtendedPatron to external web service.
-            // (2) If successful, insert Patron into local db and return Success
-            // (3) If fails, return Failure.
-            val patron = Patron(
-                extendedPatron.name,
-                extendedPatron.id
-            )
-            patronDao.insertPatron(patron)
+    override suspend fun createPatron(extendedPatron: ExtendedPatron): Result<Unit> {
+        val headshotPart = getMultipartFileData("headshot", extendedPatron.headshotPath)
+        val signaturePart = getMultipartFileData("signature", extendedPatron.signaturePath)
+        val requests = listOf(
+            retrofitService.createPatron(extendedPatron),
+            retrofitService.putHeadshot(extendedPatron.id, headshotPart),
+            retrofitService.putSignature(extendedPatron.id, signaturePart)
+        )
+        for (request in requests) {
+            try {
+                val response = withContext(Dispatchers.IO) {
+                    request.execute()
+                }
+                if (!response.isSuccessful) {
+                    return Result.Error(Exception(response.errorBody().toString()))
+                }
+            } catch (e: ConnectException) {
+                return Result.Error(Exception(e.toString()))
+            }
         }
-        return Result.Success<Unit>(Unit)
+        val patron = Patron(
+            extendedPatron.name,
+            extendedPatron.id
+        )
+        patronDao.insertPatron(patron)
+        return Result.Success(Unit)
     }
 
     override suspend fun getPatronsWithName(name: String): Result<List<Patron>> {
@@ -50,8 +64,15 @@ class DefaultPatronRepository (
     }
 
     override suspend fun deletePatron(patron: Patron) {
-        withContext(ioDispatcher) {
+        withContext(Dispatchers.IO) {
             launch { patronDao.deletePatron(patron) }
         }
+    }
+
+    private fun getMultipartFileData(field: String, absPath: String): MultipartBody.Part {
+        val MEDIA_TYPE_JPEG = MediaType.parse("image/jpeg")
+        val file = File(absPath)
+        val requestBody = RequestBody.create(MEDIA_TYPE_JPEG, file)
+        return MultipartBody.Part.createFormData(field, file.name, requestBody)
     }
 }

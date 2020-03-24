@@ -2,7 +2,6 @@ package com.project.therollamissionapp.ui.registration
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.project.therollamissionapp.CoroutineTestRule
-import com.project.therollamissionapp.R
 import com.project.therollamissionapp.util.FakePatronRepository
 import getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -39,7 +38,7 @@ class RegistrationViewModelTest {
     @Test
     fun setImageUri_toMyUri_returnMyUri() {
         registrationViewModel.setImageUri("myUri")
-        val value = registrationViewModel.imageUri.getOrAwaitValue()
+        val value = registrationViewModel.imagePath.getOrAwaitValue()
         assertThat(value, `is`("myUri"))
     }
 

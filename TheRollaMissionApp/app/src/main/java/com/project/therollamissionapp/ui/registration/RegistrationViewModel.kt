@@ -31,15 +31,14 @@ class RegistrationViewModel @Inject constructor(
 
     val city = MutableLiveData<String>()
     val reason = MutableLiveData<String>()
-    val otherReason = MutableLiveData<String>()
 
     val timeHomeless = MutableLiveData<String>()
     val violence = MutableLiveData<Int>()
     val veteran = MutableLiveData<Int>()
     val sexOffender = MutableLiveData<Int>()
 
-    private val _imageUri = MutableLiveData<String>()
-    val imageUri: LiveData<String> = _imageUri
+    private val _imagePath = MutableLiveData<String>()
+    val imagePath: LiveData<String> = _imagePath
 
     val consent1 = MutableLiveData<Boolean>()
     val consent2 = MutableLiveData<Boolean>()
@@ -56,9 +55,6 @@ class RegistrationViewModel @Inject constructor(
 
     private val _patronCreatedEvent = MutableLiveData<Event<Unit>>()
     val patronCreatedEvent: LiveData<Event<Unit>> = _patronCreatedEvent
-
-    private val _contentChangedEvent = MutableLiveData<Event<Int>>()
-    val contentChangedEvent: LiveData<Event<Int>> = _contentChangedEvent
 
     private val _registrationCanceledEvent = MutableLiveData<Event<Unit>>()
     val registrationCanceledEvent: LiveData<Event<Unit>> = _registrationCanceledEvent
@@ -93,7 +89,7 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun setImageUri(stringUri: String) {
-        _imageUri.value = stringUri
+        _imagePath.value = stringUri
     }
 
     fun onSignedSignature(sp: SignaturePad) {
@@ -136,7 +132,7 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun pictureTaken(): Boolean {
-        return _imageUri.value != null
+        return _imagePath.value != null
     }
 
     fun hasSigned(): Boolean {
@@ -144,23 +140,10 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun savePatron(context: Context) {
-        val date_homeless = Helpers.getDateHomeless(context, timeHomeless.value)
-        val patron = ExtendedPatron(
-            name = name.value ?: "",
-            birth_date = birthDate.value ?: "",
-            gender = gender.value ?: "",
-            phone = contactNumber.value ?: "",
-            city = city.value ?: "",
-            reason = reason.value ?: "",
-            time_homeless = date_homeless,
-            veteran = getVeteran(veteran.value ?: 0),
-            violence = getViolence(violence.value ?: 0),
-            offender = getOffender((sexOffender.value ?: 0)),
-            id = id
-        )
+        val patron = constructPatronFromViewData(context)
         viewModelScope.launch {
             _uploadPatronResult.value = Result.Loading
-            val result = patronRepository.insertPatron(patron)
+            val result = patronRepository.createPatron(patron)
             _uploadPatronResult.value = result
             if (result is Result.Success) {
                 _successDialogEvent.value = Event(Unit)
@@ -168,5 +151,31 @@ class RegistrationViewModel @Inject constructor(
                 _errorDialogEvent.value = Event(Unit)
             }
         }
+    }
+
+    fun constructPatronFromViewData(context: Context): ExtendedPatron {
+        val formattedDateHomeless = Helpers.formatDateHomeless(context, timeHomeless.value)
+        val formattedBirthDate = Helpers.formatBirthDate(birthDate.value)
+        val signaturePath = Helpers.compressAndSaveBitmap(
+            context.cacheDir,
+            "${id}signature.jpg",
+            signature.value,
+            Bitmap.CompressFormat.JPEG
+        ).absolutePath
+        return ExtendedPatron(
+            id = id,
+            name = name.value ?: "",
+            birth_date = formattedBirthDate,
+            gender = gender.value ?: "",
+            phone = contactNumber.value ?: "",
+            city = city.value ?: "Rolla",
+            reason = reason.value ?: "",
+            date_homeless = formattedDateHomeless,
+            veteran = getVeteran(veteran.value ?: 0),
+            violence = getViolence(violence.value ?: 0),
+            offender = getOffender((sexOffender.value ?: 0)),
+            headshotPath = _imagePath.value ?: "",
+            signaturePath = signaturePath
+        )
     }
 }

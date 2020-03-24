@@ -6,7 +6,7 @@ import com.project.therollamissionapp.data.Patron
 import com.project.therollamissionapp.data.Result
 
 class FakePatronRepository : PatronRepository {
-    override suspend fun insertPatron(extendedPatron: ExtendedPatron): Result<Unit> {
+    override suspend fun createPatron(extendedPatron: ExtendedPatron): Result<Unit> {
         // NOT IMPLEMENTED
         return Result.Success(Unit)
     }

@@ -5,6 +5,10 @@ apply plugin: 'kotlin-allopen'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+def secretPropertiesFile = rootProject.file("secret.properties")
+def secretProperties = new Properties()
+secretProperties.load(new FileInputStream(secretPropertiesFile))
+
 allOpen {
     // allows mocking for classes w/o directly opening them for release builds
     annotation 'com.project.therollamissionapp.testing.OpenClass'
@@ -30,6 +34,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "com.project.therollamissionapp.util.MissionTestRunner"
+
+        buildConfigField("String", "API_USER", secretProperties['API_USER'])
+        buildConfigField("String", "API_PASS", secretProperties['API_PASS'])
     }
 
     buildTypes {

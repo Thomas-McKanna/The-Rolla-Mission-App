@@ -5,7 +5,7 @@ import com.project.therollamissionapp.data.Result
 import com.project.therollamissionapp.data.Patron
 
 interface PatronRepository {
-    suspend fun insertPatron(extendedPatron: ExtendedPatron) : Result<Unit>
+    suspend fun createPatron(extendedPatron: ExtendedPatron) : Result<Unit>
 
     suspend fun insertPatron(patron: Patron)
 
