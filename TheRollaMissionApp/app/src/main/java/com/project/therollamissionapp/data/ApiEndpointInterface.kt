@@ -21,6 +21,6 @@ interface ApiEndpointInterface {
     @GET("patrons/headshot/{uuid}")
     fun getHeadshot(@Path("uuid") id: String): Call<Headshot>
 
-    @POST("patrons/checkin/{uuid}")
-    fun checkInPatron(@Path("uuid") id: String, @Body checkIn: CheckIn): Call<RequestBody>
+    @POST("patrons/checkin/")
+    fun createCheckIn(@Body checkIn: CheckIn): Call<ResponseBody>
 }

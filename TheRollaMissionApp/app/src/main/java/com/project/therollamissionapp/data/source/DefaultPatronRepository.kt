@@ -1,15 +1,18 @@
 package com.project.therollamissionapp.data.source
 
-import com.project.therollamissionapp.data.ApiEndpointInterface
-import com.project.therollamissionapp.data.ExtendedPatron
-import com.project.therollamissionapp.data.Patron
-import com.project.therollamissionapp.data.Result
+import com.project.therollamissionapp.data.*
 import com.project.therollamissionapp.data.source.local.PatronDao
 import kotlinx.coroutines.*
-import okhttp3.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Call
 import java.io.File
 import java.lang.Exception
 import java.net.ConnectException
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class DefaultPatronRepository @Inject constructor (
@@ -19,21 +22,15 @@ class DefaultPatronRepository @Inject constructor (
     override suspend fun createPatron(extendedPatron: ExtendedPatron): Result<Unit> {
         val headshotPart = getMultipartFileData("headshot", extendedPatron.headshotPath)
         val signaturePart = getMultipartFileData("signature", extendedPatron.signaturePath)
-        val requests = listOf(
+        val calls = listOf(
             retrofitService.createPatron(extendedPatron),
             retrofitService.putHeadshot(extendedPatron.id, headshotPart),
             retrofitService.putSignature(extendedPatron.id, signaturePart)
         )
-        for (request in requests) {
-            try {
-                val response = withContext(Dispatchers.IO) {
-                    request.execute()
-                }
-                if (!response.isSuccessful) {
-                    return Result.Error(Exception(response.errorBody().toString()))
-                }
-            } catch (e: ConnectException) {
-                return Result.Error(Exception(e.toString()))
+        for (call in calls) {
+            val result = sendCall(call)
+            if (result is Result.Error) {
+                return result
             }
         }
         val patron = Patron(
@@ -58,14 +55,29 @@ class DefaultPatronRepository @Inject constructor (
     }
 
     override suspend fun checkIn(patron: Patron): Result<Unit> {
-        // TODO: Attempt to upload checkin instance to external web service.
-        delay(2000) // simulate upload time
-        return Result.Success(Unit)
+        val checkIn = CheckIn(patron.id, ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT))
+        val call = retrofitService.createCheckIn(checkIn)
+        return sendCall(call)
     }
 
     override suspend fun deletePatron(patron: Patron) {
         withContext(Dispatchers.IO) {
             launch { patronDao.deletePatron(patron) }
+        }
+    }
+
+    private suspend fun sendCall(call: Call<ResponseBody>): Result<Unit> {
+        try {
+            val response = withContext(Dispatchers.IO) {
+                call.execute()
+            }
+            if (response.isSuccessful) {
+                return Result.Success(Unit)
+            } else {
+                return Result.Error(Exception(response.errorBody().toString()))
+            }
+        } catch (e: ConnectException) {
+            return Result.Error(Exception(e.toString()))
         }
     }
 
