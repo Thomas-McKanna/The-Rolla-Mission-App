@@ -23,4 +23,7 @@ interface ApiEndpointInterface {
 
     @POST("patrons/checkin/")
     fun createCheckIn(@Body checkIn: CheckIn): Call<ResponseBody>
+
+    @GET("patrons/search/{name}")
+    fun searchPatrons(@Path("name") name: String): Call<MutableList<Patron>>
 }

@@ -19,9 +19,7 @@ class CheckInViewModel @Inject constructor(
     private val patronRepository: PatronRepository
 ) : ViewModel() {
     val query = MutableLiveData<String>()
-
-    private val _patrons = MutableLiveData<List<Patron>>()
-    val patrons: LiveData<List<Patron>> = _patrons
+    val patrons: LiveData<List<Patron>> = patronRepository.getPatronSearchLiveData()
 
     private val _cancelEvent = MutableLiveData<Event<Unit>>()
     val cancelEvent: LiveData<Event<Unit>> = _cancelEvent
@@ -39,14 +37,8 @@ class CheckInViewModel @Inject constructor(
 
     fun onQueryChanged() {
         _loadingStatus.value = Result.Loading
-        query.value?.apply query@ {
-            viewModelScope.launch {
-                val result = patronRepository.getPatronsWithName(this@query)
-                if (result is Result.Success) {
-                    _patrons.value = result.data
-                }
-                _loadingStatus.value = null
-            }
+        query.value?.apply{
+            patronRepository.updateSearchString(this)
         }
     }
 
@@ -66,6 +58,10 @@ class CheckInViewModel @Inject constructor(
                 _checkInErrorEvent.value = Event(Unit)
             }
         }
+    }
+
+    fun newResultsObserved() {
+        _loadingStatus.value = Result.Success(Unit)
     }
 
     fun getErrorDialogue(context: Context?): AlertDialog? {

@@ -12,7 +12,6 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +21,6 @@ import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.FragmentSearchBinding
 import com.project.therollamissionapp.di.Injectable
 import com.project.therollamissionapp.ui.common.Helpers.hideKeyboard
-import com.project.therollamissionapp.ui.main.WelcomeFragmentDirections
 import javax.inject.Inject
 
 class CheckInSearchFragment : Fragment(), Injectable {
@@ -84,8 +82,8 @@ class CheckInSearchFragment : Fragment(), Injectable {
         viewModel.patronCheckInEvent.observe(viewLifecycleOwner, Observer {
             val navController = findNavController()
             navController.popBackStack(R.id.welcomeFragment, false)
-            val toast = Toast.makeText(
-                requireContext(), R.string.checkin_recorded, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), R.string.checkin_recorded,
+                           Toast.LENGTH_LONG).show()
         })
         viewModel.checkInErrorEvent.observe(viewLifecycleOwner, Observer {
             viewModel.getErrorDialogue(context)?.show()
@@ -95,6 +93,7 @@ class CheckInSearchFragment : Fragment(), Injectable {
     private fun initRecyclerView() {
         viewModel.patrons.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
+            viewModel.newResultsObserved()
         })
         binding.patronList.layoutManager = LinearLayoutManager(context)
         binding.patronList.addItemDecoration(

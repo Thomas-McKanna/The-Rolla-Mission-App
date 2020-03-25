@@ -11,7 +11,9 @@ import com.project.therollamissionapp.data.ExtendedPatron
 import com.project.therollamissionapp.data.source.PatronRepository
 import com.project.therollamissionapp.data.Result
 import com.project.therollamissionapp.ui.common.DialogUtil
-import com.project.therollamissionapp.ui.common.Helpers
+import com.project.therollamissionapp.ui.common.Helpers.formatBirthDate
+import com.project.therollamissionapp.ui.common.Helpers.formatDateHomeless
+import com.project.therollamissionapp.ui.common.Helpers.saveBitmap
 import com.project.therollamissionapp.ui.registration.IdMappings.getOffender
 import com.project.therollamissionapp.ui.registration.IdMappings.getVeteran
 import com.project.therollamissionapp.ui.registration.IdMappings.getViolence
@@ -154,14 +156,10 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun constructPatronFromViewData(context: Context): ExtendedPatron {
-        val formattedDateHomeless = Helpers.formatDateHomeless(context, timeHomeless.value)
-        val formattedBirthDate = Helpers.formatBirthDate(birthDate.value)
-        val signaturePath = Helpers.compressAndSaveBitmap(
-            context.cacheDir,
-            "${id}signature.jpg",
-            signature.value,
-            Bitmap.CompressFormat.JPEG
-        ).absolutePath
+        val formattedDateHomeless = formatDateHomeless(context, timeHomeless.value)
+        val formattedBirthDate = formatBirthDate(birthDate.value)
+        val signatureFile = saveBitmap(context.cacheDir, "${id}signature.jpg", signature.value)
+        val signaturePath = signatureFile.absolutePath
         return ExtendedPatron(
             id = id,
             name = name.value ?: "",

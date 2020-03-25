@@ -58,12 +58,11 @@ object Helpers {
         return formattedBirthDate
     }
 
-    fun compressAndSaveBitmap(dir: File, child: String, bitmap: Bitmap?,
-                              format: Bitmap.CompressFormat): File {
+    fun saveBitmap(dir: File, child: String, bitmap: Bitmap?): File {
         val file = File(dir, child)
         file.createNewFile()
         val bos = ByteArrayOutputStream()
-        bitmap?.compress(format, 0, bos)
+        bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, bos)
         val fos = FileOutputStream(file)
         fos.write(bos.toByteArray())
         fos.flush()
