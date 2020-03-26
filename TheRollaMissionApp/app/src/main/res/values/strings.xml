@@ -64,4 +64,5 @@
     <string name="hide_keyboard">Hide Keyboard</string>
     <string name="patron_registration_form">Emergency Overnight Shelter In-Take Form</string>
     <string name="required">Required</string>
+    <string name="checkin_instructions">After typing in your name, tap on your name in the list below to check in.</string>
 </resources>

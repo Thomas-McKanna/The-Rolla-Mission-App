@@ -102,7 +102,7 @@ class CheckInSearchFragment : Fragment(), Injectable {
 
     private fun focusOnSearchEditText() {
         binding.search.requestFocus()
-        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(binding.search, InputMethodManager.SHOW_IMPLICIT)
+        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm?.showSoftInput(binding.search, InputMethodManager.SHOW_IMPLICIT)
     }
 }

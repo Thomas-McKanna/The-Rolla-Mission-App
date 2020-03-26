@@ -47,7 +47,16 @@
             loading="@{viewmodel.loadingStatus}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search"/>
+            app:layout_constraintTop_toBottomOf="@id/text_instructions"/>
+
+        <TextView
+            android:id="@+id/text_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/checkin_instructions"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/patron_list"

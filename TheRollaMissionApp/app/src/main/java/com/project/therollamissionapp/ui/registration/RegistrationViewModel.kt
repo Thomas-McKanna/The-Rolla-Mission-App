@@ -17,6 +17,9 @@ import com.project.therollamissionapp.ui.common.Helpers.saveBitmap
 import com.project.therollamissionapp.ui.registration.IdMappings.getOffender
 import com.project.therollamissionapp.ui.registration.IdMappings.getVeteran
 import com.project.therollamissionapp.ui.registration.IdMappings.getViolence
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -81,7 +84,7 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun submitPressed() {
-        _hideKeyboardEvent.value = Event(Unit)
+        triggerHideKeyboardEvent()
         if (_uploadPatronResult.value == null || _uploadPatronResult.value is Result.Error) {
             _verifyPatronEvent.value = Event(Unit)
         }
@@ -125,7 +128,14 @@ class RegistrationViewModel @Inject constructor(
     fun getSuccessDialog(context: Context?): AlertDialog? {
         return DialogUtil.makeSuccessDialog(context,
             onPositive = DialogInterface.OnClickListener { dialog, id ->
-                _patronCreatedEvent.value = Event(Unit)
+                // If the dialog has not been dismissed completely, the search view will fail
+                // to show the keyboard upon start. Using the onDismiss callback of the dialog
+                // produced unpredictable results. This solution gives the dialog time to close
+                // before triggering the patron created event.
+                CoroutineScope(Dispatchers.IO).launch {
+                    delay(100)
+                    _patronCreatedEvent.postValue(Event(Unit))
+                }
             },
             onNegative = DialogInterface.OnClickListener { dialog, id ->
                 // Not actually a cancellation, but the effect of returning to start is achieved
