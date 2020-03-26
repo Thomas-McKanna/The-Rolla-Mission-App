@@ -81,6 +81,7 @@ class RegistrationViewModel @Inject constructor(
     }
 
     fun submitPressed() {
+        _hideKeyboardEvent.value = Event(Unit)
         if (_uploadPatronResult.value == null || _uploadPatronResult.value is Result.Error) {
             _verifyPatronEvent.value = Event(Unit)
         }
