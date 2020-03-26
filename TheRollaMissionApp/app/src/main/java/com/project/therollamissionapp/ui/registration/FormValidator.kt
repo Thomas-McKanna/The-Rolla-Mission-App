@@ -11,6 +11,8 @@ import androidx.core.view.children
 import com.google.android.material.textfield.TextInputLayout
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.FragmentRegistrationBinding
+import com.project.therollamissionapp.ui.common.Helpers
+import java.text.ParseException
 
 class FormValidator (private val context: Context,
                      private val binding: FragmentRegistrationBinding,
@@ -19,7 +21,7 @@ class FormValidator (private val context: Context,
     private val defaultColor = binding.textTitle.currentTextColor
 
     fun validateForm(): Boolean {
-        return fieldsFilled()
+        return fieldsFilled() && validateBirthdate()
     }
 
     private fun fieldsFilled(): Boolean {
@@ -110,6 +112,16 @@ class FormValidator (private val context: Context,
             return true
         } else {
             binding.textSignature.setTextColor(errorColor)
+            return false
+        }
+    }
+
+    private fun validateBirthdate(): Boolean {
+        try {
+            Helpers.formatBirthDate(binding.editBirthdate.text.toString())
+            return true
+        } catch (e: ParseException) {
+            binding.editBirthdate.error = "Invalid birthdate"
             return false
         }
     }
