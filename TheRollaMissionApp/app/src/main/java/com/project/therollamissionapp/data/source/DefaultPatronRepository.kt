@@ -11,6 +11,7 @@ import com.project.therollamissionapp.data.*
 import com.project.therollamissionapp.data.source.local.PatronDao
 import com.project.therollamissionapp.ui.checkin.PatronListDiffCallback
 import com.project.therollamissionapp.ui.common.Helpers.saveBitmap
+import com.project.therollamissionapp.ui.common.ImageUtils.getPatronHeadshotPath
 import kotlinx.coroutines.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -60,6 +61,10 @@ class DefaultPatronRepository @Inject constructor (
         return patrons
     }
 
+    override fun getPatron(patron: Patron): LiveData<Patron> {
+        return patronDao.getPatronById(patron.id)
+    }
+
     override fun updateSearchString(name: String) {
         if (name.length < MIN_SEARCH_LENGTH) {
             patrons.postValue(emptyList())
@@ -81,6 +86,12 @@ class DefaultPatronRepository @Inject constructor (
                 }
             }
         }
+    }
+
+    override suspend fun updateHeadshot(patron: Patron): Result<Unit> {
+        val headshotPart = getMultipartFileData("headshot", getPatronHeadshotPath(app, patron.id))
+        val call = retrofitService.putHeadshot(patron.id, headshotPart)
+        return sendCall(call)
     }
 
     override suspend fun insertPatron(patron: Patron) {

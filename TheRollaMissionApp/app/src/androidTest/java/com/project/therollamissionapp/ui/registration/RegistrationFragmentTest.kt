@@ -97,7 +97,6 @@ class RegistrationFragmentTest {
             .inRoot(RootMatchers.isPlatformPopup())
             .perform(click());
 
-        onView(withId(R.id.button_hide_keyboard)).perform(click())
         onView(withId(R.id.radio_violence_n)).perform(click())
         onView(withId(R.id.radio_veteran_n)).perform(click())
         onView(withId(R.id.radio_offender_n)).perform(click())

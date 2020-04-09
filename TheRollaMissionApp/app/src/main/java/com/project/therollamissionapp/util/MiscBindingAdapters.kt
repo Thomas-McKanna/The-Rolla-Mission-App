@@ -1,17 +1,13 @@
 package com.project.therollamissionapp.util
 
-import android.os.Environment
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.ProgressBar
-import android.widget.RadioGroup
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.signature.ObjectKey
-import com.project.therollamissionapp.R
 import com.project.therollamissionapp.data.Result
-import kotlinx.android.synthetic.main.fragment_registration.view.*
+import com.project.therollamissionapp.ui.common.ImageUtils.getPatronHeadshotPath
 import java.io.File
 
 object MiscBindingAdapters {
@@ -31,10 +27,10 @@ object MiscBindingAdapters {
     @BindingAdapter("loadPatronImage")
     fun loadPatronImage(view: ImageView, id: String?) {
         id?.apply {
-            val prefix = view.context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString()
-            val path = String.format("%s/%s.jpg", prefix, id)
+            val path = getPatronHeadshotPath(view.context, id)
             Glide.with(view.context)
                 .load(File(path))
+                .signature(ObjectKey(System.currentTimeMillis().toString()))
                 .into(view)
         }
     }

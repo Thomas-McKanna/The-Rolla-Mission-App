@@ -59,9 +59,10 @@ class CheckInSearchFragment : Fragment(), Injectable {
             appExecutors = appExecutors
         ) { patron ->
             hideKeyboard(requireActivity())
-            CheckInConfirmationDialogue(
+            CheckInDialog(
+                viewModel = viewModel,
                 patron = patron,
-                positiveListener = DialogInterface.OnClickListener() { dialog, id ->
+                positiveListener = DialogInterface.OnClickListener { dialog, id ->
                     viewModel.checkIn(patron)
                 }
             ).show(requireActivity().supportFragmentManager, "confirmation")

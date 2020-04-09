@@ -72,4 +72,10 @@ class CheckInViewModel @Inject constructor(
             onNegative = null
         )
     }
+
+    fun updateHeadshot(patron: Patron) {
+        viewModelScope.launch {
+            patronRepository.updateHeadshot(patron)
+        }
+    }
 }

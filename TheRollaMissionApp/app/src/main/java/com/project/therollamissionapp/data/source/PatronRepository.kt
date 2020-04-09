@@ -14,6 +14,10 @@ interface PatronRepository {
 
     fun updateSearchString(name: String)
 
+    fun getPatron(patron: Patron): LiveData<Patron>
+
+    suspend fun updateHeadshot(patron: Patron): Result<Unit>
+
     suspend fun checkIn(patron: Patron): Result<Unit>
 
     suspend fun deletePatron(patron: Patron)
