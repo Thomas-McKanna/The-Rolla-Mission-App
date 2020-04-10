@@ -37,7 +37,7 @@ class AppModule {
     @Singleton
     @Provides
     fun provideRetrofitService(): ApiEndpointInterface {
-        val API_BASE_URL = "http://3.212.164.185/api/"  // TODO: change
+        val API_BASE_URL = "https://checkin.therollamission.org/api/"
         val client = getOkHttpClientWithAuthorization()
         val gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
         val retrofit = Retrofit.Builder()
