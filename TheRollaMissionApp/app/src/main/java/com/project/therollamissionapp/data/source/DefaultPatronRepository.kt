@@ -22,6 +22,7 @@ import java.io.File
 import java.io.IOException
 import java.lang.Exception
 import java.net.ConnectException
+import java.net.SocketTimeoutException
 import java.net.URL
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -32,7 +33,8 @@ class DefaultPatronRepository @Inject constructor (
     private val retrofitService: ApiEndpointInterface,
     private val app: Application
 ) : PatronRepository {
-    private val MIN_SEARCH_LENGTH = 1
+    private val MIN_SEARCH_LENGTH = 2
+    var currentQuery = 0
     val patrons = MutableLiveData<List<Patron>>()
 
     override suspend fun createPatron(extendedPatron: ExtendedPatron): Result<Unit> {
@@ -66,6 +68,7 @@ class DefaultPatronRepository @Inject constructor (
     }
 
     override fun updateSearchString(name: String) {
+        currentQuery += 1
         if (name.length < MIN_SEARCH_LENGTH) {
             patrons.postValue(emptyList())
         } else {
@@ -76,13 +79,17 @@ class DefaultPatronRepository @Inject constructor (
                 // posted, the list of patrons displayed to the user may not be accurate.
                 patrons.postValue(localPatrons.toList())
                 try {
-                    val remotePatrons = retrofitService.searchPatrons(name).execute().body()
-                    if (remotePatrons != null) {
+                    val thisQuery = currentQuery
+                    val call = retrofitService.searchPatrons(name)
+                    val remotePatrons = call.execute().body()
+                    if (remotePatrons != null && thisQuery == currentQuery) {
                         val updatedList = compareResults(localPatrons, remotePatrons)
                         patrons.postValue(updatedList)
                     }
                 } catch (e: ConnectException) {
                     // TODO: log that we are unable to connect to the server
+                } catch (e: SocketTimeoutException) {
+                    // TODO: log that the connection timed out
                 }
             }
         }
