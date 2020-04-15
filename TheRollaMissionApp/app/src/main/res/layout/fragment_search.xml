@@ -32,6 +32,7 @@
             android:inputType="textVisiblePassword|textCapWords"
             android:drawableStart="@drawable/ic_search"
             android:text="@={viewmodel.query}"
+            android:maxLength="30"
             android:afterTextChanged="@{() -> viewmodel.onQueryChanged()}"
             app:iconifiedByDefault="false"
             app:layout_constraintStart_toStartOf="parent"
