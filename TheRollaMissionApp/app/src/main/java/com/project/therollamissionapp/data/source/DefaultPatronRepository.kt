@@ -19,10 +19,7 @@ import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import java.io.File
-import java.io.IOException
 import java.lang.Exception
-import java.net.ConnectException
-import java.net.SocketTimeoutException
 import java.net.URL
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -86,10 +83,8 @@ class DefaultPatronRepository @Inject constructor (
                         val updatedList = compareResults(localPatrons, remotePatrons)
                         patrons.postValue(updatedList)
                     }
-                } catch (e: ConnectException) {
-                    // TODO: log that we are unable to connect to the server
-                } catch (e: SocketTimeoutException) {
-                    // TODO: log that the connection timed out
+                } catch (e: Exception) {
+                    // TODO: log exception
                 }
             }
         }
@@ -127,7 +122,7 @@ class DefaultPatronRepository @Inject constructor (
             } else {
                 return Result.Error(Exception(response.errorBody().toString()))
             }
-        } catch (e: ConnectException) {
+        } catch (e: Exception) {
             return Result.Error(Exception(e.toString()))
         }
     }
@@ -197,7 +192,7 @@ class DefaultPatronRepository @Inject constructor (
                     saveBitmap(dir, "${patron.id}.jpg", headshot)
                     patronDao.insertPatron(patron)
                 }
-            } catch (e: IOException) {
+            } catch (e: Exception) {
                 // TODO: log that we are unable to connect to the server
             }
         }

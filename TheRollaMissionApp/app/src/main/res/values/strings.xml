@@ -66,4 +66,7 @@
     <string name="required">Required</string>
     <string name="checkin_instructions">After typing in your name, tap on your name in the list below to check in.</string>
     <string name="retake">Retake</string>
+    <string name="device_admin_description">Device administration for The Rolla Mission\'s check-in app.</string>
+    <string name="device_admin_label">The Rolla Mission</string>
+    <string name="no_admin_permission">Unable to enter kiosk mode. This app does not have admin privileges.</string>
 </resources>
