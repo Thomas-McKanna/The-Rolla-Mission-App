@@ -21,7 +21,7 @@ class FormValidator (private val context: Context,
     private val defaultColor = binding.textTitle.currentTextColor
 
     fun validateForm(): Boolean {
-        return fieldsFilled() && validateBirthdate()
+        return fieldsFilled() && validateName() && validateBirthdate()
     }
 
     private fun fieldsFilled(): Boolean {
@@ -55,7 +55,7 @@ class FormValidator (private val context: Context,
             field.error = context.getString(R.string.required)
             return false
         } else {
-            field.error = ""
+            field.error = null
             return true
         }
     }
@@ -86,7 +86,8 @@ class FormValidator (private val context: Context,
 
     private fun consentGiven(): Boolean {
         if (binding.checkboxConsent1.isChecked && binding.checkboxConsent2.isChecked &&
-                binding.checkboxConsent3.isChecked) {
+            binding.checkboxConsent3.isChecked
+        ) {
             binding.textConsent.setTextColor(defaultColor)
             return true
         } else {
@@ -116,12 +117,27 @@ class FormValidator (private val context: Context,
         }
     }
 
+    private fun validateName(): Boolean {
+        val nameRegex = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*\$".toRegex()
+        val name = viewModel.name.value.toString()
+        val nameEditText = binding.editName
+        val matches = nameRegex.matches(name)
+        if (!matches) {
+            nameEditText.error = context.getString(R.string.invalid_name)
+        } else {
+            nameEditText.error = null
+        }
+        return matches
+    }
+
     private fun validateBirthdate(): Boolean {
-        try {
-            Helpers.formatBirthDate(binding.editBirthdate.text.toString())
+        val birthDate = viewModel.birthDate.value.toString()
+        val birthDateRegex = "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d\$".toRegex()
+        if (birthDateRegex.matches(birthDate)) {
+            binding.editBirthdate.error = null
             return true
-        } catch (e: ParseException) {
-            binding.editBirthdate.error = "Invalid birthdate"
+        } else {
+            binding.editBirthdate.error = context.getString(R.string.invalid_birthdate)
             return false
         }
     }

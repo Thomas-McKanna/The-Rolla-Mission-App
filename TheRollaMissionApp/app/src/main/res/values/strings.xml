@@ -69,4 +69,6 @@
     <string name="device_admin_description">Device administration for The Rolla Mission\'s check-in app.</string>
     <string name="device_admin_label">The Rolla Mission</string>
     <string name="no_admin_permission">Unable to enter kiosk mode. This app does not have admin privileges.</string>
+    <string name="invalid_birthdate">Invalid birth date</string>
+    <string name="invalid_name">Invalid name</string>
 </resources>
