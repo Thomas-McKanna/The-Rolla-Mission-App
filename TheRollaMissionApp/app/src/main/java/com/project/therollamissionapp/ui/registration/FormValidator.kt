@@ -11,8 +11,6 @@ import androidx.core.view.children
 import com.google.android.material.textfield.TextInputLayout
 import com.project.therollamissionapp.R
 import com.project.therollamissionapp.databinding.FragmentRegistrationBinding
-import com.project.therollamissionapp.ui.common.Helpers
-import java.text.ParseException
 
 class FormValidator (private val context: Context,
                      private val binding: FragmentRegistrationBinding,
@@ -120,12 +118,11 @@ class FormValidator (private val context: Context,
     private fun validateName(): Boolean {
         val nameRegex = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*\$".toRegex()
         val name = viewModel.name.value.toString()
-        val nameEditText = binding.editName
         val matches = nameRegex.matches(name)
-        if (!matches) {
-            nameEditText.error = context.getString(R.string.invalid_name)
+        if (matches) {
+            binding.editName.error = null
         } else {
-            nameEditText.error = null
+            binding.editName.error = context.getString(R.string.invalid_name)
         }
         return matches
     }
@@ -133,12 +130,12 @@ class FormValidator (private val context: Context,
     private fun validateBirthdate(): Boolean {
         val birthDate = viewModel.birthDate.value.toString()
         val birthDateRegex = "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d\$".toRegex()
-        if (birthDateRegex.matches(birthDate)) {
+        val matches = birthDateRegex.matches(birthDate)
+        if (matches) {
             binding.editBirthdate.error = null
-            return true
         } else {
             binding.editBirthdate.error = context.getString(R.string.invalid_birthdate)
-            return false
         }
+        return matches
     }
 }

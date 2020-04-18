@@ -6,19 +6,31 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textViewStyle">@style/TextAppearance.MaterialComponents.Body1</item>
-        <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Body1</item>
+        <item name="android:textViewStyle">@style/RegistrationTextStyle</item>
+        <item name="errorTextAppearance">@style/RegistrationEditTextStyle</item>
+        <item name="textAppearanceButton">@style/RegistrationButtonStyle</item>
+        <item name="radioButtonStyle">@style/RegistrationRadioStyle</item>
+        <item name="checkboxStyle">@style/RegistrationCheckboxStyle</item>
     </style>
 
-    <style name="SpinnerDatePickerDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog">
-        <!-- android:datePickerStyle was not added until API 21 -->
-        <item name="android:datePickerStyle">@style/DatePickerStyle</item>
-        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
-        <item name="android:editTextStyle">@style/TextAppearance.MaterialComponents.Headline4</item>
+    <style name="RegistrationTextStyle" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="DatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
-        <item name="android:datePickerMode">spinner</item>
+    <style name="RegistrationEditTextStyle" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="RegistrationButtonStyle" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="RegistrationRadioStyle" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="RegistrationCheckboxStyle" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="ThemeOverlay.MaterialComponents.Dialog.LargeTitle" parent="ThemeOverlay.MaterialComponents.Dialog">

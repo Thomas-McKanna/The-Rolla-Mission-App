@@ -52,7 +52,7 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="other_gender">Other</string>
-    <string name="pref_not_answer">Prefer not to answer</string>
+    <string name="pref_not_answer">No response</string>
     <string name="registration_success_title"><bold>Registration Successful!</bold></string>
     <string name="registration_success_message">You can now check in to the overnight shelter. Would you like to do so now?</string>
     <string name="error_message">The intended action was not successful. Please make sure that you are connected to the internet. If the problem persists, contact the developers of this application.</string>

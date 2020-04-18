@@ -51,7 +51,6 @@ object DialogUtil {
             AlertDialog.Builder(it)
         }
         builder?.apply {
-            setIcon(R.drawable.ic_happy)
             setMessage(R.string.registration_success_message)
             setTitle(R.string.registration_success_title)
             setPositiveButton(R.string.yes, onPositive)

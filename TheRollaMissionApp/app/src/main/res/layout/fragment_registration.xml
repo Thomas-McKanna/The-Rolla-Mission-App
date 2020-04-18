@@ -36,16 +36,8 @@
             android:layout_height="wrap_content"
             android:onClick="@{() -> viewmodel.backPressed()}"
             android:text="@string/back"
+            android:drawableLeft="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/button_submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewmodel.submitPressed()}"
-            android:text="@string/submit"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -53,21 +45,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/patron_registration_form"
-            app:layout_constraintBaseline_toBaselineOf="@+id/button_submit"
-            app:layout_constraintEnd_toStartOf="@id/button_submit"
-            app:layout_constraintStart_toEndOf="@id/button_back" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_back"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent" />
 
         <LinearLayout
             android:id="@+id/layout_name_birth_phone"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:orientation="vertical"
             android:layout_marginEnd="@dimen/medium_margin"
             app:layout_constraintTop_toTopOf="@id/img_patron"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/img_patron"
-            app:layout_constraintBottom_toBottomOf="@id/button_take_picture" >
+            app:layout_constraintEnd_toStartOf="@id/img_patron" >
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_name"
@@ -83,6 +74,7 @@
                     android:layout_height="match_parent"
                     android:inputType="textCapWords"
                     android:maxLength="127"
+                    android:textAppearance="@style/RegistrationEditTextStyle"
                     android:text="@={viewmodel.name}" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -100,7 +92,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@={viewmodel.birthDate}"
-                    android:inputType="datetime" />
+                    android:inputType="datetime"
+                    android:textAppearance="@style/RegistrationEditTextStyle" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,16 +111,68 @@
                     android:layout_height="match_parent"
                     android:maxLength="14"
                     android:text="@={viewmodel.contactNumber}"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:textAppearance="@style/RegistrationEditTextStyle" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_gender_duration_homeless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/layout_name_birth_phone" >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:id="@+id/layout_gender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:layout_weight="1"
+                    android:hint="@string/gender" >
+
+                    <AutoCompleteTextView
+                        android:id="@+id/dropdown_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:onClick="@{() -> viewmodel.triggerHideKeyboardEvent()}"
+                        android:text="@={viewmodel.gender}"
+                        android:textAppearance="@style/RegistrationEditTextStyle" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:id="@+id/layout_duration_homeless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="@string/homeless_question" >
+
+                    <AutoCompleteTextView
+                        android:id="@+id/drop_down_duration_homeless"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:onClick="@{() -> viewmodel.triggerHideKeyboardEvent()}"
+                        android:text="@={viewmodel.timeHomeless}"
+                        android:textAppearance="@style/RegistrationEditTextStyle" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <ImageView
             android:id="@+id/img_patron"
-            android:layout_width="120dp"
-            android:layout_height="160dp"
+            android:layout_width="196dp"
+            android:layout_height="256dp"
             android:layout_marginTop="@dimen/small_margin"
             android:background="@color/lightGray"
             previewPatronImage="@{viewmodel.imagePath}"
@@ -144,63 +189,16 @@
             app:layout_constraintStart_toStartOf="@id/img_patron"
             app:layout_constraintEnd_toEndOf="@id/img_patron" />
 
-        <LinearLayout
-            android:id="@+id/layout_gender_duration_homeless"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/layout_name_birth_phone" >
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-                android:id="@+id/layout_gender"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/medium_margin"
-                android:layout_weight="1"
-                android:hint="@string/gender" >
-
-                <AutoCompleteTextView
-                    android:id="@+id/dropdown_gender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:clickable="true"
-                    android:onClick="@{() -> viewmodel.triggerHideKeyboardEvent()}"
-                    android:text="@={viewmodel.gender}" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-                android:id="@+id/layout_duration_homeless"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="@string/homeless_question" >
-
-                <AutoCompleteTextView
-                    android:id="@+id/drop_down_duration_homeless"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:clickable="true"
-                    android:onClick="@{() -> viewmodel.triggerHideKeyboardEvent()}"
-                    android:text="@={viewmodel.timeHomeless}" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layout_rolla_when_became_homeless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
             android:orientation="horizontal"
             android:gravity="center|start"
-            app:layout_constraintTop_toBottomOf="@id/layout_gender_duration_homeless"
+            app:layout_constraintTop_toBottomOf="@id/layout_name_birth_phone"
             app:layout_constraintStart_toStartOf="parent" >
 
             <TextView
@@ -238,6 +236,7 @@
             android:id="@+id/layout_city_reason_rolla"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:visibility="@{radioFromRollaN.checked ? View.VISIBLE : View.GONE}"
@@ -259,7 +258,8 @@
                     android:layout_height="match_parent"
                     android:inputType="textCapWords"
                     android:maxLength="127"
-                    android:text="@={viewmodel.city}" />
+                    android:text="@={viewmodel.city}"
+                    android:textAppearance="@style/RegistrationEditTextStyle" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -278,7 +278,8 @@
                     android:focusable="false"
                     android:clickable="true"
                     android:onClick="@{() -> viewmodel.triggerHideKeyboardEvent()}"
-                    android:text="@={viewmodel.reason}" />
+                    android:text="@={viewmodel.reason}"
+                    android:textAppearance="@style/RegistrationEditTextStyle" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -310,6 +311,8 @@
                     android:id="@+id/radio_violence"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:layout_marginBottom="@dimen/small_margin"
                     android:checkedButton="@={viewmodel.violence}"
                     android:orientation="vertical" >
 
@@ -350,6 +353,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checkedButton="@={viewmodel.veteran}"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:layout_marginBottom="@dimen/small_margin"
                     android:orientation="vertical" >
 
                     <RadioButton
@@ -389,6 +394,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checkedButton="@={viewmodel.sexOffender}"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:layout_marginBottom="@dimen/small_margin"
                     android:orientation="vertical" >
 
                     <RadioButton
@@ -412,8 +419,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layout_consent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/layout_status_questions" >
 
@@ -464,6 +473,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
                 android:orientation="vertical" >
 
                 <TextView
@@ -475,21 +485,34 @@
                 <com.github.gcacace.signaturepad.views.SignaturePad
                     android:id="@+id/sp"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="175dp"
                     android:layout_marginTop="@dimen/medium_margin"
                     android:background="@color/lightGray"
                     onSigned="@{() -> viewmodel.onSignedSignature(sp)}" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:onClick="@{() -> sp.clear()}"
-                    android:layout_marginTop="@dimen/small_margin"
-                    android:text="@string/clear_signature" />
-
             </LinearLayout>
 
+
+
         </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> sp.clear()}"
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="@string/clear_signature"
+            app:layout_constraintTop_toBottomOf="@id/layout_consent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewmodel.submitPressed()}"
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="@string/submit"
+            app:layout_constraintTop_toBottomOf="@id/layout_consent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
