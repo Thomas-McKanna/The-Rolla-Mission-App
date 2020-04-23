@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         if (devicePolicyManager.isDeviceOwnerApp(packageName)) {
             stopLockTask()
             devicePolicyManager.clearPackagePersistentPreferredActivities(adminComponentName, packageName)
-            finish()
+            intent = Intent(Settings.ACTION_SETTINGS)
+            startActivity(intent)
         }
     }
 

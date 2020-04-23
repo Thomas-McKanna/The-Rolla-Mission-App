@@ -30,7 +30,7 @@ class DefaultPatronRepository @Inject constructor (
     private val retrofitService: ApiEndpointInterface,
     private val app: Application
 ) : PatronRepository {
-    private val MIN_SEARCH_LENGTH = 2
+    private val MIN_SEARCH_LENGTH = 3
     var currentQuery = 0
     val patrons = MutableLiveData<List<Patron>>()
 
