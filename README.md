@@ -1,7 +1,7 @@
 # The Rolla Mission Check-In App
 As part of the capstone computer science course at MS&T, a check-in app for a local homeless shelter was created. The app is designed to run on an android tablet. Those looking to spend the night at The Rolla Mission can register using the tablet, and on any future visits, can check in to indicate they will be spending the night. 
 
-<img src="https://github.com/Thomas-McKanna/The-Rolla-Mission-App/raw/master/mission.gif" width=500><br>
+<img src="https://github.com/Thomas-McKanna/The-Rolla-Mission-App/raw/master/mission.gif" width=300><br>
 
 A strong effort was made to use the best-practices of android development:
 - [x] MVVM structure
